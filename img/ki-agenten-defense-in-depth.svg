@@ -1,0 +1,17 @@
+<svg width="1100" height="440" viewBox="0 0 1100 440" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif">
+  <g text-anchor="middle">
+    <rect x="60" y="25" width="980" height="390" rx="24" fill="#EEF1F2" stroke="#5C6971" stroke-width="3"/>
+    <text x="550" y="62" font-size="18">Überwachung, Kostenlimit, Abschaltung</text>
+
+    <rect x="145" y="85" width="810" height="285" rx="22" fill="#E3F0F4" stroke="#1C7B96" stroke-width="3"/>
+    <text x="550" y="122" font-size="18">Netzwerk- und Ziel-Whitelist</text>
+
+    <rect x="235" y="140" width="630" height="185" rx="20" fill="#FCF0DC" stroke="#E8930A" stroke-width="3"/>
+    <text x="550" y="178" font-size="18">Container / VM, schreibgeschützte Dateien</text>
+
+    <rect x="345" y="205" width="410" height="80" rx="18" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="3"/>
+    <text x="550" y="240" font-size="20">Agent mit minimalen Tools</text>
+    <text x="550" y="266" font-size="16">Schrittlimit + Freigabe</text>
+  </g>
+</svg>

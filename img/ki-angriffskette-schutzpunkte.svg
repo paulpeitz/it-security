@@ -1,0 +1,43 @@
+<svg width="1120" height="210" viewBox="0 0 1120 210" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif">
+  <defs>
+    <marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0 0 L0 6 L9 3 z" fill="#5C6971"/>
+    </marker>
+  </defs>
+  <g text-anchor="middle">
+    <rect x="20" y="25" width="180" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/>
+    <text x="110" y="63" font-size="18">Manipuliertes</text>
+    <text x="110" y="89" font-size="18">Dokument</text>
+
+    <rect x="245" y="25" width="170" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/>
+    <text x="330" y="63" font-size="18">RAG übernimmt</text>
+    <text x="330" y="89" font-size="18">Text</text>
+
+    <rect x="460" y="25" width="170" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/>
+    <text x="545" y="63" font-size="18">LLM folgt</text>
+    <text x="545" y="89" font-size="18">Anweisung</text>
+
+    <rect x="675" y="25" width="170" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/>
+    <text x="760" y="63" font-size="18">Tool-Aufruf</text>
+    <text x="760" y="89" font-size="18">mit Rechten</text>
+
+    <rect x="890" y="25" width="200" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/>
+    <text x="990" y="63" font-size="18">Datenabfluss</text>
+    <text x="990" y="89" font-size="18">oder Aktion</text>
+
+    <g stroke="#5C6971" stroke-width="3" marker-end="url(#b)">
+      <line x1="200" y1="73" x2="245" y2="73"/>
+      <line x1="415" y1="73" x2="460" y2="73"/>
+      <line x1="630" y1="73" x2="675" y2="73"/>
+      <line x1="845" y1="73" x2="890" y2="73"/>
+    </g>
+
+    <g font-size="15" fill="#25551F">
+      <text x="330" y="165">Quellenfreigabe</text>
+      <text x="545" y="165">Risikoerkennung</text>
+      <text x="760" y="165">Policy + Bestätigung</text>
+      <text x="990" y="165">Ausgabe-/DLP-Prüfung</text>
+    </g>
+  </g>
+</svg>

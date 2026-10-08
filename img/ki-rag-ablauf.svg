@@ -1,0 +1,36 @@
+<svg width="1120" height="150" viewBox="0 0 1120 150" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 18px">
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0 0 L0 6 L9 3 z" fill="#5C6971"/>
+    </marker>
+  </defs>
+  <g text-anchor="middle">
+    <rect x="20" y="25" width="170" height="95" rx="12" fill="#E3F0F4" stroke="#1C7B96"/>
+    <text x="105" y="65">Frage des</text>
+    <text x="105" y="91">Nutzers</text>
+
+    <rect x="240" y="25" width="180" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/>
+    <text x="330" y="65">Suche in der</text>
+    <text x="330" y="91">Vektordatenbank</text>
+
+    <rect x="470" y="25" width="180" height="95" rx="12" fill="#EEF1F2" stroke="#5C6971"/>
+    <text x="560" y="65">Passende</text>
+    <text x="560" y="91">Textabschnitte</text>
+
+    <rect x="700" y="25" width="160" height="95" rx="12" fill="#EAF4E2" stroke="#4C9A2A"/>
+    <text x="780" y="65">LLM erzeugt</text>
+    <text x="780" y="91">Antwort</text>
+
+    <rect x="910" y="25" width="180" height="95" rx="12" fill="#E3F0F4" stroke="#1C7B96"/>
+    <text x="1000" y="65">Antwort mit</text>
+    <text x="1000" y="91">Quellen</text>
+
+    <g stroke="#5C6971" stroke-width="3" marker-end="url(#a)">
+      <line x1="190" y1="73" x2="240" y2="73"/>
+      <line x1="420" y1="73" x2="470" y2="73"/>
+      <line x1="650" y1="73" x2="700" y2="73"/>
+      <line x1="860" y1="73" x2="910" y2="73"/>
+    </g>
+  </g>
+</svg>

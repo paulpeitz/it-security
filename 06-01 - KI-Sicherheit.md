@@ -32,7 +32,6 @@ Nach der Vorlesung können Sie …
 - den Einfluss von KI auf Cyberangriffe realistisch bewerten
 - grundlegende Schutzmaßnahmen für KI-Anwendungen ableiten
 
-> **Hinweis:** Die genannten Risiken sind Lernziele, keine vorausgesetzten Begriffe; sie werden in den folgenden Kapiteln eingeführt.
 
 <!-- _notes:
 Die Lernziele verbinden technische Grundlagen mit einer Sicherheitsfrage: Wo kann eine KI-Anwendung manipuliert werden und welche Kontrolle verhindert eine unerlaubte Wirkung? Prompt Injection verändert Anweisungen im Kontext, Poisoning manipuliert Wissensquellen oder Modelle, und Leakage bezeichnet die Preisgabe von Informationen. Die Begriffe werden in den folgenden Kapiteln anhand eines Wissensassistenten konkretisiert.
@@ -67,7 +66,7 @@ Ein Sprachmodell erzeugt Text aus einem Prompt und dem verfügbaren Kontext. Ein
 -->
 
 ---
-
+<!-- _class: biglist -->
 # Was ist ein Large Language Model?
 
 - **Large Language Model (LLM)**: Modell zur Verarbeitung und Erzeugung von Sprache
@@ -77,14 +76,12 @@ Ein Sprachmodell erzeugt Text aus einem Prompt und dem verfügbaren Kontext. Ein
 - Antworten können plausibel, aber sachlich falsch sein
 - Gleiche Frage kann zu unterschiedlichen Antworten führen
 
-> **Merksatz:** Ein LLM erzeugt wahrscheinlichen Text – es garantiert keine Wahrheit.
-
 <!-- _notes:
 Ein Token ist vereinfacht ein Wort, ein Wortteil oder ein Satzzeichen. Beispiel: Ein zusammengesetztes Wort kann in mehrere Tokens zerlegt werden. Das Modell sagt nicht den gesamten Text auf einmal voraus, sondern erzeugt ihn Schritt für Schritt. Es besitzt kein menschliches Verständnis und führt nicht automatisch eine Faktenprüfung durch. Die mögliche Variation der Antworten bezeichnet man als Nichtdeterminismus.
 -->
 
 ---
-
+<!-- _class: biglist -->
 # Prompt, Kontext und System Prompt
 
 - **Prompt**: Eingabe oder Arbeitsauftrag an das Modell
@@ -96,21 +93,6 @@ Ein Token ist vereinfacht ein Wort, ein Wortteil oder ein Satzzeichen. Beispiel:
 
 <!-- _notes:
 Man kann sich das Kontextfenster als digitalen Schreibtisch vorstellen. Nur was dort liegt, kann das Modell bei dieser Antwort berücksichtigen. Der System Prompt legt beispielsweise Rolle oder Antwortformat fest. Er ist wichtig für das Verhalten, aber keine technisch harte Sicherheitsgrenze.
--->
-
----
-
-# Beispielanwendung: DB-Wissensassistent
-
-- beantwortet Fragen zu internen Richtlinien
-- durchsucht dafür freigegebene Dokumente
-- zeigt verwendete Quellen an
-- erstellt auf Wunsch einen E-Mail-Entwurf
-- darf E-Mails **nicht selbstständig versenden**
-- greift nur auf Dokumente des angemeldeten Nutzers zu
-
-<!-- _notes:
-Dieses fiktive Beispiel verwenden wir durchgängig. Der Assistent verbindet ein LLM mit internen Dokumenten und einer E-Mail-Funktion. Die letzten beiden Punkte sind bereits Sicherheitsentscheidungen: kein autonomes Senden und keine Umgehung bestehender Dokumentberechtigungen. Später prüfen wir, wie diese Annahmen angegriffen werden könnten.
 -->
 
 ---
@@ -134,16 +116,7 @@ RAG bedeutet vereinfacht: erst suchen, dann formulieren. Ein Embedding übersetz
 
 # RAG: normaler Ablauf
 
-<svg viewBox="0 0 1120 430" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3 z" fill="#5C6971"/></marker></defs>
-<g font-family="Arial, sans-serif" font-size="18" text-anchor="middle">
-<rect x="20" y="150" width="170" height="95" rx="12" fill="#E3F0F4" stroke="#1C7B96"/><text x="105" y="190">Frage des</text><text x="105" y="216">Nutzers</text>
-<rect x="240" y="150" width="180" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/><text x="330" y="190">Suche in der</text><text x="330" y="216">Vektordatenbank</text>
-<rect x="470" y="150" width="180" height="95" rx="12" fill="#EEF1F2" stroke="#5C6971"/><text x="560" y="190">Passende</text><text x="560" y="216">Textabschnitte</text>
-<rect x="700" y="150" width="160" height="95" rx="12" fill="#EAF4E2" stroke="#4C9A2A"/><text x="780" y="190">LLM erzeugt</text><text x="780" y="216">Antwort</text>
-<rect x="910" y="150" width="180" height="95" rx="12" fill="#E3F0F4" stroke="#1C7B96"/><text x="1000" y="190">Antwort mit</text><text x="1000" y="216">Quellen</text>
-<g stroke="#5C6971" stroke-width="3" marker-end="url(#a)"><line x1="190" y1="198" x2="240" y2="198"/><line x1="420" y1="198" x2="470" y2="198"/><line x1="650" y1="198" x2="700" y2="198"/><line x1="860" y1="198" x2="910" y2="198"/></g>
-</g></svg>
+![w:1120 center](img/ki-rag-ablauf.svg)
 
 > **Kernaussage:** RAG ergänzt die Nutzerfrage um gefundene Textabschnitte; Quellen und Rechte müssen geprüft werden.
 
@@ -174,6 +147,7 @@ Ein Agent verbindet das Sprachmodell mit einer Schleife: planen, Tool aufrufen, 
 
 <!-- _class: normal -->
 
+<div class="columns">
 <div>
 
 ### Sicherheit **von** KI
@@ -222,8 +196,6 @@ Nachdem der normale Aufbau einer KI-Anwendung bekannt ist, wechseln wir zur erst
 | LLM04 | Supply Chain | Unsichere Modelle, Daten oder Komponenten |
 | LLM05 | Data and Model Poisoning | Wissen oder Modell wird manipuliert |
 
-> **Lesehilfe:** Die zehn Kategorien sind zunächst eine Landkarte. Wir vertiefen danach die Angriffe auf Kontext, Daten, Rechte und Ausgabe.
-
 <!-- _notes:
 Das Open Worldwide Application Security Project, kurz OWASP, veröffentlicht gemeinschaftlich entwickelte Sicherheitsleitfäden. Die Top 10 sind ein Orientierungsrahmen und keine Garantie für Vollständigkeit.
 
@@ -243,8 +215,6 @@ Das Open Worldwide Application Security Project, kurz OWASP, veröffentlicht gem
 | LLM08 | Hidden Context Exposure | Interne Instruktionen werden sichtbar |
 | LLM09 | Vector and Embedding Weaknesses | Fehler im semantischen Wissenszugriff |
 | LLM10 | Improper Output Handling | Modellausgabe wird unsicher weiterverarbeitet |
-
-> **Lesehilfe:** Merken Sie sich zuerst die Angriffspfade, nicht die Nummern. Die folgenden Beispiele ordnen die englischen Bezeichnungen ein.
 
 <!-- _notes:
 Die englischen Kategorien werden beibehalten, weil sie in Literatur und Werkzeugen so verwendet werden. Entscheidend ist jeweils die deutsche Kurzbeschreibung. In dieser Vorlesung vertiefen wir besonders die Risiken, die für unseren Wissensassistenten relevant sind. Die übrigen Risiken begegnen uns an passenden Stellen erneut.
@@ -350,17 +320,7 @@ Der Nutzer selbst hat keine schädliche Anweisung eingegeben. Sie gelangt über 
 
 # Angriffskette und Schutzpunkte
 
-<svg viewBox="0 0 1120 440" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="b" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3 z" fill="#5C6971"/></marker></defs>
-<g font-family="Arial, sans-serif" text-anchor="middle">
-<rect x="20" y="150" width="180" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/><text x="110" y="188" font-size="18">Manipuliertes</text><text x="110" y="214" font-size="18">Dokument</text>
-<rect x="245" y="150" width="170" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/><text x="330" y="188" font-size="18">RAG übernimmt</text><text x="330" y="214" font-size="18">Text</text>
-<rect x="460" y="150" width="170" height="95" rx="12" fill="#FCF0DC" stroke="#E8930A"/><text x="545" y="188" font-size="18">LLM folgt</text><text x="545" y="214" font-size="18">Anweisung</text>
-<rect x="675" y="150" width="170" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/><text x="760" y="188" font-size="18">Tool-Aufruf</text><text x="760" y="214" font-size="18">mit Rechten</text>
-<rect x="890" y="150" width="200" height="95" rx="12" fill="#FBE3E6" stroke="#E2001A"/><text x="990" y="188" font-size="18">Datenabfluss</text><text x="990" y="214" font-size="18">oder Aktion</text>
-<g stroke="#5C6971" stroke-width="3" marker-end="url(#b)"><line x1="200" y1="198" x2="245" y2="198"/><line x1="415" y1="198" x2="460" y2="198"/><line x1="630" y1="198" x2="675" y2="198"/><line x1="845" y1="198" x2="890" y2="198"/></g>
-<g font-family="Arial, sans-serif" font-size="15" fill="#25551F"><text x="330" y="290">Quellenfreigabe</text><text x="545" y="290">Risikoerkennung</text><text x="760" y="290">Policy + Bestätigung</text><text x="990" y="290">Ausgabe-/DLP-Prüfung</text></g>
-</g></svg>
+![w:1120 center](img/ki-angriffskette-schutzpunkte.svg)
 
 > **Stopp-Punkt:** Das Tool prüft Rechte unabhängig vom Modell.
 
@@ -682,13 +642,7 @@ Ein Benchmark ist ein standardisierter Test zum Vergleich von Fähigkeiten. Die 
 
 # Defense in Depth für Agenten
 
-<svg viewBox="0 0 1100 470" width="100%" xmlns="http://www.w3.org/2000/svg">
-<g font-family="Arial, sans-serif" text-anchor="middle">
-<rect x="60" y="35" width="980" height="390" rx="24" fill="#EEF1F2" stroke="#5C6971" stroke-width="3"/><text x="550" y="72" font-size="18">Überwachung, Kostenlimit, Abschaltung</text>
-<rect x="145" y="95" width="810" height="285" rx="22" fill="#E3F0F4" stroke="#1C7B96" stroke-width="3"/><text x="550" y="132" font-size="18">Netzwerk- und Ziel-Whitelist</text>
-<rect x="235" y="150" width="630" height="185" rx="20" fill="#FCF0DC" stroke="#E8930A" stroke-width="3"/><text x="550" y="188" font-size="18">Container / VM, schreibgeschützte Dateien</text>
-<rect x="345" y="215" width="410" height="80" rx="18" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="3"/><text x="550" y="250" font-size="20">Agent mit minimalen Tools</text><text x="550" y="276" font-size="16">Schrittlimit + Freigabe</text>
-</g></svg>
+![w:1100 center](img/ki-agenten-defense-in-depth.svg)
 
 <!-- _notes:
 Defense in Depth bedeutet mehrschichtige Verteidigung. Fällt eine Schutzschicht aus, begrenzen weitere Schichten den Schaden. Netzwerkziele werden beispielsweise per Allowlist eingeschränkt, Dateien möglichst nur lesbar eingebunden und Zugangsdaten kurzlebig bereitgestellt. Eine unabhängige Abschaltung muss auch dann funktionieren, wenn der Agent nicht kooperiert.
