@@ -23,7 +23,7 @@ title: Secure Software Development Lifecycle
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Wie Sicherheit in den Code kommt. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Der SSDLC erweitert den klassischen Entwicklungsprozess um konkrete Sicherheitsaktivitäten in jeder Phase. Für die Klausur reicht es deshalb nicht, einzelne Werkzeuge aufzuzählen: Entscheidend ist, eine Maßnahme der passenden Phase zuzuordnen und ihren Sicherheitsbeitrag zu erklären. Als roter Faden dient Log4Shell, weil der Fall Designfehler, verwundbare Abhängigkeiten und verspätete Reaktionen miteinander verbindet. Beim Lernen sollte zu jeder Phase die Frage beantwortet werden: Welches Risiko wird hier möglichst früh erkannt oder reduziert?
 -->
 ---
 <!-- _class: biglist -->
@@ -38,7 +38,7 @@ Dieser Abschnitt behandelt Wie Sicherheit in den Code kommt. Die folgenden Beisp
 - **DevSecOps** – CI/CD-Integration & Security Gates
 
 <!-- _notes:
-Danach bauen wir Schritt für Schritt den Secure Software Development Lifecycle auf, entlang der klassischen Phasen Planung, Design, Implementierung, Testing. Zum Schluss schauen wir über den eigenen Code hinaus: Supply Chain und DevSecOps. Roter Faden: Sicherheit ist kein Feature am Ende, sondern eine Frage in jeder Phase.
+Die Agenda folgt bewusst dem Lebenszyklus einer Software: vom Erheben der Anforderungen über Architektur und Prüfung bis zum Betrieb. Supply Chain und DevSecOps erweitern den Blick über den selbst geschriebenen Code hinaus auf Abhängigkeiten, Build-Prozesse und Organisation. Für die Klausur sollte jede Methode einer Phase zugeordnet und von benachbarten Methoden abgegrenzt werden können. Der rote Faden lautet: Sicherheit ist keine einmalige Endkontrolle, sondern eine fortlaufende Aufgabe mit unterschiedlichen Maßnahmen je Phase.
 -->
 
 ---
@@ -49,7 +49,7 @@ Danach bauen wir Schritt für Schritt den Secure Software Development Lifecycle 
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Der Tag, an dem das Internet brannte. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Log4Shell dient als durchgängige Fallstudie, an der mehrere Schwächen eines unsicheren Entwicklungsprozesses sichtbar werden. Relevant sind nicht nur die technischen Details, sondern vor allem die Fragen nach Design, Abhängigkeiten und Reaktionsfähigkeit. In einer Klausur kann der Fall genutzt werden, um passende SSDLC-Maßnahmen zu begründen. Beim Lesen der nächsten Folien sollte daher zwischen technischer Ursache, Prozessursache und organisatorischer Folge unterschieden werden.
 -->
 ---
 # Fallstudie: Log4Shell (Dezember 2021)
@@ -62,7 +62,7 @@ Dieser Abschnitt behandelt Der Tag, an dem das Internet brannte. Die folgenden B
 - **CVSS-Score: 10.0 von 10** – der höchstmögliche Schweregrad
 
 <!-- _notes:
-Log4Shell (CVE-2021-44228) zeigt beispielhaft, wie eine winzige Design-Entscheidung in einer einzelnen Bibliothek globale Auswirkungen haben kann. Log4j wird von Millionen Java-Anwendungen eingesetzt, oft tief verschachtelt als Abhängigkeit einer Abhängigkeit. Betont: Man musste diese Bibliothek nicht mal direkt einsetzen, um verwundbar zu sein. Das leitet direkt zum Supply-Chain-Kapitel später über.
+Log4Shell wird unter der Kennung CVE-2021-44228 geführt; eine CVE ist eine eindeutige Referenz für eine öffentlich bekannte Schwachstelle. Bestimmte Log4j-Versionen interpretierten kontrollierbare Zeichenfolgen als JNDI-Lookup und konnten dadurch externe Ressourcen ansprechen. Daraus konnte Remote Code Execution entstehen, also die Ausführung von Code aus der Ferne mit den Rechten des betroffenen Prozesses. Besonders kritisch war die enorme Verbreitung von Log4j, häufig als transitive Abhängigkeit, die nicht direkt in der eigenen Abhängigkeitsliste sichtbar war. Klausurrelevant ist die Kette: kontrollierte Eingabe → gefährliche Interpretation → externer Zugriff → mögliche Codeausführung.
 -->
 
 ---
@@ -77,7 +77,7 @@ Log4Shell (CVE-2021-44228) zeigt beispielhaft, wie eine winzige Design-Entscheid
 > **Merksatz:** Log4Shell war kein Coding-Fehler im klassischen Sinn – es war ein Versagen im *Design*.
 
 <!-- _notes:
-Das ist die perfekte Wichtige Differenzierung für die Vorlesung: Viele denken bei Schwachstellen zuerst an "schlechten Code". Hier war der Code sogar "wie spezifiziert" – das Problem lag eine Ebene höher, in der Design-Entscheidung, Nutzereingaben ungefiltert in eine mächtige Funktion (JNDI-Lookup) fließen zu lassen.
+Die entscheidende Abgrenzung lautet: Ein Implementierungsfehler setzt eine sinnvolle Vorgabe falsch um, ein Designfehler verankert bereits eine riskante Vorgabe oder Architektur. Bei Log4Shell funktionierte die Lookup-Funktion grundsätzlich wie vorgesehen; gefährlich war, dass nicht vertrauenswürdige Logdaten diese mächtige Funktion auslösen konnten. Damit wurde aus einer eigentlich passiven Protokollierung eine aktive Verarbeitung externer Anweisungen. Threat Modeling hätte den Datenfluss von fremder Eingabe über den Logger bis zu externen Diensten sichtbar gemacht. In einer Klausur sollte dieser Fall daher als Design- und Vertrauensgrenzenproblem begründet werden, nicht nur pauschal als „schlechter Code“.
 -->
 
 ---
@@ -93,7 +93,7 @@ Das ist die perfekte Wichtige Differenzierung für die Vorlesung: Viele denken b
   - Ohne **Software Bill of Materials (SBOM)** wussten viele Firmen tagelang nicht, ob sie überhaupt betroffen waren
 
 <!-- _notes:
-"Sicherheit vorher mitdenken" führt zu SSDLC/Shift Left, "Abhängigkeiten als Angriffsfläche" zu Supply Chain, "SBOM" wird dort im Detail erklärt.
+Der Vorfall zeigt drei verschiedene Reaktionsprobleme: Die Schwachstelle musste behoben, verwundbare Installationen mussten gefunden und Angriffe mussten erkannt werden. Shift Left adressiert vor allem die frühzeitige Vermeidung und Entdeckung, während Incident Response und Monitoring die Folgen im Betrieb begrenzen. Eine SBOM verhindert die Schwachstelle nicht, beschleunigt aber die Auswirkungsanalyse erheblich. SCA kann bekannte verwundbare Versionen erkennen, sobald passende Schwachstellendaten vorliegen. Für Klausurantworten ist wichtig, Prävention, Detektion und Reaktion nicht miteinander zu verwechseln.
 -->
 
 ---
@@ -104,7 +104,7 @@ Das ist die perfekte Wichtige Differenzierung für die Vorlesung: Viele denken b
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Vom SDLC zum SSDLC. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Dieses Kapitel schafft die begriffliche Grundlage für alle folgenden Methoden. Zuerst wird der normale SDLC betrachtet, danach dessen Erweiterung um Sicherheitsaktivitäten und schließlich das Prinzip Shift Left. Für die Klausur müssen SDLC, SSDLC und Shift Left jeweils definiert und voneinander abgegrenzt werden können. Besonders wichtig: SSDLC ist kein separates Vorgehensmodell und Shift Left bedeutet nicht, späte Prüfungen abzuschaffen.
 -->
 ---
 # Software Development Lifecycle (SDLC)
@@ -119,7 +119,7 @@ Dieser Abschnitt behandelt Vom SDLC zum SSDLC. Die folgenden Beispiele zeigen, w
 - Sicherheit kommt in dieser klassischen Sicht **nicht** als eigene Phase vor
 
 <!-- _notes:
-Wichtig ist der letzte Punkt: In der klassischen Definition taucht Security nirgends explizit auf. Das ist die Ausgangslage, die wir jetzt korrigieren.
+Der SDLC strukturiert Entwicklung und Betrieb in Phasen, damit Ergebnisse, Verantwortlichkeiten und Übergaben planbar werden. Je nach Vorgehensmodell können diese Phasen sequenziell wie im Wasserfall oder wiederholt wie in agilen Iterationen durchlaufen werden. Die dargestellten Phasen sind daher ein Ordnungsrahmen und keine zwingend lineare Prozessvorschrift. Sicherheit kann in einem klassischen SDLC vorkommen, ist aber ohne explizite Aktivitäten leicht unterrepräsentiert. Klausurrelevant ist die Erkenntnis, dass der SSDLC genau an diesem Ordnungsrahmen ansetzt und jede Phase ergänzt.
 -->
 
 ---
@@ -134,7 +134,7 @@ Wichtig ist der letzte Punkt: In der klassischen Definition taucht Security nirg
 > **Merksatz:** Security als letzter Schritt ist wie ein Airbag, den man erst nach dem Unfall einbaut.
 
 <!-- _notes:
-Diese Analogie soll sitzen bleiben: Ein Airbag, der nach dem Crash eingebaut wird, nützt nichts – genauso wenig wie ein Pentest, der erst nach der fertigen Architektur stattfindet und dann grundlegende Design-Fehler aufdeckt.
+Ein abschließender Penetrationstest kann reale Schwachstellen nachweisen, aber grundlegende Architekturentscheidungen nur noch teuer beeinflussen. Wird etwa erst kurz vor dem Release erkannt, dass Mandantendaten nicht sauber getrennt sind, reicht oft kein kleiner Patch. Neben Änderungskosten entstehen Zeitdruck, erneuter Testbedarf und das Risiko, den Fund aus Terminnot zu akzeptieren. Der Pentest bleibt trotzdem wichtig, weil frühe Maßnahmen Fehler nicht vollständig ausschließen. Eine gute Klausurantwort argumentiert deshalb für mehrere zeitlich verteilte Kontrollen statt für „früh oder spät“.
 -->
 
 ---
@@ -142,10 +142,9 @@ Diese Analogie soll sitzen bleiben: Ein Airbag, der nach dem Crash eingebaut wir
 
 ![w:1220 center](img/ssdlc-cost-curve.svg)
 
-> **Kernaussage:** Spät gefundene Sicherheitsprobleme können Änderungen an bereits festgelegter Architektur und implementiertem Code erfordern.
 
 <!-- _notes:
-Ein spät entdeckter Fehler kann bereits getroffene Architekturentscheidungen, implementierten Code und Tests betreffen. Deshalb ist eine frühe Prüfung hilfreich, auch wenn sie spätere Sicherheitstests nicht ersetzt. Die Kostenkurve verdeutlicht diesen Zusammenhang; sie ist keine allgemeingültige Preisformel.
+Die Kurve illustriert den wachsenden Änderungsumfang: Ein Problem in einer Anforderung lässt sich zunächst durch Textänderung beheben, später können Architektur, Code, Tests, Dokumentation und Betrieb betroffen sein. Zusätzlich steigen Koordinations- und Opportunitätskosten, etwa durch verschobene Releases oder Notfallmaßnahmen. Die Darstellung ist ein qualitatives Modell und keine universelle mathematische Kostenfunktion. Shift Left soll deshalb früh Feedback erzeugen, nicht jede denkbare Schwachstelle bereits in der Planung finden. In der Klausur sollte der Kostenvorteil über betroffene Artefakte und notwendige Nacharbeit erklärt werden.
 -->
 
 ---
@@ -162,10 +161,10 @@ Ein spät entdeckter Fehler kann bereits getroffene Architekturentscheidungen, i
   - Testing → SAST/DAST/SCA
   - Deployment/Wartung → Monitoring, Patch-Management
 
-> **Umsetzung:** Auch bei der Implementierung gelten sichere Voreinstellungen, Eingabeprüfung und Schutz von Zugangsdaten; die folgenden Kapitel vertiefen vor allem Planung, Design und Prüfung.
+
 
 <!-- _notes:
-Das ist die zentrale Definition der heutigen Vorlesung – gerne wörtlich mitschreiben lassen. SSDLC ersetzt nicht die bekannten Phasen, sondern reichert jede einzelne mit einer Sicherheitsaktivität an. Die Liste am Ende ist quasi das Inhaltsverzeichnis der nächsten vier Kapitel – Planung, Design, Implementierung, Testing greifen das jeweils im Detail auf.
+Der SSDLC integriert Sicherheitsziele, Verantwortlichkeiten und Prüfungen in den bestehenden Entwicklungslebenszyklus. In der Planung entstehen überprüfbare Security Requirements, im Design werden Bedrohungen und Gegenmaßnahmen modelliert, und während der Implementierung gelten sichere Programmierpraktiken. Testing liefert mit unterschiedlichen Verfahren weitere Evidenz, bevor Monitoring und Patch-Management den Betrieb absichern. Keine einzelne Maßnahme deckt alle Fehlerklassen ab; die Stärke entsteht durch ihre Kombination. Für die Klausur sollte zu jeder Phase mindestens eine typische Aktivität samt Zweck genannt werden können.
 -->
 
 ---
@@ -176,7 +175,7 @@ Das ist die zentrale Definition der heutigen Vorlesung – gerne wörtlich mitsc
 ![w:980 center](img/shift-left.svg)
 
 <!-- _notes:
-Der Begriff "Shift Left" kommt daher, dass man Prozess-Zeitachsen üblicherweise von links (früh) nach rechts (spät) zeichnet – Sicherheit wird also nach links, also früher, verschoben. Shift Left heißt nicht "Testing am Ende weglassen", sondern zusätzlich früher ansetzen. Die spätere Prüfung bleibt als Netz bestehen, aber die meisten Fehler sollen schon vorher abgefangen werden. Kurze Analogie: Rechtschreibprüfung während des Tippens statt erst beim Korrekturlesen des fertigen Buchs.
+Der Name Shift Left bezieht sich auf Zeitachsen, auf denen frühe Entwicklungsphasen links dargestellt werden. Beispiele sind Threat Modeling vor der Implementierung, SAST beim Commit und SCA bereits beim Build. Früh bedeutet jedoch nicht ausschließlich früh: DAST, Penetrationstests, Monitoring und Incident Response bleiben notwendig, weil manche Fehler erst im Zusammenspiel oder Betrieb sichtbar werden. Ziel sind kürzere Feedbackschleifen und geringerer Nacharbeitsaufwand. Eine typische Klausurfalle ist die Aussage, Shift Left ersetze spätere Sicherheitstests; korrekt ist, dass es sie ergänzt.
 -->
 
 ---
@@ -190,7 +189,7 @@ Der Begriff "Shift Left" kommt daher, dass man Prozess-Zeitachsen üblicherweise
 | Denkweise | "Security testen" | "Security by Design" |
 
 <!-- _notes:
-Diese Tabelle fasst das Kapitel zusammen und dient gleichzeitig als Brücke: "Security by Design" ist der Titel unseres nächsten Kapitels. Kurz erwähnen, dass "Verantwortung beim gesamten Team" später im DevSecOps-Kapitel nochmal vertieft wird.
+Der klassische SDLC und der SSDLC verwenden dieselben Entwicklungsphasen, unterscheiden sich aber in der systematischen Verankerung von Sicherheit. SSDLC verteilt Verantwortung, sodass Anforderungen, Architektur, Code und Betrieb jeweils einen Sicherheitsbeitrag leisten. Die geringeren Fehlerkosten sind eine erwartbare Folge früher Rückmeldungen, aber keine Garantie für insgesamt niedrige Projektkosten. „Security testen“ betrachtet primär das Ergebnis, während „Security by Design“ bereits Entscheidungen und Voreinstellungen gestaltet. Für Vergleiche in der Klausur eignen sich die Dimensionen Zeitpunkt, Verantwortung, Maßnahmen und Umgang mit Risiken.
 -->
 
 ---
@@ -201,7 +200,7 @@ Diese Tabelle fasst das Kapitel zusammen und dient gleichzeitig als Brücke: "Se
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Security Requirements, Abuse Cases, Compliance. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+In der Planungsphase werden Sicherheitsziele so konkretisiert, dass Architektur und Tests darauf aufbauen können. Security Requirements beschreiben den gewünschten Schutz, Abuse Cases machen vorhersehbaren Missbrauch sichtbar und Compliance liefert externe Mindestvorgaben. Die drei Begriffe hängen zusammen, sind aber nicht austauschbar. Für die Klausur sollte aus einem Abuse Case eine überprüfbare Sicherheitsanforderung abgeleitet und der Einfluss einer Vorgabe eingeordnet werden können.
 -->
 ---
 # Security Requirements
@@ -214,10 +213,9 @@ Dieser Abschnitt behandelt Security Requirements, Abuse Cases, Compliance. Die f
 
 - Werden idealerweise **gemeinsam** mit den fachlichen Anforderungen erhoben – nicht nachträglich ergänzt
 
-> **Sicherheitszweck des Lastbeispiels:** Automatisierte Anmeldeversuche sollen den Dienst nicht unbenutzbar machen. Die Latenz ist nur eine messbare Anforderung dafür.
 
 <!-- _notes:
-Wichtig ist die Unterscheidung funktional/nicht-funktional, weil Security oft in beide Kategorien fällt. Beispiel gut erklären: "Passwort hashen" ist eine klare funktionale Anforderung, die man testen kann; "robust gegen Angriffe X" ist eher eine Qualitätseigenschaft.
+Funktionale Security Requirements verlangen ein konkretes Sicherheitsverhalten, etwa Mehrfaktor-Authentifizierung oder die Protokollierung administrativer Änderungen. Nicht-funktionale Anforderungen bestimmen messbare Qualitätseigenschaften wie Verfügbarkeit, Reaktionszeit, Schlüssellänge oder maximale Wiederherstellungszeit. Gute Anforderungen sind eindeutig, überprüfbar und nennen bei Bedarf Randbedingungen; „das System muss sicher sein“ ist nicht testbar. Beim Lastbeispiel sollte zusätzlich ein Mechanismus wie Rate Limiting definiert werden, damit hohe Verfügbarkeit nicht unbeabsichtigt unbegrenzte Anmeldeversuche begünstigt. In der Klausur kann verlangt werden, eine vage Anforderung in ein messbares Akzeptanzkriterium zu überführen.
 -->
 
 ---
@@ -231,10 +229,9 @@ Wichtig ist die Unterscheidung funktional/nicht-funktional, weil Security oft in
 
 - Für jeden kritischen Use Case sollte mindestens ein passender Abuse Case erhoben werden
 
-> **Merksatz:** Ein Use Case beschreibt den Helden der Geschichte – ein Abuse Case den Bösewicht.
 
 <!-- _notes:
-Abuse Cases sind im Grunde die "Denk wie ein Angreifer"-Übung, aber schon in der Planungsphase, lange bevor Code existiert. Das Beispiel Login/Credential-Stuffing bewusst wählen, weil es später bei IAM (letzte Vorlesung) schon angerissen wurde – guter Anknüpfungspunkt. Betonen: Abuse Cases führen direkt zu konkreten Security Requirements, z. B. "nach 5 Fehlversuchen Account sperren oder Rate-Limit einführen".
+Use Cases beschreiben gewünschte Interaktionen und Geschäftsziele, Abuse Cases dagegen schädliche Ziele und missbräuchliche Abläufe. Beim Login nutzt Credential Stuffing bereits bekannte Benutzername-Passwort-Kombinationen automatisiert; es ist daher von reinem Erraten beliebiger Passwörter zu unterscheiden. Aus diesem Abuse Case lassen sich Anforderungen wie Rate Limiting, risikobasierte Erkennung, Mehrfaktor-Authentifizierung und Benachrichtigungen ableiten. Eine starre Kontosperre kann selbst für Denial of Service missbraucht werden und muss deshalb sorgfältig gestaltet sein. Klausurrelevant ist die Ableitungskette Abuse Case → Risiko → Gegenmaßnahme → testbares Requirement.
 -->
 
 ---
@@ -247,10 +244,8 @@ Abuse Cases sind im Grunde die "Denk wie ein Angreifer"-Übung, aber schon in de
   - **ISO/IEC 27001**: internationaler Standard für Informationssicherheits-Managementsysteme
   - **NIST Secure Software Development Framework (SSDF)**: konkrete Praktiken für sichere Entwicklung, in den USA zunehmend Pflicht für Software-Lieferanten des Staates
 
-- Compliance ist kein Ersatz für echte Sicherheit – aber oft der Auslöser dafür, überhaupt damit anzufangen
-
 <!-- _notes:
-Wichtig ist die Einordnung am Ende: Compliance-Checklisten abzuhaken bedeutet nicht automatisch sichere Software, aber in der Praxis ist Compliance-Druck (Audits, Bußgelder, Kundenanforderungen) oft der eigentliche Grund, warum Unternehmen SSDLC überhaupt einführen. NIST SSDF kann als Ausblick auf die praktische Umsetzung späterer Kapitel dienen.
+Compliance bezeichnet die Einhaltung verbindlicher oder vertraglich vereinbarter Vorgaben, während Sicherheit die tatsächliche Reduktion von Risiken meint. Die DSGVO fordert unter anderem geeignete technische und organisatorische Maßnahmen und verankert Datenschutz durch Technikgestaltung. ISO/IEC 27001 beschreibt Anforderungen an ein Managementsystem; sie ist kein Katalog einzelner Programmierregeln. Das NIST SSDF bündelt Praktiken für Organisation, Schutz der Software, Produktion sicherer Software und Reaktion auf Schwachstellen. In der Klausur sollte erklärt werden können, warum regelkonformes Verhalten eine Mindestbasis schafft, aber unbekannte oder kontextspezifische Risiken nicht automatisch beseitigt.
 -->
 
 ---
@@ -261,7 +256,7 @@ Wichtig ist die Einordnung am Ende: Compliance-Checklisten abzuhaken bedeutet ni
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Security by Design, Threat Modeling, STRIDE. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Im Design werden Anforderungen in Architekturentscheidungen und konkrete Schutzmaßnahmen übersetzt. Security by Design liefert übergeordnete Prinzipien, Threat Modeling ist der systematische Analyseprozess und STRIDE dient dabei als Denkhilfe für Bedrohungskategorien. Diese drei Ebenen sollten nicht vermischt werden. In der Klausur ist häufig nicht nur eine Definition, sondern die Anwendung auf ein einfaches System oder einen Datenfluss gefragt.
 -->
 ---
 # Security by Design
@@ -274,7 +269,7 @@ Dieser Abschnitt behandelt Security by Design, Threat Modeling, STRIDE. Die folg
   - **Defense in Depth**: Mehrere Sicherheitsschichten, damit der Ausfall einer Schicht nicht sofort zum Totalschaden führt
 
 <!-- _notes:
-Least Privilege begrenzt die Rechte jeder Komponente auf das Notwendige. Fail Secure bedeutet, dass bei einem Fehler keine zusätzlichen Berechtigungen entstehen; ein fehlgeschlagener Berechtigungscheck darf nicht automatisch Zugriff gewähren. Defense in Depth kombiniert mehrere voneinander unabhängige Kontrollen.
+Least Privilege begrenzt sowohl Umfang als auch Dauer von Berechtigungen, wodurch der Schaden eines kompromittierten Kontos oder Dienstes sinkt. Fail Secure bedeutet, dass Fehler keinen unsicheren Standardzustand erzeugen; ist eine Autorisierungsentscheidung nicht möglich, wird der Zugriff verweigert. Defense in Depth kombiniert möglichst unabhängige Kontrollen wie Authentifizierung, Netzwerksegmentierung und Protokollierung. Die Prinzipien ergänzen sich: geringe Rechte begrenzen Auswirkungen, sichere Fehlerzustände verhindern unbeabsichtigte Freigaben und mehrere Schichten fangen Einzelversagen ab. In Klausurbeispielen sollte jeweils erklärt werden, welches konkrete Risiko ein Prinzip reduziert.
 -->
 
 ---
@@ -290,10 +285,8 @@ Least Privilege begrenzt die Rechte jeder Komponente auf das Notwendige. Fail Se
 
 - Wird typischerweise vom Entwicklungsteam gemeinsam mit Security-Experten durchgeführt
 
-> **Übung:** Ein fremder Text erreicht den Logging-Dienst. Welche STRIDE-Kategorien wären betroffen, wenn daraus eine externe Anfrage oder Codeausführung entsteht?
-
 <!-- _notes:
-Threat Modeling ist die konkrete Methode, mit der man Design-Fehler wie bei Log4Shell hätte vorher erkennen können. Der vierstufige Ablauf ist der rote Faden – besonders Schritt 1 (Datenflussdiagramm) sollte kurz mit einem einfachen Beispiel visualisiert werden: Client → API → Datenbank, wo an jedem Pfeil Bedrohungen entstehen können. Ein Datenflussdiagramm zeigt Komponenten und Vertrauensgrenzen; an jeder Grenze werden mögliche Angriffe und Gegenmaßnahmen betrachtet.
+Threat Modeling ist ein wiederholbarer Prozess und keine einmalige Brainstorming-Sitzung. Ein Datenflussdiagramm erfasst externe Akteure, Prozesse, Datenspeicher, Datenflüsse und besonders Vertrauensgrenzen. Anschließend werden Bedrohungen identifiziert, nach Risiko priorisiert und durch vermeiden, reduzieren, übertragen oder bewusst akzeptieren behandelt. Ändert sich die Architektur wesentlich, sollte auch das Modell aktualisiert werden. Für die Klausur ist der Ablauf Modellieren → Identifizieren → Bewerten → Behandeln sowie die Bedeutung von Vertrauensgrenzen zentral.
 -->
 
 ---
@@ -309,7 +302,7 @@ Threat Modeling ist die konkrete Methode, mit der man Design-Fehler wie bei Log4
 | **E**levation of Privilege | Unbefugte Rechteausweitung | Autorisierung |
 
 <!-- _notes:
-Für jede Zeile kurz ein Mini-Beispiel griffbereit haben: Spoofing = gefälschte Absenderadresse, Tampering = manipulierter Kaufpreis in einer URL, Repudiation = Nutzer bestreitet eine Transaktion ohne Log, Information Disclosure = Fehlermeldung verrät Datenbankstruktur, DoS = Server mit Anfragen überflutet, Elevation of Privilege = normaler Nutzer wird zum Admin.
+STRIDE ist eine Merkhilfe zur möglichst vollständigen Suche nach Bedrohungen, aber keine Risikobewertungsmethode. Spoofing betrifft Identitätsvortäuschung, Tampering die unerlaubte Veränderung und Repudiation das Bestreiten von Handlungen bei fehlenden Nachweisen. Information Disclosure verletzt Vertraulichkeit, Denial of Service die Verfügbarkeit und Elevation of Privilege die korrekte Autorisierung. Zuordnungen können sich überschneiden, weil ein Angriff mehrere Schutzziele verletzt. Für die Klausur sollten zu jeder Kategorie ein eigenes Beispiel und eine plausible Gegenmaßnahme genannt werden können.
 -->
 
 ---
@@ -322,7 +315,7 @@ Für jede Zeile kurz ein Mini-Beispiel griffbereit haben: Spoofing = gefälschte
 - Ein systematisches Threat Modeling mit STRIDE hätte die Frage aufgeworfen: „Was passiert, wenn eine Log-Nachricht selbst ausführbaren Code enthält?"
 
 <!-- _notes:
-Betonen: STRIDE ist kein Selbstzweck, sondern hätte hier ganz konkret zur richtigen Frage geführt.
+Log4Shell lässt sich mehreren STRIDE-Kategorien zuordnen, weil ein erfolgreicher Angriff verschiedene Folgen haben kann. Das Auslesen von Umgebungsvariablen ist Information Disclosure; Codeausführung mit erweiterten Möglichkeiten kann Elevation of Privilege darstellen. Je nach Payload sind zusätzlich Tampering oder Denial of Service möglich. STRIDE hätte nicht automatisch die konkrete Schwachstelle vorhergesagt, aber die riskanten Datenflüsse und Folgen systematisch hinterfragen lassen. Klausurrelevant ist eine begründete Zuordnung anhand der Wirkung, nicht das bloße Nennen möglichst vieler Kategorien.
 -->
 
 
@@ -335,7 +328,7 @@ Betonen: STRIDE ist kein Selbstzweck, sondern hätte hier ganz konkret zur richt
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt SAST, DAST, SCA, Code Review, Fuzzing. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Dieses Kapitel vergleicht Prüfverfahren, die unterschiedliche Artefakte und Fehlerklassen untersuchen. SAST analysiert eigenen Code, DAST beobachtet die laufende Anwendung, SCA bewertet eingesetzte Komponenten und Fuzzing erzeugt ungewöhnliche Eingaben. Code Reviews ergänzen diese automatisierten Verfahren durch menschliches Kontextverständnis. Für die Klausur sind vor allem Prüfgegenstand, Einsatzzeitpunkt, typische Funde und Grenzen jeder Methode zu beherrschen.
 -->
 ---
 <!-- _class: normal -->
@@ -362,10 +355,8 @@ Dieser Abschnitt behandelt SAST, DAST, SCA, Code Review, Fuzzing. Die folgenden 
 </div>
 </div>
 
-> **XSS (Cross-Site Scripting):** Angreifer bringen ausführbaren Inhalt in eine Webanwendung ein, der im Browser anderer Nutzer verarbeitet wird.
-
 <!-- _notes:
-Diese Gegenüberstellung ist zentral für das Testing-Kapitel. Analogie anbieten: SAST liest den Bauplan eines Hauses und sucht Konstruktionsfehler, DAST geht tatsächlich durchs fertige Haus und rüttelt an Türen und Fenstern. Beide ergänzen sich – SAST ist "Shift Left"-freundlicher, DAST findet dafür Dinge, die erst zur Laufzeit sichtbar werden (z. B. Fehlkonfigurationen des Servers). SAST untersucht Quellcode, DAST die laufende Anwendung und SCA die eingesetzten Fremdkomponenten.
+SAST arbeitet als White-Box-Verfahren mit Einblick in Quellcode oder Zwischenrepräsentationen und kann Datenflüsse von Eingaben zu gefährlichen Funktionen verfolgen. DAST arbeitet typischerweise als Black-Box-Verfahren gegen eine laufende Anwendung und beobachtet tatsächliche Antworten, kennt aber den verantwortlichen Codepfad oft nicht. SAST lässt sich früh einsetzen, produziert jedoch kontextabhängige False Positives; DAST findet Laufzeit- und Konfigurationsprobleme, benötigt aber eine testbare Umgebung und ausreichende Abdeckung. XSS ist ein Beispiel für eine Schwachstelle, deren tatsächliche Ausnutzbarkeit DAST im Browserkontext prüfen kann. Klausurrelevant ist: Die Verfahren konkurrieren nicht, sondern ergänzen sich durch unterschiedliche Sichtweisen.
 -->
 
 ---
@@ -378,7 +369,7 @@ Diese Gegenüberstellung ist zentral für das Testing-Kapitel. Analogie anbieten
 - **Log4Shell-Bezug**: Ein SCA-Tool hätte sofort gemeldet: „Log4j Version X ist verwundbar – Update auf Version Y nötig"
 
 <!-- _notes:
-SCA ist die Testing-Antwort auf das Supply-Chain-Problem, das im Log4Shell-Beispiel und im nächsten Kapitel vertieft wird. SCA prüft nicht den eigenen Code, sondern die Fremdanteile – bei modernen Anwendungen oft 70-90% des Codes. CVE (Common Vulnerabilities and Exposures) kurz als "öffentliche, eindeutige ID für eine bekannte Schwachstelle" einordnen, falls der Begriff noch nicht bekannt ist.
+SCA inventarisiert direkte und transitive Abhängigkeiten samt Versionen und gleicht sie mit bekannten Schwachstelleninformationen ab. Eine CVE liefert die eindeutige Kennung, während Bewertungen wie CVSS die technische Schwere unterstützen; beides ersetzt keine Prüfung des eigenen Einsatzkontexts. Ein Treffer bedeutet nicht automatisch Ausnutzbarkeit, weil die betroffene Funktion möglicherweise nicht erreichbar ist, darf aber auch nicht ungeprüft ignoriert werden. SCA erkennt in der Regel keine unbekannte Zero-Day-Schwachstelle und keinen Fehler im eigenen Geschäftsprozess. Für die Klausur ist SCA klar von SAST abzugrenzen: Fremdkomponenten und Versionen statt eigener Quellcode.
 -->
 
 ---
@@ -392,7 +383,7 @@ SCA ist die Testing-Antwort auf das Supply-Chain-Problem, das im Log4Shell-Beisp
   - Besonders wirksam bei Parsern, Datei-Formaten, Netzwerkprotokollen
 
 <!-- _notes:
-Code Review ist die "menschliche" Ergänzung zu den automatisierten Tools davor – bewusst betonen, dass Tools Muster erkennen, aber Kontext (z. B. "warum wird hier überhaupt personenbezogene Daten geloggt?") oft nur ein Mensch einordnen kann. Fuzzing kurz mit einem Bild erklären: Ein Programm bekommt tausende leicht kaputte Eingaben vorgeworfen, um zu sehen, ob es abstürzt oder sich falsch verhält – so wurden z. B. viele Heartbleed-ähnliche Parser-Bugs gefunden.
+Ein Security-orientiertes Code Review prüft nicht nur Syntax, sondern auch Autorisierungslogik, Datenflüsse, Fehlerbehandlung und sichere Voreinstellungen. Die zweite Person kann Annahmen und fachlichen Kontext hinterfragen, die ein regelbasiertes Werkzeug nicht versteht. Fuzzing erzeugt zufällige, mutierte oder strukturbewusste Eingaben und überwacht Reaktionen wie Abstürze, Hänger oder Speicherfehler. Besonders wirksam ist coverage-guided Fuzzing, das Eingaben bevorzugt, die neue Programmpfade erreichen. In der Klausur sollte Code Review als kontextbezogene Prüfung und Fuzzing als automatisierte Robustheitsprüfung abgegrenzt werden.
 -->
 
 ---
@@ -407,7 +398,7 @@ Code Review ist die "menschliche" Ergänzung zu den automatisierten Tools davor 
 | Fuzzing | Robustheit | Vor Release | Absturz bei Datei-Upload |
 
 <!-- _notes:
-Diese Tabelle fasst das Kapitel zusammen und dient als Lernhilfe – die Spalte "Zeitpunkt" zeigt nochmal konkret, wie unterschiedlich früh/spät die Methoden im Prozess ansetzen, was den Shift-Left-Gedanken untermauert.
+Die Tabelle eignet sich als Lernmatrix: Methode, Prüfgegenstand, Zeitpunkt und typischer Fund bilden vier Vergleichsdimensionen. SAST und SCA liefern früh Rückmeldung, während DAST erst nach Bereitstellung einer laufenden Version möglich ist. Code Reviews können bei jeder relevanten Änderung stattfinden; Fuzzing kann bereits auf einzelne Komponenten und später auf integrierte Systeme angewandt werden. Die Zeitangaben sind deshalb typische Einsatzpunkte und keine starren Regeln. Eine Klausuraufgabe kann ein Szenario beschreiben und nach der passendsten Methode samt Begründung fragen.
 -->
 
 ---
@@ -418,7 +409,7 @@ Diese Tabelle fasst das Kapitel zusammen und dient als Lernhilfe – die Spalte 
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Angriffsflächen & Software Bill of Materials (SBOM). Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+Die Software Supply Chain umfasst mehr als Bibliotheken: Auch Build-Werkzeuge, Artefakt-Repositories, CI/CD-Dienste und Update-Kanäle beeinflussen das ausgelieferte Produkt. Dadurch kann sicher geschriebener eigener Code über ein kompromittiertes Glied trotzdem gefährdet werden. Das Kapitel verbindet die Fallstudien Log4Shell und SolarWinds mit den Maßnahmen SCA und SBOM. Für die Klausur sollten verwundbare Komponenten und manipulierte Build-Prozesse als unterschiedliche Supply-Chain-Risiken erkannt werden.
 -->
 ---
 # Die Software-Lieferkette als Angriffsfläche
@@ -430,7 +421,7 @@ Dieser Abschnitt behandelt Angriffsflächen & Software Bill of Materials (SBOM).
 - Angreifer zielen zunehmend nicht auf das Endprodukt, sondern auf **ein Glied der Kette**, um viele Opfer gleichzeitig zu treffen
 
 <!-- _notes:
-Log4Shell war bereits ein Supply-Chain-Thema (verwundbare Abhängigkeit), hier wird das systematisch eingeordnet. Die Kette ist oft länger als gedacht – eine Anwendung nutzt Bibliotheken, die selbst wieder Bibliotheken nutzen. Der Vorteil für Angreifer: Ein Kompromittieren eines einzigen populären Pakets kann tausende Anwendungen gleichzeitig treffen – viel effizienter als einzelne Ziele anzugreifen.
+Zur Lieferkette gehören Quellen, Werkzeuge und Vertrauensbeziehungen vom Entwicklerarbeitsplatz bis zum Update beim Kunden. Direkte Abhängigkeiten werden bewusst eingebunden, transitive Abhängigkeiten gelangen indirekt über andere Pakete in das Produkt. Angriffe können Schwachstellen ausnutzen, Pakete oder Konten manipulieren, Build-Systeme kompromittieren oder Artefakte auf dem Transport ersetzen. Die Konzentration auf weit verbreitete Komponenten erzeugt für Angreifer einen Multiplikatoreffekt. Klausurrelevant ist, für jedes betroffene Glied passende Kontrollen zu wählen, etwa Versionsbindung, Signaturprüfung, isolierte Builds und minimale CI/CD-Berechtigungen.
 -->
 
 ---
@@ -439,17 +430,15 @@ Log4Shell war bereits ein Supply-Chain-Thema (verwundbare Abhängigkeit), hier w
 - **Was geschah?**
   - Angreifer kompromittierten die Build-Infrastruktur des Netzwerk-Management-Tools „Orion"
   - Schadcode wurde in ein offizielles, digital signiertes Update eingeschleust
-  - ~18.000 Kunden installierten das manipulierte Update, darunter US-Behörden und Großkonzerne
+  - ~18.000 Kunden installierten das manipulierte Update
 
 - **Warum Supply-Chain-Versagen?**
   - Vertrauen in den Update-Mechanismus wurde ausgenutzt – niemand prüfte das signierte Update inhaltlich
 
 - **Konsequenzen:** Monatelange, teils bis heute andauernde Aufarbeitung; einer der folgenreichsten Cyberangriffe überhaupt
 
-> **Einordnung:** SPDX und CycloneDX sind Beispiele für maschinenlesbare SBOM-Formate; wichtiger als ihre Namen ist die nachvollziehbare Liste von Komponenten und Versionen.
-
 <!-- _notes:
-SolarWinds zeigt eine andere Angriffsvariante als Log4Shell: nicht eine offene Schwachstelle in einer Bibliothek, sondern ein gezielter Angriff auf die Build-Pipeline des Herstellers selbst. Betonen: Digitale Signaturen bestätigen nur "kommt vom richtigen Absender", nicht "der Inhalt ist unschädlich" – wenn der Absender selbst kompromittiert ist, hilft die Signatur nicht. Guter Vergleichspunkt zu Log4Shell: dort war die Schwachstelle öffentlich in einer offenen Bibliothek, hier ein gezielter, verdeckter Angriff auf einen einzelnen Hersteller.
+Bei SolarWinds wurde nicht primär eine Schwachstelle beim Kunden ausgenutzt, sondern der vertrauenswürdige Herstellungs- und Updateprozess kompromittiert. Die legitime digitale Signatur bestätigte Herkunft und Unverändertheit nach dem Signieren, nicht die Gutartigkeit des zuvor eingeschleusten Inhalts. Deshalb installierten Kunden ein formal authentisches, aber bereits manipuliertes Update. Gegenmaßnahmen betreffen unter anderem gehärtete Build-Umgebungen, Trennung von Rollen, reproduzierbare Builds und Überwachung ungewöhnlichen Verhaltens. In der Klausur sollte SolarWinds von Log4Shell abgegrenzt werden: gezielte Manipulation der Lieferkette statt bekannte Schwachstelle in einer verbreiteten Komponente.
 -->
 
 ---
@@ -466,7 +455,7 @@ SolarWinds zeigt eine andere Angriffsvariante als Log4Shell: nicht eine offene S
 - Verbreitete Formate: **SPDX**, **CycloneDX**
 
 <!-- _notes:
-Die Lebensmittel-Analogie ist eingängig: So wie man bei einer Allergie-Warnung sofort auf der Verpackung nachschauen kann, ob ein Inhaltsstoff enthalten ist, erlaubt eine SBOM die sofortige Prüfung bei neu bekannt gewordenen Schwachstellen. Rückbezug zu Log4Shell: Firmen mit vorhandener SBOM konnten die Frage "sind wir betroffen?" in Minuten statt Tagen beantworten. SPDX und CycloneDX nur kurz als Namen der gängigsten Standardformate nennen, keine Vertiefung nötig.
+Eine SBOM enthält typischerweise Komponentennamen, Versionen, Beziehungen, Lieferanten und weitere Identifikatoren in einem maschinenlesbaren Format. Bei einer neuen CVE kann dieses Inventar automatisiert mit betroffenen Produkten und Versionen abgeglichen werden. Die SBOM selbst erkennt oder behebt jedoch keine Schwachstelle; sie schafft Transparenz als Grundlage für SCA, Risikobewertung und Patch-Management. Ihre Qualität hängt von Vollständigkeit, Aktualität und eindeutigen Komponentenkennungen ab. Für die Klausur gilt die klare Abgrenzung: SBOM ist das Inventar, SCA ist die Analyse dieses Inventars auf bekannte Risiken.
 -->
 
 ---
@@ -477,7 +466,7 @@ Die Lebensmittel-Analogie ist eingängig: So wie man bei einer Allergie-Warnung 
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt CI/CD-Integration & Security Gates. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
+DevSecOps überführt SSDLC-Prinzipien in tägliche Zusammenarbeit und automatisierte Lieferprozesse. CI/CD schafft schnelle Feedbackschleifen, Security Gates setzen definierte Qualitätskriterien durch und die Teamkultur sorgt dafür, dass Findings bearbeitet werden. Technik, Prozesse und Verantwortlichkeiten müssen dabei zusammenpassen. Für die Klausur sollte erklärt werden können, wie ein konkretes Prüfverfahren in eine Pipeline eingebunden wird und wann ein Gate blockieren sollte.
 -->
 ---
 # Von DevOps zu DevSecOps
@@ -489,7 +478,7 @@ Dieser Abschnitt behandelt CI/CD-Integration & Security Gates. Die folgenden Bei
 - Kernidee: Sicherheit ist **Aufgabe des gesamten Teams**, nicht nur eines separaten Security-Teams am Ende
 
 <!-- _notes:
-DevSecOps ist die organisatorische und werkzeugtechnische Umsetzung von allem, was in dieser Vorlesung bisher besprochen wurde – Shift Left, SAST/DAST/SCA, Security Requirements. Betonen: Das "Sec" steht bewusst in der Mitte des Wortes, nicht am Ende – Symbol dafür, dass Security kein letzter Schritt, sondern Teil des gesamten Flusses ist.
+DevOps reduziert Übergaben zwischen Entwicklung und Betrieb durch gemeinsame Verantwortung, Automatisierung und häufige kleine Änderungen. DevSecOps integriert Sicherheitswissen und Kontrollen in genau diesen Arbeitsfluss, statt ein zusätzliches Freigabeteam am Ende einzubauen. Dazu gehören automatisierte Scans ebenso wie Threat Modeling, sichere Pipeline-Konfiguration und klare Zuständigkeiten für Findings. Gemeinsame Verantwortung bedeutet nicht, dass jeder dieselbe Expertise besitzt; Security-Spezialisten befähigen und unterstützen die Teams weiterhin. Klausurrelevant ist DevSecOps als Kultur- und Prozessmodell, nicht als einzelnes Tool.
 -->
 
 ---
@@ -498,7 +487,7 @@ DevSecOps ist die organisatorische und werkzeugtechnische Umsetzung von allem, w
 ![w:1260 center](img/cicd-security-gates.svg)
 
 <!-- _notes:
-Diese Pipeline ist die praktische Zusammenfassung der gesamten Vorlesung: SAST direkt nach dem Commit, SCA beim Build (Abhängigkeiten prüfen), DAST gegen die Staging-Umgebung, Secret Scanning durchgehend. Ein "Security Gate" bedeutet: Der Build wird automatisch gestoppt, wenn eine kritische Schwachstelle gefunden wird – das Team kann also gar nicht versehentlich unsicheren Code in Produktion bringen. Wichtig zu erwähnen: Gates müssen sinnvoll kalibriert sein, sonst blockieren zu viele False Positives jeden Release und Teams schalten die Prüfung frustriert ab.
+Die Pipeline ordnet Kontrollen dem frühestmöglichen sinnvollen Zeitpunkt zu: Secret Scanning und SAST können bereits auf Änderungen reagieren, SCA prüft den aufgelösten Abhängigkeitsbestand und DAST benötigt eine laufende Testumgebung. Ein Security Gate bewertet die Ergebnisse anhand definierter Regeln und kann den Übergang in die nächste Stufe verhindern. Dadurch wird aus einem Bericht eine durchgesetzte Entscheidung, deren Kriterien transparent und versioniert sein sollten. Findings müssen trotzdem triagiert werden, weil Schweregrad, Erreichbarkeit und Geschäftskontext die tatsächliche Priorität beeinflussen. In der Klausur sollte eine Pipeline logisch aufgebaut und jede Kontrolle mit ihrem benötigten Artefakt begründet werden.
 -->
 
 ---
@@ -513,10 +502,8 @@ Diese Pipeline ist die praktische Zusammenfassung der gesamten Vorlesung: SAST d
 
 - Balance nötig: zu strenge Gates bremsen Teams aus, zu lasche Gates verfehlen ihren Zweck
 
-> **Beispiel für eine Ausnahme:** Kritischer Fund vor dem Release → Risiko dokumentieren, zuständige Stelle entscheidet, begrenzte Ausnahme und Nacharbeit festlegen.
-
 <!-- _notes:
-In der Praxis braucht es einen definierten Ausnahmeprozess (z. B. Risiko bewusst akzeptieren, dokumentiert von einer verantwortlichen Person) statt das Gate einfach zu deaktivieren. Das zeigt, dass DevSecOps auch eine organisatorische, nicht nur technische Frage ist.
+Gate-Kriterien kombinieren meist Schweregrad, Vertrauenswürdigkeit des Fundes, Exposition und festgelegte Risikotoleranz. Ein pauschales Blockieren jedes Findings führt zu Alarmmüdigkeit und Umgehungsversuchen, während zu großzügige Regeln kritische Risiken durchlassen. False Positives sollten bestätigt und die Regelbasis verbessert werden, nicht kommentarlos ignoriert werden. Ausnahmen benötigen Begründung, verantwortliche Genehmigung, zeitliche Befristung und eine nachverfolgbare Nacharbeit. Klausurrelevant ist, dass Risikoakzeptanz eine dokumentierte Managemententscheidung und keine technische Problemlösung ist.
 -->
 
 ---
@@ -530,7 +517,7 @@ In der Praxis braucht es einen definierten Ausnahmeprozess (z. B. Risiko bewusst
 > **Merksatz:** DevSecOps ist zu 20 % Werkzeug und zu 80 % Kultur.
 
 <!-- _notes:
-Betonen: Die besten SAST/DAST-Tools nützen nichts, wenn Findings ignoriert werden, weil niemand Zeit oder Verantwortung dafür hat. Security Champions sind ein in der Praxis sehr verbreitetes Modell in dualen Partnerunternehmen – ggf.
+Werkzeuge erzeugen nur dann Sicherheitswirkung, wenn Findings verstanden, priorisiert und behoben werden. Security Champions sind Mitglieder der Entwicklungsteams mit vertieftem Sicherheitswissen; sie ersetzen kein zentrales Security-Team, sondern verbessern den Wissenstransfer. Wiederkehrende Schulungen sollten an verwendete Technologien und tatsächlich beobachtete Fehler angepasst sein. Eine Blameless Culture sucht systemische Ursachen und erleichtert frühes Melden, ohne persönliche Verantwortlichkeit aufzuheben. Die Prozentangabe im Merksatz ist bewusst zugespitzt; klausurrelevant ist die Aussage, dass Tools ohne Prozesse, Kompetenzen und Zuständigkeiten nicht genügen.
 -->
 
 ---
@@ -542,12 +529,11 @@ Betonen: Die besten SAST/DAST-Tools nützen nichts, wenn Findings ignoriert werd
 | Implementierung | Sichere Standardkonfiguration | Feature standardmäßig deaktiviert |
 | Testing | SCA | Verwundbare Version wäre markiert worden |
 | Supply Chain | SBOM | Betroffenheit in Minuten statt Tagen klar |
-| DevSecOps | Security Gate | Automatisches Update-Signal in der Pipeline |
 
-> **Implementierung gehört dazu:** Eingaben prüfen, Geheimnisse schützen und sichere Standardkonfigurationen wählen; Prüfwerkzeuge ersetzen diese Arbeit nicht.
+
 
 <!-- _notes:
-Jede Zeile verweist auf ein Kapitel der heutigen Vorlesung – gut geeignet, um am Ende nochmal den gesamten roten Faden zusammenzufassen, ohne neuen Stoff einzuführen.
+Die Tabelle zeigt, dass verschiedene Maßnahmen unterschiedliche Teile des Log4Shell-Problems adressieren. Threat Modeling und sichere Standardkonfiguration hätten das ursprüngliche Risiko reduzieren können; SCA hätte nach Bekanntwerden der CVE verwundbare Versionen identifiziert. Eine SBOM hätte die Suche nach betroffenen Produkten beschleunigt, und ein Gate hätte Updates oder kritische Findings konsequent in den Lieferprozess eingebracht. Keine einzelne Maßnahme garantiert, dass der Vorfall verhindert worden wäre. Eine gute Klausurantwort formuliert daher vorsichtig „hätte Risiko oder Reaktionszeit reduziert“ und begründet die Wirkung jeder Maßnahme.
 -->
 
 ---
@@ -565,16 +551,7 @@ Jede Zeile verweist auf ein Kapitel der heutigen Vorlesung – gut geeignet, um 
 > **Merksatz:** Sicherheit ist kein Zustand am Ende, sondern eine Aktivität in jeder Phase.
 
 <!-- _notes:
-Diese Tabelle ist die zentrale Lernhilfe der Vorlesung – jede Zeile korrespondiert mit einem Kapitel. Gut geeignet, um am Ende nochmal durchzugehen und offene Fragen zu sammeln.
+Diese Übersicht ist der zentrale Lernanker: Jede Phase besitzt ein anderes Sicherheitsziel und passende Aktivitäten. Planung macht Schutzbedarf prüfbar, Design reduziert strukturelle Risiken, Implementierung vermeidet typische Codefehler und Testing liefert unabhängige Prüfergebnisse. Supply-Chain-Maßnahmen schaffen Kontrolle über Fremdkomponenten, während Gates und Monitoring sichere Auslieferung und Betrieb unterstützen. Für die Klausur sollte aus einem beschriebenen Problem die betroffene Phase erkannt und eine geeignete Maßnahme mit ihrer Grenze erläutert werden. Besonders wichtig sind die Abgrenzungen SAST–DAST–SCA, SBOM–SCA sowie SSDLC–DevSecOps.
 -->
 
----
-# Diskussionsfragen
 
-- In welcher Phase des SSDLC seht ihr in eurem dualen Partnerunternehmen die größten Lücken?
-- Wäre ein strenges Security Gate in eurem Unternehmen durchsetzbar – oder würde es umgangen werden?
-- Log4Shell entstand durch ein "Feature ohne Absicherung" – kennt ihr ähnliche Fälle aus eigener Erfahrung?
-
-<!-- _notes:
-Diskussionsfragen ist ein Baustein der IT-Sicherheit. Entscheidend ist, welches Risiko angesprochen wird und welche Maßnahme seine Auswirkungen begrenzt.
--->
