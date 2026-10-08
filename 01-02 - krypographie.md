@@ -345,6 +345,7 @@ Diese vier Lehren sind zeitlos und gelten für moderne Verfahren genauso. Der "K
 Dieser Abschnitt behandelt Der Standard: AES. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
 -->
 ---
+
 # AES – Advanced Encryption Standard
 
 - **2001** vom US-Institut NIST standardisiert (Vorgänger: DES)
@@ -360,6 +361,7 @@ AES ist gelebtes Kerckhoffs-Prinzip: Der Algorithmus wurde in einem offenen Wett
 -->
 
 ---
+<!-- _class: biglist -->
 # AES – warum so vertrauenswürdig?
 
 - **Offen & geprüft**: Über 20 Jahre weltweite Kryptoanalyse ohne praktischen Bruch
@@ -367,36 +369,9 @@ AES ist gelebtes Kerckhoffs-Prinzip: Der Algorithmus wurde in einem offenen Wett
 - **Skalierbar**: 128 Bit für fast alles, 256 Bit für höchste Ansprüche
 - **Brute Force chancenlos**: $2^{128}$ Schlüssel – astronomisch groß
 
-> Aber Achtung: AES verschlüsselt nur **einen Block**. Wie verkettet man viele Blöcke? Der **Betriebsmodus** entscheidet.
-
-> **Begriffe:** ECB = Electronic Codebook (gleiche Blöcke bleiben erkennbar); GCM = Galois/Counter Mode (Verschlüsselung mit Integritätsschutz); CBC = Cipher Block Chaining (verkettete Blöcke, ohne eingebauten Integritätsschutz).
 
 <!-- _notes:
 Der Punkt: AES selbst ist exzellent, aber ein Klartext ist meist länger als 128 Bit. Man muss also viele Blöcke nacheinander verschlüsseln – und WIE man das tut (der "Modus"), ist sicherheitskritisch. Ein perfekter Algorithmus im falschen Modus ist unsicher.
--->
-
----
-# Betriebsmodi: Der ECB-Pinguin
-
-<div class="columns">
-<div>
-
-- **ECB** verschlüsselt jeden Block **unabhängig**
-- Gleicher Klartextblock → gleicher Geheimtextblock
-- **Muster bleiben sichtbar!**
-
-</div>
-<div>
-
-![w:200 center](img/ecb_penguin.png)
-
-</div>
-</div>
-
-> **Nie ECB verwenden.** Sichere Modi (z. B. **GCM**, CBC) verketten die Blöcke und fügen Zufall hinzu.
-
-<!-- _notes:
-Das Bild zeigt links den originalen Tux-Pinguin, in der Mitte mit ECB "verschlüsselt" (man erkennt den Pinguin immer noch klar!), rechts mit einem sicheren Modus (reines Rauschen). Der Grund: ECB verschlüsselt gleiche Blöcke immer gleich, also bleiben großflächige Muster erhalten. Kernbotschaft: Selbst der stärkste Algorithmus (AES) wird durch falsche Anwendung wertlos. Moderne Modi wie GCM liefern zusätzlich Integritätsschutz (authenticated encryption) – Verschlüsselung UND Manipulationserkennung in einem. Falls das Bild fehlt: kurz beschreiben und "img/ecb_penguin.png" ergänzen.
 -->
 
 ---
@@ -427,6 +402,7 @@ Das ist der Cliffhanger, der die zweite Hälfte der Vorlesung motiviert. Zwei Pr
 Dieser Abschnitt behandelt Der Durchbruch der 1970er. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können.
 -->
 ---
+<!-- _class: biglist -->
 # Diffie-Hellman – die Idee
 
 - **Problem gelöst 1976**: Zwei Parteien vereinbaren über einen **öffentlichen** Kanal einen **gemeinsamen geheimen** Schlüssel
@@ -478,8 +454,6 @@ Der Einwurfschlitz ist öffentlich (jeder kann eine Nachricht einwerfen = versch
   - Entschlüsseln mit privatem Schlüssel: $m = c^d \bmod n$
 
 - Das große $n$ (Produkt zweier Primzahlen) ist öffentlich – seine **Faktoren** sind das Geheimnis
-
-> **„mod“ bedeutet Rest bei Division:** 17 mod 5 = 2. Die Formeln illustrieren das Prinzip, nicht die praktische Implementierung.
 
 <!-- _notes:
 Bewusst nur die Grundidee, keine Herleitung. Kern in einem Satz: Multiplizieren ist leicht, Faktorisieren ist schwer. Beispiel: 17 × 23 = 391 rechnet jeder schnell; aber gegeben nur 391, die beiden Faktoren zu finden ist mühsam – und bei Zahlen mit 600+ Stellen für klassische Computer praktisch unmöglich. Die beiden Formeln nur zeigen, um die Symmetrie zu illustrieren (e öffentlich, d privat), NICHT durchrechnen. Wichtige Einordnung: RSA ist langsam, deshalb verschlüsselt man damit in der Praxis keine großen Datenmengen – das führt direkt zur hybriden Verschlüsselung.
@@ -626,15 +600,7 @@ Beruhigend abschließen: Die Lösung existiert bereits und läuft auf normalen C
 
 ---
 <!-- _class: chapter -->
-# Zusammenfassung
-
-
-<!-- _notes:
-Die Begriffe sollten nicht nur benannt, sondern anhand eines Beispiels voneinander abgegrenzt werden.
--->
----
-# Die wichtigsten Bausteine
-
+# Zusammenfassung 
 | Baustein | Typ | Schützt vor allem |
 |---|---|---|
 | **AES** | Symmetrisch | Vertraulichkeit (schnell, Massendaten) |
