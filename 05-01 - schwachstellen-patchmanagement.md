@@ -88,7 +88,7 @@ N-Day ist das Gegenstück: Die Lücke ist öffentlich bekannt und ein Patch ist 
 
 > **Merksatz:** CVE benennt den Einzelfall – CWE beschreibt die Fehlerklasse.
 
-> **Ein Beispiel:** CVE benennt eine konkrete gemeldete Lücke; CWE beschreibt die zugehörige Fehlerklasse; NVD stellt Informationen zu bekannten CVEs bereit.
+> **Konkretes Beispiel:** CVE-2017-0144 (EternalBlue) ist ein Einzelfall der Fehlerklasse CWE-119 (Buffer Overflow); in der NVD ist beides verknüpft und mit CVSS bewertet.
 
 <!-- _notes:
 Damit weltweit alle über dieselbe Lücke reden, gibt es eindeutige Kennungen. Eine CVE-Nummer ist wie eine Aktenzeichen-ID für genau eine konkrete Schwachstelle in einem bestimmten Produkt. Der Aufbau ist immer gleich: CVE, Jahr der Vergabe, laufende Nummer – im Beispiel CVE-2017-0144, die später bei WannaCry eine Rolle spielt. Vergeben werden CVE-IDs nicht von einer einzigen Stelle, sondern von autorisierten Organisationen, den CVE Numbering Authorities (CNAs); dazu gehören auch große Hersteller, die IDs für ihre eigenen Produkte ausgeben.
@@ -130,7 +130,7 @@ Genau diese Spanne zwischen "Patch verfügbar" und "Patch eingespielt" ist das A
   - Ransomware nutzte EternalBlue (SMBv1), weltweit über 200.000 Systeme in ca. 150 Ländern, u. a. Krankenhäuser (NHS)
 
 - **Warum Versagen der Verfügbarkeit?**
-  - Patch (MS17-010) lag zwei Monate vor dem Angriff vor, nicht eingespielt
+  - Patch (MS17-010) lag zwei Monate vor dem Angriff vor – wurde jedoch nicht eingespielt
 
 - **Konsequenzen:**
   - Betriebsausfälle, Milliardenschäden, Debatte über Patch-Disziplin
@@ -229,10 +229,6 @@ Die zentrale Einsicht für das nächste Kapitel: Weil Motive steuerbar sind, kan
 - **Fuzzing**: automatisierte Zufallseingaben, um Abstürze zu provozieren
 - **Software Composition Analysis (SCA)**: verwundbare Fremd-Abhängigkeiten finden
 
-> **Merksatz:** statisch = Code lesen, dynamisch = Programm testen, SCA = fremde Bausteine prüfen.
-
-> **Vergleich:** Fuzzing testet das Verhalten einer Anwendung mit vielen Eingaben; SCA prüft ihre verwendeten Fremdkomponenten auf bekannte Schwachstellen.
-
 <!-- _notes:
 Manuelle Verfahren – Code-Review, Pentest, Reverse Engineering – sind gründlich und finden auch Logikfehler, die kein Werkzeug erkennt, sind aber teuer und nicht skalierbar. Reverse Engineering bedeutet dabei, aus einem fertigen Programm ohne Quellcode die Funktionsweise zurückzugewinnen; das ist der typische Weg, wenn man fremde Software oder einen Patch analysiert.
 
@@ -260,7 +256,7 @@ Bug-Bounty-Programme sind der Versuch, das Finden von Schwachstellen in geordnet
 -->
 
 ---
-
+<!-- _class: biglist -->
 # Prinzip
 
 - Organisation lädt Externe zur Suche ein und **zahlt für valide Funde**
@@ -268,7 +264,7 @@ Bug-Bounty-Programme sind der Versuch, das Finden von Schwachstellen in geordnet
 - Vergütung nach Schweregrad
 - Plattformen: HackerOne, Bugcrowd, Intigriti, YesWeHack
 
-> **Scope-Beispiel:** Die Testfreigabe gilt für die ausdrücklich genannten Systeme und Methoden, nicht für beliebige Konten oder Produktivdaten.
+> Die Testfreigabe gilt für die ausdrücklich genannten Systeme und Methoden, nicht für beliebige Konten oder Produktivdaten.
 
 <!-- _notes:
 Das Prinzip: Eine Organisation lädt externe Forschende ein, ihre Systeme zu testen, und zahlt nur für valide, neue Funde. Darin steckt ein wesentlicher Unterschied zum Pentest: Beim Pentest bezahlt man Aufwand (Tage), beim Bug Bounty bezahlt man Ergebnisse (Funde). Beides ergänzt sich, ersetzt sich aber nicht.
@@ -360,7 +356,6 @@ In diesem Kapitel geht es um den geordneten Mittelweg und seinen rechtlichen Rah
 | **Responsible Disclosure** | erst Hersteller informieren, Veröffentlichung nach Behebung |
 | **Coordinated Disclosure** | mehrere Parteien (Hersteller, CERT/BSI) stimmen einen gemeinsamen Termin ab |
 
-> **Beispiel:** Betrifft eine Lücke mehrere Produkte, können Hersteller und Koordinierungsstelle eine gemeinsame Veröffentlichung abstimmen.
 
 <!-- _notes:
 Full Disclosure bedeutet: alles sofort veröffentlichen, inklusive technischer Details und oft eines funktionierenden Proof-of-Concept. Das erzeugt maximalen Druck auf den Hersteller und wird historisch damit begründet, dass viele Hersteller früher gar nicht reagierten, solange nichts öffentlich war. Der Preis dafür: Die Nutzer sind bis zum Patch schutzlos und die Angreifer bekommen die Anleitung frei Haus.
@@ -373,7 +368,7 @@ Die beiden mittleren Modelle werden im Alltag oft synonym verwendet, unterscheid
 -->
 
 ---
-
+<!-- _class: biglist -->
 # Ablauf und Fristen
 
 - Meldung an Hersteller (PSIRT, `security.txt`) oder Koordinierungsstelle (CERT/CC, BSI)
@@ -381,7 +376,6 @@ Die beiden mittleren Modelle werden im Alltag oft synonym verwendet, unterscheid
 - Übliche Frist: **90 Tage** als Beispiel einer Offenlegungs-Policy (z. B. Google Project Zero)
 - Veröffentlichung mit Advisory und CVE
 
-> **Ansprechpartner:** PSIRT = Sicherheitsteam eines Herstellers; CERT = Koordinierungsstelle für Sicherheitsvorfälle. **Kontaktweg:** `security.txt` nennt Meldeadressen und Regeln.
 
 <!-- _notes:
 Der typische Ablauf in vier Schritten. Zuerst braucht man einen Meldeweg. Viele größere Hersteller haben ein PSIRT – ein Product Security Incident Response Team, also die Stelle, die ausschließlich Sicherheitsmeldungen zu den eigenen Produkten bearbeitet. Abzugrenzen davon ist das CSIRT oder CERT, das Vorfälle in der eigenen Infrastruktur behandelt. Wo man meldet, steht idealerweise in der standardisierten Datei security.txt, die unter einem festen Pfad auf der Website liegt und Kontaktadresse, Richtlinie und bevorzugte Sprache nennt. Findet man keinen Ansprechpartner – oder reagiert der Hersteller nicht –, wendet man sich an eine Koordinierungsstelle wie das CERT/CC oder das BSI, die dann vermittelt.
@@ -413,7 +407,7 @@ Verknüpft den Zeitstrahl gedanklich mit dem Lebenszyklus vom Anfang der Vorlesu
 
 # Rechtliche Lage
 
-- **§ 202c StGB** („Hackerparagraph"): stellt bestimmte **Vorbereitungshandlungen** unter Strafe – der Kontext entscheidet
+- **§ 202c StGB** („Hackerparagraph“): stellt bestimmte **Vorbereitungshandlungen** unter Strafe – der Kontext entscheidet
 - Unbefugter Zugriff bleibt strafbar, auch bei guter Absicht
 - **Safe Harbor**: vertragliche Zusicherung des Herstellers, Forschende bei regelkonformem Testen nicht zu belangen – schafft Rechtssicherheit, aber nur, wenn die Regeln der Policy **eingehalten** werden
 - Herstellerseite: Meldende nicht bedrohen, transparent kommunizieren
@@ -464,7 +458,7 @@ Die Supplemental-Gruppe liefert nur Zusatzinformationen – etwa ob ein Angriff 
 
 Neu in Version 4.0 gegenüber 3.1 sind unter anderem die Umbenennung der Temporal- zur Threat-Gruppe, die zusätzliche Metrik Attack Requirements und die getrennte Betrachtung von Folgesystemen. Die Namenskonvention CVSS-B, CVSS-BT und CVSS-BTE macht außerdem sichtbar, welche Gruppen in einen genannten Wert eingeflossen sind.
 
-**Klausurvorbereitung:** Die vier Metrikgruppen benennen, ihre jeweilige Funktion erklären, angeben können welche Gruppe nicht in den Score einfließt, und begründen können, warum die alleinige Kommunikation des Base-Scores irreführend sein kann.
+**Klausurvorbereitung:** Die vier Metrikgruppen benennen, ihre jeweilige Funktion erklären, angeben können, welche Gruppe nicht in den Score einfließt, und begründen können, warum die alleinige Kommunikation des Base-Scores irreführend sein kann.
 -->
 
 ---
@@ -526,12 +520,6 @@ Die Einstufungstabelle übersetzt den Zahlenwert in eine Sprachstufe von None bi
 - **CISA KEV**: Katalog nachweislich ausgenutzter Schwachstellen
 - **SSVC**: Entscheidungsbaum (Track, Attend, Act)
 
-> **Beispiel:** Eine nur mittelschwere Lücke auf einem internetexponierten Server kann dringender sein als eine kritische Lücke auf einem isolierten Testsystem.
-
-> **Merksatz:** CVSS sagt, wie schlimm es sein könnte – EPSS und KEV sagen, ob es passiert.
-
-> **Entscheidungsbeispiel:** Zwei Lücken mit gleichem CVSS-Wert können unterschiedlich dringend sein, wenn nur ein betroffenes System öffentlich erreichbar ist.
-
 <!-- _notes:
 Risiko entsteht erst im Kontext – wie exponiert ist das System, wie kritisch ist es fürs Geschäft, und wird die Lücke tatsächlich ausgenutzt? Eine nur mittelschwere Lücke auf einem direkt aus dem Internet erreichbaren Server kann in der Praxis dringender sein als eine als "kritisch" bewertete Lücke auf einem abgeschotteten Testsystem, das niemand erreicht. Hinzu kommt ein statistisches Problem: Ein großer Teil aller veröffentlichten CVEs trägt einen Score von 7 oder höher. Wer rein nach CVSS priorisiert, erhält deshalb eine unüberschaubar lange Liste "wichtiger" Lücken und damit faktisch gar keine Priorisierung.
 
@@ -574,7 +562,7 @@ Die SBOM ergänzt das auf Code-Ebene: Sie listet maschinenlesbar, welche Bibliot
 
 Dazu kommen klare Verantwortlichkeiten: Für jedes System muss namentlich jemand zuständig sein, sonst bleibt ein Patch-Hinweis liegen, weil sich niemand angesprochen fühlt. Und schließlich die Quellen, aus denen man überhaupt von einer Lücke erfährt: Herstellerhinweise und Advisories, die Warnmeldungen von CERT-Bund, automatisierte CVE-Feeds und die eigenen Schwachstellenscanner, die den Ist-Zustand der Systeme prüfen.
 
-**Klausurvorbereitung:** CMDB und SBOM unterscheiden und je einen Anwendungsfall nennen, begründen können warum ein unvollständiges Inventar jeden Patch-Prozess aushöhlt, und mindestens drei Informationsquellen für neue Schwachstellen aufzählen können.
+**Klausurvorbereitung:** CMDB und SBOM unterscheiden und je einen Anwendungsfall nennen, begründen können, warum ein unvollständiges Inventar jeden Patch-Prozess aushöhlt, und mindestens drei Informationsquellen für neue Schwachstellen aufzählen können.
 -->
 
 ---
@@ -583,7 +571,7 @@ Dazu kommen klare Verantwortlichkeiten: Für jedes System muss namentlich jemand
 
 ![w:1200 center](img/schwachstellen-patchprozess.svg)
 
-> **Wichtig:** Ohne Verifikation (Scan nach Rollout) ist ein Patch nur „angenommen", nicht „wirksam".
+> **Wichtig:** Ohne Verifikation (Scan nach Rollout) ist ein Patch nur „angenommen“, nicht „wirksam“.
 
 <!-- _notes:
 Die dargestellte Abfolge zeigt den Prozess als geschlossenen Kreislauf mit sechs Schritten – und der Kreislauf ist hier kein Zufall: Patchmanagement ist keine Projektaufgabe mit Ende, sondern ein dauerhaft laufender Betriebsprozess.
@@ -598,7 +586,7 @@ Und der letzte, in der Praxis am häufigsten vergessene Schritt ist Verifizieren
 -->
 
 ---
-
+<!-- _class: biglist -->
 # Priorisierung und SLAs
 
 - Kriterien: CVSS, EPSS/KEV, Kritikalität, Exposition (Internet vs. intern)

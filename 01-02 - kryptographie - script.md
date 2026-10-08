@@ -1,22 +1,7 @@
----
-marp: true
-theme: custom
-paginate: false
-html: true
-footer: ![w:280](img/dhbw-ka.svg)
-title: Kryptographie
----
-
-<!-- _class: title -->
 # Kryptographie
-
-
-<br><br><br><br><br><br>
 
 ## Von Caesar bis Post-Quantum
 
-
-<!-- _notes:
 ### 💡 Das große Ganze (Warum Kryptographie das Fundament ist)
 Ohne Kryptographie gäbe es kein Online-Banking, kein E-Commerce, keine sichere E-Mail und keine Privatsphäre im digitalen Raum. Das Internet wurde ursprünglich für den vertrauensvollen Austausch zwischen Universitäten entwickelt – völlig unverschlüsselt. Kryptographie verwandelt unsichere, öffentliche Datenleitungen in abhör- und manipulationssichere Schutzkanäle.
 *Wichtiges Grundprinzip:* Kryptographie ist die mathematische Basis für fast alle Schutzziele der IT-Sicherheit. Aber: Ein mathematisch perfekter Algorithmus schützt nichts, wenn die Schlüssel falsch verwaltet werden oder der Mensch Fehler macht.
@@ -26,9 +11,9 @@ Diese Vorlesung führt dich chronologisch von den einfachen Anfängen der Antike
 
 ### ❓ Prüfungsfokus
 In der Klausur musst du keine komplexen mathematischen Beweise führen! Entscheidend ist das **Baukasten-Verständnis**: Welches Verfahren (symmetrisch vs. asymmetrisch vs. Hash) wird für welches Schutzziel eingesetzt, wo liegen typische Grenzen und warum kombiniert man sie in der Praxis (hybride Verschlüsselung)?
--->
+
 ---
-<!-- _class: biglist -->
+
 # Agenda
 
 - **Grundlagen & Begriffe** – Was ist Krypto, Kerckhoffs, Sym vs. Asym
@@ -39,7 +24,6 @@ In der Klausur musst du keine komplexen mathematischen Beweise führen! Entschei
 - **Kryptographie in der Praxis** – Hybrid, Hashes, Signaturen, PKI
 - **Ausblick** – Post-Quantum-Kryptographie
 
-<!-- _notes:
 ### 💡 Strukturüberblick (Der Vorlesungsfahrplan)
 Die Vorlesung gliedert sich in drei große Phasen:
 1. **Die Evolution der Chiffren:** Von antiken Textverschiebungen über die Enigma zum heutigen symmetrischen Weltstandard (AES).
@@ -52,16 +36,13 @@ Die Vorlesung gliedert sich in drei große Phasen:
 
 ### ❓ Typische Klausurverknüpfung
 Prüfer verlangen häufig, ein konkretes Praxisszenario (z. B. „Ein Nutzer bestellt verbindlich und vertraulich in einem Webshop“) in kryptographische Bausteine zu zerlegen: Du musst genau benennen können, wo AES, RSA/DH, Hashing, Signaturen und Zertifikate greifen.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Grundlagen & Begriffe
 
 ## Worum geht es eigentlich?
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Die Sprache der Kryptographie)
 Bevor wir konkrete Algorithmen analysieren, müssen wir das Begriffsinventar schärfen. Begriffe wie Chiffre, Schlüssel, Klartext und Geheimtext klingen im Alltag ähnlich, bezeichnen aber völlig unterschiedliche Rollen. Zudem klären wir das oberste Sicherheitsgesetz: Kerckhoffs' Prinzip.
 
@@ -70,8 +51,9 @@ Du kannst die Kernbegriffe präzise definieren, den Unterschied zwischen Entwurf
 
 ### ❓ Typische Schwerpunkte
 Besonders beliebt in Prüfungen: Kerckhoffs' Prinzip im Vergleich zu „Security by Obscurity“ sowie der systematische Vergleich von symmetrischen und asymmetrischen Verfahren (Vor- und Nachteile in einer Tabelle).
--->
+
 ---
+
 # Kryptographie vs. Kryptoanalyse
 
 - **Kryptographie**: Wissenschaft vom *Entwerfen* sicherer Verfahren
@@ -84,7 +66,6 @@ Besonders beliebt in Prüfungen: Kerckhoffs' Prinzip im Vergleich zu „Security
 
 > **Merksatz:** Gute Kryptographie entsteht nur im ständigen Wettstreit mit der Kryptoanalyse.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Kryptographie und Kryptoanalyse sind zwei Seiten derselben Medaille.
 *Alltagsvergleich Tresor:* Die Kryptographen bauen immer dickere Tresore mit komplexeren Schließmechanismen. Die Kryptoanalytiker versuchen mit Stethoskop, Brechstange und Schweißbrenner Schwachstellen zu finden. Erst wenn die weltbesten Einbrecher jahrelang vergeblich versucht haben, den Tresor zu öffnen, gilt er in der Fachwelt als wirklich sicher.
@@ -101,9 +82,9 @@ Kryptographie und Kryptoanalyse sind zwei Seiten derselben Medaille.
 - **Kryptoanalyse:** Wissenschaft von der Untersuchung und dem Brechen kryptographischer Verfahren (Auffinden von Schwachstellen ohne Kenntnis des Schlüssels).
 - **Kryptologie:** Wissenschaftlicher Oberbegriff, der Konstruktion und Analyse vereint.
 - **Begründung:** Ein Verfahren gilt erst dann als praxistauglich und vertrauenswürdig, wenn es intensiver, offener Kryptoanalyse durch unabhängige Experten standgehalten hat (**Wettstreit-Prinzip**).
--->
 
 ---
+
 # Ein paar Grundbegriffe
 
 - **Klartext (plaintext)**: die lesbare Ausgangsnachricht
@@ -114,8 +95,6 @@ Kryptographie und Kryptoanalyse sind zwei Seiten derselben Medaille.
 
 $$\text{Klartext} \xrightarrow[\text{Schl\"ussel}]{\text{Verschl\"usseln}} \text{Geheimtext} \xrightarrow[\text{Schl\"ussel}]{\text{Entschl\"usseln}} \text{Klartext}$$
 
-
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Hier geht es um die Grundformel jeder Verschlüsselung.
 *Alltagsvergleich Zahlenschloss:* 
@@ -134,9 +113,9 @@ Hier geht es um die Grundformel jeder Verschlüsselung.
 - **Chiffre:** Das mathematische Verfahren bzw. der Algorithmus zur Transformation (die Bauart / der Mechanismus).
 - **Schlüssel:** Der geheime Parameter, der die genaue Transformation steuert und zum Ver- bzw. Entschlüsseln zwingend erforderlich ist.
 - **Alltagsbeispiel:** Ein Tresorschloss: Die Mechanik der Bolzen und Zahnräder ist die Chiffre (jedem bekannt); die geheime Zahlenkombination zum Öffnen ist der Schlüssel.
--->
 
 ---
+
 # Was Kryptographie leisten soll
 
 Vier Schutzziele – direkte Verbindung zur CIA-Triade:
@@ -148,7 +127,6 @@ Vier Schutzziele – direkte Verbindung zur CIA-Triade:
 
 > Verschlüsselung schützt Vertraulichkeit – aber Integrität, Authentizität & Zurechenbarkeit brauchen *zusätzliche* Bausteine (Hashes, Signaturen).
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Viele Menschen glauben: „Wenn Daten verschlüsselt sind, ist alles sicher.“ Das ist ein fataler Trugschluss!
 *Alltagsvergleich Brief:* Ein blickdichter Briefumschlag schützt die **Vertraulichkeit** (niemand kann von außen mitlesen). Aber ein böswilliger Postbote könnte den Brief öffnen, den Inhalt austauschen oder manipulieren (**Integritätsverlust**) oder einen gefälschten Absender draufschreiben (**Authentizitätsverlust**).
@@ -164,9 +142,9 @@ Viele Menschen glauben: „Wenn Daten verschlüsselt sind, ist alles sicher.“ 
 - **Nein.** Verschlüsselung schützt primär die **Vertraulichkeit** (Schutz vor unbefugtem Mitlesen).
 - Sie beweist weder die echte Identität des Absenders (**Authentizität**) noch schützt sie per se vor unbemerkter Veränderung (**Integrität**).
 - Um Fälschungen zu verhindern und den Absender nachweisbar zu binden, ist eine **digitale Signatur** erforderlich.
--->
 
 ---
+
 # Kerckhoffs' Prinzip (1883)
 
 - **Kernaussage**: Die Sicherheit eines Verfahrens darf **nur vom Schlüssel** abhängen – nicht von der Geheimhaltung des Algorithmus.
@@ -177,7 +155,6 @@ Viele Menschen glauben: „Wenn Daten verschlüsselt sind, ist alles sicher.“ 
 
 > **Shannon's Maxime:** „Der Feind kennt das System."
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das Prinzip von Auguste Kerckhoffs ist das oberste Gesetz moderner IT-Sicherheit: Ein Haustürschloss ist sicher, weil der Schlüsselbart komplex ist – nicht weil die Einbrecher nicht wissen, wie ein Schloss von innen funktioniert.
 *Warum Geheimhaltung des Algorithmus scheitert:* Geheim gehaltene Algorithmen fliegen früher oder später immer auf (durch Reverse Engineering, Quellcode-Leaks oder Spionage). Wenn die Sicherheit von der Geheimhaltung des Verfahrens abhing, ist das Gesamtsystem sofort tot. Bei Kerckhoffs tauscht man bei einem Vorfall einfach den Schlüssel aus – das System bleibt sicher!
@@ -193,10 +170,9 @@ Das Prinzip von Auguste Kerckhoffs ist das oberste Gesetz moderner IT-Sicherheit
 - Der Vorschlag basiert auf dem fehlerhaften Ansatz **„Security by Obscurity“** und widerspricht direkt **Kerckhoffs' Prinzip**.
 - **Kritik:** Sicherheit darf niemals auf der Geheimhaltung des Algorithmus beruhen, da proprietärer Code dekompiliert, geleakt oder durch Insider verraten werden kann. Wird der Algorithmus bekannt, ist das gesamte System kompromittiert.
 - **Best Practice:** Einsatz offener, weltweit geprüfter Standards (wie AES). Bei einem Sicherheitsvorfall muss lediglich der **Schlüssel gewechselt** werden, nicht das Verfahren.
--->
 
 ---
-<!-- _class: normal -->
+
 # Symmetrisch vs. Asymmetrisch
 
 <div class="columns">
@@ -222,7 +198,6 @@ Das Prinzip von Auguste Kerckhoffs ist das oberste Gesetz moderner IT-Sicherheit
 </div>
 </div>
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die fundamentale Weichenstellung der Kryptographie:
 - **Symmetrisch (Geldkassette):** Es gibt genau einen Schlüssel, der zu- und aufsperrt. Alice sperrt zu, Bob sperrt auf. *Problem:* Wie bekommt Bob den Schlüssel, ohne dass ihn unterwegs jemand abfängt?
@@ -240,14 +215,13 @@ Die fundamentale Weichenstellung der Kryptographie:
 - **Geschwindigkeit:** Symmetrisch: **Sehr schnell** (Hardware-beschleunigt); Asymmetrisch: **Deutlich langsamer** (hohe CPU-Last).
 - **Schlüsselverteilung:** Symmetrisch: **Kritisches Problem** (sicherer Vorabaustausch nötig); Asymmetrisch: **Gelöst** (Public Key darf über unsichere Leitungen verteilt werden).
 - **Beispiele:** Symmetrisch: **AES**; Asymmetrisch: **RSA / ECC**.
--->
 
 ---
+
 # Symmetrisch vs. Asymmetrisch – Bild
 
-![w:960 center](img/sym-vs-asym.svg)
+![Symmetrisch vs. Asymmetrisch](img/sym-vs-asym.svg)
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Dieses Schaubild verdeutlicht den Daten- und Schlüsselfluss:
 - **Links (Symmetrisch):** Beide Seiten nutzen denselben roten Schlüssel. Das Kernproblem ist der unsichere Kanal dazwischen: Wie gelangt der rote Schlüssel überhaupt ungesehen zu Bob?
@@ -263,16 +237,13 @@ Dieses Schaubild verdeutlicht den Daten- und Schlüsselfluss:
 - Alice verschlüsselt die Nachricht mit dem **öffentlichen Schlüssel von Bob (Public Key Empfänger)**.
 - Bob entschlüsselt die Nachricht mit seinem **privaten Schlüssel (Private Key Empfänger)**.
 - *(Alices eigene Schlüssel spielen beim reinen Verschlüsseln keine Rolle!)*
--->
 
 ---
-<!-- _class: chapter -->
+
 # Klassische Verfahren
 
 ## Wie alles begann
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Historische Chiffren)
 Wir reisen zu den Wurzeln der Kryptographie: Caesar, monoalphabetische Ersetzung und Vigenère. Warum behandeln wir das in einer modernen IT-Vorlesung? Weil an diesen historischen Beispielen die fundamentalen Prinzipien der Kryptoanalyse erfunden wurden: vollständiges Durchprobieren (**Brute Force**), **Häufigkeitsanalyse** und **Mustererkennung**.
 
@@ -281,8 +252,9 @@ Du verstehst, warum ein mathematisch gigantischer Schlüsselraum wertlos ist, we
 
 ### ❓ Typische Schwerpunkte
 Größe des Schlüsselraums bei Caesar (25 sinnvolle Schlüssel), Häufigkeitsanalyse bei monoalphabetischer Ersetzung (E-Laut im Deutschen) und Kasiski-Test bei Vigenère.
--->
+
 ---
+
 # Die Caesar-Chiffre
 
 - Jeder Buchstabe wird um eine **feste Zahl** verschoben
@@ -296,7 +268,6 @@ $$\text{A} \rightarrow \text{D}, \quad \text{B} \rightarrow \text{E}, \quad \tex
 
 - **Schlüssel**: die Verschiebung (nur 25 sinnvolle Möglichkeiten!)
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die Caesar-Chiffre ist das einfachste symmetrische Verfahren der Geschichte: Man verschiebt alle Buchstaben des Alphabets um eine feste Schrittzahl im Kreis weiter (z. B. Verschiebung 3: A $\rightarrow$ D, B $\rightarrow$ E).
 *Warum ist das heute völlig wertlos?* Bei 26 Buchstaben des Alphabets gibt es genau 25 sinnvolle Verschiebungen (Schritt 0 oder 26 ändert nichts). Ein Angreifer muss lediglich 25 Zeilen aufschreiben – nach zwei Minuten ist der Klartext gefunden! Das ist die Urform des **Brute-Force-Angriffs**.
@@ -310,9 +281,9 @@ Die Caesar-Chiffre ist das einfachste symmetrische Verfahren der Geschichte: Man
 **Antwort:**
 - **Entschlüsselung:** Jeden Buchstaben um 3 Stellen im Alphabet zurückschieben: K $\rightarrow$ H, D $\rightarrow$ A, O $\rightarrow$ L, O $\rightarrow$ L, R $\rightarrow$ O $\rightarrow$ Klartext: **HALLO**.
 - **Begründung:** Der Schlüsselraum umfasst lediglich **25 sinnvolle Schlüssel**. Ein Angreifer kann alle Möglichkeiten innerhalb von Sekundenbruchteilen durch vollständiges Ausprobieren (**Brute-Force-Angriff**) brechen.
--->
 
 ---
+
 # Monoalphabetische Substitution
 
 - Statt fester Verschiebung: **jeder Buchstabe** wird durch einen beliebigen anderen ersetzt
@@ -322,7 +293,6 @@ Die Caesar-Chiffre ist das einfachste symmetrische Verfahren der Geschichte: Man
   - Die Struktur der Sprache bleibt erhalten
   - Häufige Buchstaben bleiben häufig – nur unter anderem Namen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Um Caesars Brute-Force-Schwäche zu beheben, dachte man sich: Weisen wir doch jedem Buchstaben einen zufälligen Tauschpartner zu (z. B. A $\rightarrow$ Q, B $\rightarrow$ Z)!
 *Das scheinbare Wunder:* Die Anzahl möglicher Tausch-Alphabete beträgt $26! \approx 4 \times 10^{26}$. Das sind mehr Schlüssel als Sekunden seit dem Urknall! Brute Force ist absolut chancenlos.
@@ -338,9 +308,9 @@ Um Caesars Brute-Force-Schwäche zu beheben, dachte man sich: Weisen wir doch je
 - Ein großer Schlüsselraum schützt lediglich vor vollständigem Durchprobieren (**Brute Force**).
 - Bei der monoalphabetischen Substitution bleibt jedoch die **statistische Struktur der natürlichen Sprache** vollständig erhalten.
 - Ein Angreifer muss nicht den Schlüsselraum durchsuchen, sondern nutzt eine **Abkürzung (Häufigkeitsanalyse)**, um die Buchstabenpaarungen schrittweise zu rekonstruieren.
--->
 
 ---
+
 # Kryptoanalyse: Häufigkeitsanalyse
 
 - Jede Sprache hat eine **typische Buchstabenverteilung**
@@ -354,9 +324,6 @@ Um Caesars Brute-Force-Schwäche zu beheben, dachte man sich: Weisen wir doch je
 
 > Erstmals dokumentiert vom Gelehrten **al-Kindī** (9. Jh.) – die Geburt der Kryptoanalyse.
 
-
-
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die Häufigkeitsanalyse nutzt aus, dass menschliche Sprachen feste statistische Fingerabdrücke haben. Im Deutschen ist der Buchstabe **E** mit ca. 17 % der unangefochtene Spitzenreiter – fast jeder sechste Buchstabe ist ein E!
 *Alltagsvergleich:* Stell dir eine Gruppe Verkleideter vor. Selbst wenn alle Masken tragen: Die Person, die 17-mal so oft zu sehen ist wie alle anderen, ist mit Sicherheit das E. Findet man dann noch typische Paare wie „EN“ oder Dreierketten wie „SCH“, zerfällt die Verschlüsselung wie ein Kreuzworträtsel.
@@ -372,9 +339,9 @@ Erfunden wurde diese Methode bereits im 9. Jahrhundert vom arabischen Gelehrten 
 - **Funktionsprinzip:** Man zählt die relative Häufigkeit aller Zeichen im Geheimtext und vergleicht sie mit der bekannten Buchstabenverteilung der Zielsprache (z. B. Deutsch: E $\approx$ 17 %, gefolgt von N, I, S).
 - **Bedingung 1 (Textlänge):** Ein möglichst langer Geheimtext, da sich die relative Häufigkeit erst mit wachsender Textlänge der Normalverteilung angleicht.
 - **Bedingung 2 (Sprachkenntnis):** Kenntnis der verwendeten Klartextsprache und des Fachgebiets (z. B. militärische Abkürzungen).
--->
 
 ---
+
 # Die Vigenère-Chiffre
 
 - **Idee**: Verschiebung wechselt pro Buchstabe – gesteuert durch ein **Schlüsselwort**
@@ -389,7 +356,6 @@ Erfunden wurde diese Methode bereits im 9. Jahrhundert vom arabischen Gelehrten 
 
 - Gleicher Klartextbuchstabe → **unterschiedliche** Geheimtextbuchstaben
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Blaise de Vigenère fand die Antwort auf die Häufigkeitsanalyse: Wenn ein einziges Tausch-Alphabet verräterisch ist, nutzen wir eben mehrere im Wechsel (**polyalphabetische Chiffre**)!
 *Wie funktioniert es?* Man wählt ein Schlüsselwort (z. B. `KEY`) und schreibt es wiederholt über den Klartext. Der 1. Buchstabe wird mit `K` verschoben, der 2. mit `E`, der 3. mit `Y`, der 4. wieder mit `K`...
@@ -405,9 +371,9 @@ Blaise de Vigenère fand die Antwort auf die Häufigkeitsanalyse: Wenn ein einzi
 - Vigenère ist eine **polyalphabetische Chiffre**: Die Verschiebung wechselt zeichenweise anhand eines zyklisch wiederholten Schlüsselworts.
 - Dadurch wird derselbe Klartextbuchstabe an verschiedenen Textstellen auf **unterschiedliche Geheimtextbuchstaben** abgebildet.
 - Die statistischen Spitzen der Buchstabenhäufigkeit werden im Geheimtext **„eingeebnet“ / verschmiert**, sodass ein direkter Abgleich mit der Sprachstatistik scheitert.
--->
 
 ---
+
 # Auch Vigenère fällt
 
 - **Schwäche**: Das Schlüsselwort **wiederholt sich** periodisch
@@ -420,7 +386,6 @@ Blaise de Vigenère fand die Antwort auf die Häufigkeitsanalyse: Wenn ein einzi
 
 > **Mini-Beispiel:** Wiederholen sich auffällige Zeichenfolgen im Abstand von 6 und 12 Zeichen, ist eine Schlüssellänge von 3 oder 6 ein möglicher Kandidat.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Warum fiel auch Vigenère? Wegen der periodischen Wiederholung des Schlüsselworts!
 *Kasiski-Test (1863):* Wenn zufällig dieselbe Buchstabengruppe im Klartext (z. B. „UND“) auf denselben Teil des Schlüsselworts trifft, entsteht im Geheimtext exakt dieselbe Buchstabenkombination. Misst man den Abstand zwischen diesen Wiederholungen (z. B. 12, 18, 24 Zeichen), liefert der gemeinsame Teiler (hier: 6) mit hoher Wahrscheinlichkeit die **Schlüssellänge**!
@@ -436,16 +401,13 @@ Sobald man weiß: „Das Schlüsselwort ist 6 Buchstaben lang“, zerlegt man de
 - 1. **Mustererkennung:** Auffinden identischer Zeichenfolgen, die sich im Geheimtext wiederholen.
 - 2. **Abstandsanalyse:** Ermittlung der Abstände zwischen den Wiederholungen und Bestimmung des größten gemeinsamen Teilers $\rightarrow$ Kandidat für die **Schlüssellänge $n$**.
 - 3. **Zerlegung:** Aufteilung des Texts in $n$ Teiltexte (jeder $n$-te Buchstabe). Jeder Teiltext entspricht einer simplen Caesar-Chiffre und wird per **Häufigkeitsanalyse** gebrochen.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Exkurs: Die Enigma
 
 ## Geniale Maschine, fatale Schwächen
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Der Enigma-Exkurs)
 Die Enigma ist das faszinierendste historische Beispiel für das Scheitern eines scheinbar perfekten Kryptosystems. Sie war eine ingenieurtechnische Meisterleistung mit rund $10^{23}$ Kombinationen. Dennoch wurde sie geknackt – nicht durch rohe Rechengewalt, sondern durch Konstruktionsfehler und menschliche Routine im militärischen Alltag.
 
@@ -454,9 +416,9 @@ Du begreifst Kryptographie als **soziotechnisches Gesamtsystem**: Sicherheit sch
 
 ### ❓ Typische Schwerpunkte
 Der Konstruktionsfehler des Reflektors („Kein Buchstabe wird auf sich selbst abgebildet“), die Bedeutung von Cribs (Known-Plaintext-Angriff) und die Rolle von Bletchley Park / Alan Turing.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Enigma – Kontext & Bedeutung
 
 - Deutsche Rotor-Chiffriermaschine, im **2. Weltkrieg** militärisch eingesetzt
@@ -464,7 +426,6 @@ Der Konstruktionsfehler des Reflektors („Kein Buchstabe wird auf sich selbst a
 - Galt als praktisch unknackbar – Schlüsselraum von rund $10^{23}$
 - Ihr Bruch durch die Alliierten hatte **kriegsentscheidende** Bedeutung
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die Enigma übertrug die Idee der polyalphabetischen Verschlüsselung in ein mechanisches Wunderwerk: Bei jedem Tastendruck drehten sich Zahnräder (Rotoren) weiter. Dadurch änderte sich der interne Stromfluss und somit das Verschlüsselungsalphabet nach jedem einzelnen Buchstaben.
 Mit 3 bis 4 Walzen und einem Steckerbrett besaß sie rund $10^{23}$ mögliche Einstellungen – mehr als Sandkörner auf der Erde! Das deutsche Militär hielt die Maschine für absolut unknackbar. Ihr Bruch durch polnische und britische Codebreaker verkürzte den Zweiten Weltkrieg um schätzungsweise zwei Jahre.
@@ -478,9 +439,9 @@ Mit 3 bis 4 Walzen und einem Steckerbrett besaß sie rund $10^{23}$ mögliche Ei
 **Antwort:**
 - **Prinzip:** Elektromechanische **polyalphabetische Substitution**; rotierende Walzen und ein Steckerbrett veränderten den Stromkreis nach jedem Tastenanschlag.
 - **Warum nicht sicher:** Kryptoanalytiker mussten den Schlüsselraum nicht vollständig durchprobieren (**kein Brute Force nötig**), da Konstruktionsmängel und menschliche Bedienfehler logische Abkürzungen boten.
--->
 
 ---
+
 # Enigma – Tagesschlüssel
 
 - Sicherheit hing an der **Grundeinstellung** (dem „Tagesschlüssel"):
@@ -493,7 +454,6 @@ Mit 3 bis 4 Walzen und einem Steckerbrett besaß sie rund $10^{23}$ mögliche Ei
 
 > Kerckhoffs in Reinform: Die Maschine war den Alliierten bekannt – geheim war nur der Tagesschlüssel.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die Enigma ist gelebtes Kerckhoffs-Prinzip: Die Maschine selbst war den Alliierten bekannt (erbeutete Exemplare). Die Sicherheit ruhte ausschließlich auf dem **Tagesschlüssel**: Welche Walzen kommen in welcher Reihenfolge hinein? Welche Stecker werden gesteckt? Wie stehen die Ringe?
 *Das fatale Verteilungsproblem:* Diese Tagesschlüssel mussten auf Papier in dicken **Codebüchern** monatlich an alle U-Boote und Funkstellen verteilt werden. Wurde ein einziges Codebuch von einem sinkenden U-Boot erbeutet, war der Funkverkehr eines ganzen Monats für die Alliierten im Klartext lesbar!
@@ -507,9 +467,9 @@ Die Enigma ist gelebtes Kerckhoffs-Prinzip: Die Maschine selbst war den Alliiert
 **Antwort:**
 - **Kerckhoffs' Prinzip:** Der Aufbau der Maschine war den Alliierten bekannt; die Geheimhaltung lag ausschließlich in der täglichen Einstellung (**Tagesschlüssel**).
 - **Sicherheitsproblem:** Die Tagesschlüssel mussten physisch über gedruckte **Codebücher** an hunderte Funkstellen verteilt werden. Ein erbeutetes Codebuch kompromittierte das gesamte Kommunikationsnetzwerk für den entsprechenden Zeitraum.
--->
 
 ---
+
 # Enigma – Die Schwächen
 
 - **Konstruktionsfehler Reflektor**: Kein Buchstabe konnte auf **sich selbst** abgebildet werden
@@ -522,7 +482,6 @@ Die Enigma ist gelebtes Kerckhoffs-Prinzip: Die Maschine selbst war den Alliiert
 
 - **Menschliche Routine** unterlief die geniale Technik
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Zwei verhängnisvolle Faktoren brachten die Enigma zu Fall:
 1. **Der Konstruktionsfehler (Reflektor):** Durch die elektrische Rückführung konnte **ein Buchstabe niemals auf sich selbst verschlüsselt werden** (ein A wurde nie zu einem A!).
@@ -538,10 +497,9 @@ Zwei verhängnisvolle Faktoren brachten die Enigma zu Fall:
 **Antwort:**
 - **Ausschlusskriterium:** Wenn kein Buchstabe auf sich selbst abgebildet werden kann, lässt sich jede Ausrichtung eines vermuteten Klartexts (**Crib**, z. B. 'WETTERBERICHT') sofort verwerfen, bei der ein Klartextbuchstabe mit dem Geheimtextbuchstaben übereinstimmt.
 - **Suchraum-Reduktion:** Dadurch konnten Kryptoanalytiker falsche Walzenstellungen massenhaft und automatisiert ausschließen, ohne sie aufwendig durchrechnen zu müssen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Enigma – Bletchley Park & Turing
 
 - Britisches Entschlüsselungszentrum **Bletchley Park**
@@ -551,7 +509,6 @@ Zwei verhängnisvolle Faktoren brachten die Enigma zu Fall:
 - Vorarbeiten polnischer Mathematiker (u. a. **Marian Rejewski**)
 - Ergebnis: **„Ultra"** – ein entscheidender alliierter Nachrichtenvorteil
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 In Bletchley Park bündelten die Briten tausende Denker. Alan Turing entwickelte elektromechanische Großrechner – die berühmten **„Bomben“**.
 *Wichtige Klarstellung:* Turings Bombe war **keine** Brute-Force-Maschine! Alle $10^{23}$ Kombinationen durchzuprobieren hätte Jahrhunderte gedauert. Stattdessen verdrahtete die Bombe die logischen Bedingungen eines Cribs. Trat ein elektrischer Widerspruch auf, schloss sie blitzschnell ganze Walzenkonfigurationen aus, bis nur wenige Kandidaten übrig blieben.
@@ -566,10 +523,9 @@ In Bletchley Park bündelten die Briten tausende Denker. Alan Turing entwickelte
 **Antwort:**
 - **Nein.** Ein vollständiges Durchprobieren von $10^{23}$ Möglichkeiten wäre selbst elektromechanisch viel zu langsam gewesen.
 - Die Bombe nutzte **logische Ausschlussverfahren**: Auf Basis vermuteter Klartexte (Cribs) suchte sie nach elektrischen Widersprüchen und verwarf fehlerhafte Rotorstellungen blockweise in Sekundenbruchteilen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Enigma – Was wir lernen
 
 - **Kerckhoffs bestätigt**: Sicherheit lag im Schlüssel, nicht in der geheimen Maschine
@@ -577,7 +533,6 @@ In Bletchley Park bündelten die Briten tausende Denker. Alan Turing entwickelte
 - **Der Mensch ist das Risiko**: Bedienfehler brachen die Chiffre, nicht die Mathematik
 - **Bekannter Klartext ist gefährlich**: Cribs sind ein realer Angriffsvektor – bis heute
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Vier zeitlose Lehren, die 1:1 für moderne IT-Systeme gelten:
 1. **Kerckhoffs bestätigt:** Sobald der Feind die Maschine kennt, hängt alles am sicheren Schlüssel.
@@ -595,16 +550,13 @@ Vier zeitlose Lehren, die 1:1 für moderne IT-Systeme gelten:
 - **Lehre 1:** **Komplexität garantiert keine Sicherheit** (ein großer Schlüsselraum schützt nicht vor strukturellen Konstruktionsmängeln).
 - **Lehre 2:** **Menschliche Routine untergräbt Sicherheit** (Bedienfehler und vorhersehbare Abläufe brechen starke Chiffren).
 - **Transfer:** In modernen Netzwerken sind Dateiköpfe (z. B. standardisierte HTTP-Header oder Bilddateien) für Angreifer bekannt (**Known Plaintext / moderner Crib**). Verschlüsselungsverfahren müssen daher mathematisch beweisbar resistent gegen Known-Plaintext-Angriffe sein.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Symmetrische Verschlüsselung heute
 
 ## Der Standard: AES
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Moderner Standard AES)
 Wir verlassen die Geschichte und kommen im Hier und Jetzt an. Nach den Lehren der Vergangenheit und der Schwächung des alten DES-Standards suchte die Welt einen unzerstörbaren, offenen Standard für symmetrische Verschlüsselung. Das Ergebnis heißt AES (Advanced Encryption Standard).
 
@@ -613,7 +565,7 @@ Du verstehst AES als weltweiten De-facto-Standard für symmetrische Blockchiffre
 
 ### ❓ Typische Schwerpunkte
 Unterscheidung von Blockgröße (immer 128 Bit) vs. Schlüssellänge (128, 192, 256 Bit), offener Standardisierungsprozess des NIST und die Berechnungsformel des Schlüsselverteilungsproblems ($n(n-1)/2$).
--->
+
 ---
 
 # AES – Advanced Encryption Standard
@@ -626,7 +578,6 @@ Unterscheidung von Blockgröße (immer 128 Bit) vs. Schlüssellänge (128, 192, 
 
 > **Vor dem Modus:** Längere Nachrichten bestehen aus mehreren 128-Bit-Blöcken. Ein Betriebsmodus legt fest, wie diese Blöcke zusammen verarbeitet werden.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 AES ist das unangefochtene Arbeitspferd der weltweiten Datenverschlüsselung: TLS/HTTPS, WLAN (WPA2/3), Festplattenverschlüsselung (BitLocker), WhatsApp – überall rechnet AES.
 *Was bedeutet Blockchiffre?* AES verschlüsselt Daten nicht kontinuierlich Bit für Bit, sondern zerlegt Nachrichten in feste Datenblöcke von genau **128 Bit** (16 Byte). Jeder Block wird in mehreren mathematischen Runden (Substitutions- und Permutationsschritte) gründlich durchgemischt.
@@ -642,10 +593,9 @@ AES ist das unangefochtene Arbeitspferd der weltweiten Datenverschlüsselung: TL
 - **Chiffrentyp:** Symmetrische **Blockchiffre**.
 - **Blockgröße:** Immer **128 Bit** (16 Bytes).
 - **Schlüssellängen:** **128 Bit, 192 Bit oder 256 Bit**.
--->
 
 ---
-<!-- _class: biglist -->
+
 # AES – warum so vertrauenswürdig?
 
 - **Offen & geprüft**: Über 20 Jahre weltweite Kryptoanalyse ohne praktischen Bruch
@@ -653,8 +603,6 @@ AES ist das unangefochtene Arbeitspferd der weltweiten Datenverschlüsselung: TL
 - **Skalierbar**: 128 Bit für fast alles, 256 Bit für höchste Ansprüche
 - **Brute Force chancenlos**: $2^{128}$ Schlüssel – astronomisch groß
 
-
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Warum vertraut die ganze Welt ihre intimsten Daten AES an?
 1. **Offenheit (Kerckhoffs):** Der Algorithmus (Rijndael) gewann einen weltweiten, offenen Wettbewerb des US-NIST. Seit über 20 Jahren attackieren die besten Kryptoanalytiker weltweit AES – ohne praktischen Erfolg!
@@ -670,9 +618,9 @@ Warum vertraut die ganze Welt ihre intimsten Daten AES an?
 **Antwort:**
 - Ein 128-Bit-Schlüsselraum umfasst $2^{128} \approx 3{,}4 \cdot 10^{38}$ mögliche Schlüssel.
 - Selbst wenn Milliarden Hochleistungsrechner parallel Milliarden Schlüssel pro Sekunde prüfen würden, würde das vollständige Durchprobieren **Milliarden von Jahren** (länger als das Alter des Universums) dauern.
--->
 
 ---
+
 # Das Schlüsselverteilungsproblem
 
 - AES ist schnell und sicher – aber **beide Seiten brauchen denselben Schlüssel**
@@ -685,7 +633,6 @@ Warum vertraut die ganze Welt ihre intimsten Daten AES an?
 
 > **Das zentrale Dilemma der symmetrischen Kryptographie.**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Hier ist das zentrale Dilemma der symmetrischen Kryptographie:
 AES ist unknackbar und rasend schnell – aber wie bekommen zwei Personen überhaupt denselben geheimen Schlüssel?
@@ -705,16 +652,13 @@ Bei nur 1.000 Nutzern sind das bereits knapp **500.000 Schlüssel**! Wer soll di
 - **Fundamentales Problem (Schlüsselverteilungsproblem):**
   1. **Skalierungsproblem:** Die Anzahl der Schlüssel wächst quadratisch mit der Teilnehmerzahl ($O(n^2)$).
   2. **Austauschproblem:** Wie werden diese 19.900 geheimen Schlüssel sicher an die Teilnehmer verteilt, ohne dass sie auf dem Übertragungsweg abgefangen werden?
--->
 
 ---
-<!-- _class: chapter -->
+
 # Schlüsselaustausch & Asymmetrie
 
 ## Der Durchbruch der 1970er
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Die Krypto-Revolution)
 Bis Mitte der 1970er Jahre galt es als physikalisches Gesetz: Wer sicher kommunizieren will, muss sich vorher heimlich getroffen haben, um einen Schlüssel auszutauschen. Dann kamen Whitfield Diffie, Martin Hellman, Ralph Merkle sowie Rivest, Shamir und Adleman (RSA). Sie stellten die Krypto-Welt auf den Kopf!
 
@@ -723,9 +667,9 @@ Du verstehst, wie man über einen völlig unsicheren, abgehörten Kanal ein geme
 
 ### ❓ Typische Schwerpunkte
 Ablauf von Diffie-Hellman (Farbanalogie), Funktionsweise von Public & Private Key, mathematische Grundlage von RSA und die Verwundbarkeit von reinem DH gegen Man-in-the-Middle-Angriffe.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Diffie-Hellman – die Idee
 
 - **Problem gelöst 1976**: Zwei Parteien vereinbaren über einen **öffentlichen** Kanal einen **gemeinsamen geheimen** Schlüssel
@@ -734,7 +678,6 @@ Ablauf von Diffie-Hellman (Farbanalogie), Funktionsweise von Public & Private Ke
 
 > Kein Schlüssel wird je übertragen – er wird auf beiden Seiten **berechnet**.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Stell dir vor: Alice und Bob stehen auf einem belebten Marktplatz und rufen sich laut Zahlen zu. Tausende Menschen hören jedes Wort mit. Am Ende teilen Alice und Bob ein gemeinsames Geheimnis, das niemand auf dem Marktplatz kennt!
 *Wie ist das möglich?* Diffie-Hellman überträgt **niemals den fertigen Schlüssel** über die Leitung! Stattdessen tauschen beide Seiten Zwischenergebnisse einer mathematischen **Einwegfunktion** aus (leicht vorwärts zu berechnen, praktisch unmöglich rückwärts). Beide kombinieren das fremde Zwischenergebnis mit ihrem eigenen privaten Geheimnis – und kommen auf dieselbe Endzahl!
@@ -748,18 +691,17 @@ Stell dir vor: Alice und Bob stehen auf einem belebten Marktplatz und rufen sich
 **Antwort:**
 - **Nein.** Es wird zu keinem Zeitpunkt ein geheimer Schlüssel übertragen.
 - **Kernprinzip:** Beide Parteien tauschen lediglich öffentlich berechnete Zwischenwerte aus und berechnen daraus auf Basis ihrer jeweiligen privaten Geheimnisse unabhängig voneinander dasselbe gemeinsame Geheimnis (**Schlüsselvereinbarung**).
--->
 
 ---
+
 # Diffie-Hellman – die Farb-Analogie
 
-![w:720 center](img/diffie-hellman.svg)
+![Diffie-Hellman – die Farb-Analogie](img/diffie-hellman.svg)
 
 - Öffentliche Farbe + je eine **geheime** Farbe → gemischt ausgetauscht
 - Beide mischen ihre geheime Farbe dazu → **identische** Endmischung
 - Lauscher sieht nur die Mischungen – **Farben trennen ist unmöglich**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die Farbanalogie macht die mathematische Einwegfunktion (diskreter Logarithmus) sofort begreifbar:
 1. **Öffentliche Ausgangsfarbe:** Alice und Bob einigen sich laut auf Gelb. Jeder Lauscher sieht Gelb.
@@ -779,9 +721,9 @@ Die Farbanalogie macht die mathematische Einwegfunktion (diskreter Logarithmus) 
 - **Geheime Einzelfarbe:** Privater geheimer Zufallswert der jeweiligen Partei ($a$ bzw. $b$).
 - **Übertragene Farbmischung:** Öffentlicher Zwischenwert ($A = g^a \bmod p$ bzw. $B = g^b \bmod p$).
 - **Identische Endfarbe:** Das gemeinsam berechnete symmetrische Sitzungsgeheimnis ($K = g^{ab} \bmod p$).
--->
 
 ---
+
 # Asymmetrische Kryptographie – das Prinzip
 
 - **Schlüsselpaar** pro Person: öffentlicher + privater Schlüssel
@@ -792,7 +734,6 @@ Die Farbanalogie macht die mathematische Einwegfunktion (diskreter Logarithmus) 
 
 > **Briefkasten-Analogie**: Einwurf kann jeder (öffentlich), leeren nur der Besitzer (privat).
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das asymmetrische Prinzip entkoppelt das Verschlüsseln vom Entschlüsseln.
 *Die Briefkasten-Analogie:* Der Einwurfschlitz deines Hausbriefkastens ist der **Public Key**. Jeder Nachbar, Postbote oder Fremde darf Briefe einwerfen (verschlüsseln). Sobald der Brief im Kasten liegt, kommt niemand mehr heran. Nur du besitzt den Schlüssel zum Kasten (**Private Key**) und kannst ihn leeren (entschlüsseln).
@@ -808,9 +749,9 @@ Das asymmetrische Prinzip entkoppelt das Verschlüsseln vom Entschlüsseln.
 - Der öffentliche Schlüssel dient ausschließlich zum **Verschlüsseln** von Nachrichten.
 - Die mathematische Einwegfunktion stellt sicher, dass aus dem öffentlichen Schlüssel **kein Rückschluss auf den privaten Schlüssel** gezogen werden kann.
 - Das Schutzziel **Vertraulichkeit** bleibt gewahrt, da ausschließlich der Inhaber des zugehörigen geheimen privaten Schlüssels die Nachricht entschlüsseln kann.
--->
 
 ---
+
 # RSA – die Grundidee
 
 - Benannt nach **Rivest, Shamir, Adleman** (1977)
@@ -822,7 +763,6 @@ Das asymmetrische Prinzip entkoppelt das Verschlüsseln vom Entschlüsseln.
 
 - Das große $n$ (Produkt zweier Primzahlen) ist öffentlich – seine **Faktoren** sind das Geheimnis
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 RSA (benannt nach Rivest, Shamir und Adleman, 1977) war das erste vollwertige asymmetrische Verfahren. Seine Sicherheit beruht auf einem einfachen mathematischen Ungleichgewicht:
 - **Multiplizieren ist kinderleicht:** Nimm zwei Primzahlen wie 17 und 23 $\rightarrow$ $17 \times 23 = 391$. Das rechnet jeder Taschenrechner in Mikrosekunden.
@@ -838,10 +778,9 @@ Nimmt man zwei Primzahlen mit jeweils hunderten von Dezimalstellen, dauert das Z
 **Antwort:**
 - Die Sicherheit von RSA beruht auf der **Schwierigkeit der Faktorisierung (Primfaktorzerlegung)** sehr großer Zahlen.
 - Während die Multiplikation zweier großer Primzahlen $p$ und $q$ zum Modul $n$ rechnerisch trivial ist, ist die Rekonstruktion von $p$ und $q$ aus $n$ ohne Zusatzwissen mit klassischen Rechnern in praktischer Zeit unlösbar.
--->
 
 ---
-<!-- _class: biglist -->
+
 # RSA – wofür man es nutzt
 
 - **Verschlüsselung** kleiner Datenmengen (z. B. eines AES-Schlüssels)
@@ -850,7 +789,6 @@ Nimmt man zwei Primzahlen mit jeweils hunderten von Dezimalstellen, dauert das Z
 
 > **Konsequenz**: In der Praxis kombiniert man beide Welten → **hybride Verschlüsselung**.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Warum verschlüsseln wir nicht einfach das gesamte Internet mit RSA und vergessen AES?
 Weil RSA eine Rechen-Schnecke ist! Das Rechnen mit riesigen 2048- oder 4096-Bit-Zahlen verbraucht enorm viel Prozessorleistung. Ein 100-MB-Video mit RSA zu verschlüsseln würde Server überlasten und Akkus leersaugen.
@@ -867,16 +805,13 @@ Deshalb nutzt man RSA in der Praxis nur für zwei gezielte Aufgaben:
 **Antwort:**
 - **Problem:** RSA erfordert extrem rechenaufwändige modulare Arithmetik mit riesigen Zahlen und ist um ein Vielfaches **langsamer als symmetrische Chiffren** (hohe Latenz, hohe CPU-Last).
 - **Lösung:** Einsatz von **hybrider Verschlüsselung**: Die großen Nutzdaten werden schnell und effizient symmetrisch (z. B. AES) verschlüsselt; RSA verschlüsselt lediglich diesen kleinen symmetrischen Sitzungsschlüssel.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Kryptographie in der Praxis
 
 ## So funktioniert es wirklich
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Das Zusammenspiel in der Praxis)
 Jetzt fügen sich alle Puzzleteile zusammen! In der realen Welt existiert kein isolierter Algorithmus. Sichere Protokolle wie HTTPS (TLS), Signal oder Online-Banking kombinieren symmetrische Verschlüsselung, asymmetrischen Schlüsselaustausch, Hashes, digitale Signaturen und PKI-Zertifikate zu einem lückenlosen Schutzschild.
 
@@ -885,18 +820,18 @@ Du beherrschst das Zusammenspiel der Bausteine: Wie hybride Verschlüsselung Eff
 
 ### ❓ Typische Schwerpunkte
 Ablauf hybrider Verschlüsselung (Schritt 1 bis 4), Eigenschaften von Hashfunktionen (Einweg, Lawineneffekt, Kollision), Signatur-Prüfkette und Funktion von Zertifizierungsstellen (CAs).
--->
+
 ---
+
 # Hybride Verschlüsselung
 
-![w:620 center](img/hybrid.svg)
+![Hybride Verschlüsselung](img/hybrid.svg)
 
 - **Asymmetrisch** (RSA/DH) transportiert sicher einen zufälligen **AES-Schlüssel**
 - **Symmetrisch** (AES) verschlüsselt dann die eigentlichen Daten – schnell
 
 > Das Beste aus beiden Welten: Sicherheit des Austauschs **+** Geschwindigkeit von AES.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Hybride Verschlüsselung ist der absolute Königsweg moderner IT-Sicherheit: Sie kombiniert die Geschwindigkeit von AES mit der Eleganz von asymmetrischer Krypto.
 *Der 4-Schritte-Ablauf:*
@@ -917,9 +852,9 @@ Hybride Verschlüsselung ist der absolute Königsweg moderner IT-Sicherheit: Sie
 - 3. Der Session Key wird mit Bobs **öffentlichem Schlüssel asymmetrisch verschlüsselt**.
 - 4. Alice sendet verschlüsselte Nutzdaten und verschlüsselten Session Key an Bob. Bob entschlüsselt mit seinem **privaten Schlüssel** den Session Key und damit die Nutzdaten.
 - **Vorteil:** Löst das Schlüsselverteilungsproblem (dank Asymmetrie) und bewahrt maximale Verarbeitungsgeschwindigkeit bei Massendaten (dank Symmetrie).
--->
 
 ---
+
 # Kryptographische Hashfunktionen
 
 - Bilden beliebig lange Daten auf einen **festen, kurzen** Wert ab (den „Fingerabdruck")
@@ -931,7 +866,6 @@ Hybride Verschlüsselung ist der absolute Königsweg moderner IT-Sicherheit: Sie
 
 > Anwendung: Integritätsprüfung, Passwortspeicherung, Signaturen, Blockchain.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Eine Hashfunktion ist wie ein digitaler Fleischwolf oder ein unnachahmlicher Fingerabdruck.
 *Alltagsvergleich Fleischwolf:* Man kann aus einem Steak mühelos Hackfleisch machen (Einwegfunktion: vorwärts leicht). Aber man kann aus Hackfleisch unmöglich wieder das ursprüngliche Steak rekonstruieren (rückwärts unmöglich!).
@@ -949,18 +883,17 @@ Eine Hashfunktion ist wie ein digitaler Fleischwolf oder ein unnachahmlicher Fin
 - 2. **Feste Ausgabelänge:** Liefert unabhängig von der Eingabegröße stets einen Ausgabewert fester Bitlänge (z. B. 256 Bit bei SHA-256).
 - 3. **Lawineneffekt & Kollisionsresistenz:** Minimale Eingabeänderungen erzeugen völlig andere Hashes; es ist praktisch unmöglich, zwei verschiedene Eingaben mit gleichem Hash zu finden.
 - **Abgrenzung:** Verschlüsselung ist ein **umkehrbarer Vorgang mit Schlüssel** (Schutzziel Vertraulichkeit); Hashing ist eine **schlüssellose, irreversible Einwegfunktion** (Schutzziel Integrität).
--->
 
 ---
+
 # Digitale Signaturen
 
-![w:720 center](img/signatur.svg)
+![Digitale Signaturen](img/signatur.svg)
 
 - **Signieren**: Hash der Nachricht mit dem **privaten** Schlüssel verschlüsseln
 - **Prüfen**: Empfänger vergleicht mit dem **öffentlichen** Schlüssel
 - Umgekehrte Nutzung der Asymmetrie: privat signiert, öffentlich prüft
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Eine digitale Signatur ist die fälschungssichere Unterschrift unter ein Dokument.
 *Die geniale Umkehrung der Asymmetrie:*
@@ -978,10 +911,9 @@ Eine digitale Signatur ist die fälschungssichere Unterschrift unter ein Dokumen
 - **Erzeugen der Signatur (Alice):** Alice verwendet ihren **eigenen privaten Schlüssel (Private Key Absender)**, um den Hashwert des Dokuments zu signieren.
 - **Prüfen der Signatur (Bob):** Bob verwendet den **öffentlichen Schlüssel von Alice (Public Key Absender)**, um die Signatur zu verifizieren und mit dem neu berechneten Hashwert des Dokuments abzugleichen.
 - *(Bobs Schlüssel kommen beim reinen Signieren überhaupt nicht zum Einsatz!)*
--->
 
 ---
-<!-- _class: biglist -->
+
 # Signaturen – welche Ziele werden erfüllt?
 
 - **Integrität**: jede Änderung ändert den Hash → Signatur passt nicht mehr
@@ -990,7 +922,6 @@ Eine digitale Signatur ist die fälschungssichere Unterschrift unter ein Dokumen
 
 > Verschlüsselung schützt Vertraulichkeit – **Signaturen** schützen Integrität, Authentizität & Zurechenbarkeit.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Digitale Signaturen erfüllen drei fundamentale Schutzziele auf einen Schlag:
 1. **Integrität (Unverändert):** Ändert jemand auch nur einen Cent-Betrag in einem Vertrag, passt der Hashwert nicht mehr zur Signatur $\rightarrow$ Manipulation fliegt sofort auf!
@@ -1010,9 +941,9 @@ Digitale Signaturen erfüllen drei fundamentale Schutzziele auf einen Schlag:
   2. **Authentizität:** Nachweis der echten Identität des Absenders/Unterzeichners.
   3. **Nicht-Abstreitbarkeit (Verbindlichkeit):** Der Absender kann die Urheberschaft rechtlich nicht leugnen.
 - **Nicht erfüllt:** **Vertraulichkeit** (der Inhalt bleibt für jeden lesbar, sofern er nicht separat verschlüsselt wird).
--->
 
 ---
+
 # Das Vertrauensproblem: PKI
 
 - Woher weiß ich, dass ein **öffentlicher Schlüssel** wirklich der richtigen Person gehört?
@@ -1025,7 +956,6 @@ Digitale Signaturen erfüllen drei fundamentale Schutzziele auf einen Schlag:
 
 > Das **Schloss-Symbol** im Browser = ein gültiges, von einer CA signiertes Zertifikat.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Hier schließt sich die letzte Sicherheitslücke der Asymmetrie:
 Woher weiß Alice, dass ein Public Key wirklich zu ihrer Bank gehört?
@@ -1042,16 +972,13 @@ Woher weiß Alice, dass ein Public Key wirklich zu ihrer Bank gehört?
 - **Problem:** Das Authentizitätsproblem öffentlicher Schlüssel: Man kann ohne Überprüfung nicht wissen, ob ein Public Key tatsächlich der angegebenen Person/Domain gehört.
 - **Schutzwirkung:** Ein digitales Zertifikat bindet einen Public Key durch die digitale Signatur einer vertrauenswürdigen Zertifizierungsstelle (**CA**) verbindlich an eine Identität/Domain.
 - Dies schützt vor **Man-in-the-Middle-Angriffen**, bei denen ein Angreifer einen gefälschten öffentlichen Schlüssel unterschiebt.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Ausblick
 
 ## Post-Quantum-Kryptographie
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Das Quantenzeitalter)
 Kryptographie ist niemals abgeschlossen. Die nächste technologische Zäsur – funktionierende Quantencomputer – bedroht die mathematischen Grundfesten, auf denen das heutige Internet ruht. Wir beleuchten, warum RSA und ECC wackeln, warum AES standhält und welche neuen mathematischen Verfahren uns künftig schützen werden.
 
@@ -1060,8 +987,9 @@ Du verstehst die unterschiedlichen Auswirkungen von Quantencomputern auf asymmet
 
 ### ❓ Typische Schwerpunkte
 Unterschied zwischen den Auswirkungen auf asymmetrische vs. symmetrische Krypto, Definition des Angriffsmodells „Harvest now, decrypt later“ und Einordnung von PQC (Algorithmen laufen auf normalen PCs!).
--->
+
 ---
+
 # Die Quanten-Bedrohung
 
 - **Quantencomputer** nutzen andere Rechenprinzipien als klassische Rechner
@@ -1071,7 +999,6 @@ Unterschied zwischen den Auswirkungen auf asymmetrische vs. symmetrische Krypto,
 
 > **„Harvest now, decrypt later"**: Verschlüsselte Daten werden heute schon gesammelt, um sie später zu entschlüsseln.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Warum versetzen Quantencomputer Kryptographen in Alarmbereitschaft?
 Ein Quantencomputer rechnet mit Qubits und kann bestimmte Rechenprobleme lösen, an denen klassische Supercomputer scheitern:
@@ -1089,9 +1016,9 @@ Ein Quantencomputer rechnet mit Qubits und kann bestimmte Rechenprobleme lösen,
 - Grund ist das Angriffsmodell **„Harvest now, decrypt later“**: Angreifer fangen heute verschlüsselten Datenverkehr ab und speichern ihn auf Vorrat.
 - Sobald ein krypto-relevanter Quantencomputer existiert, können diese gespeicherten Daten nachträglich mit dem **Shor-Algorithmus** gebrochen werden.
 - Bei Daten mit langer Vertraulichkeitsdauer (z. B. 10–30 Jahre für Patientendaten, Patente) muss die Verschlüsselung **bereits heute präventiv geschützt** werden.
--->
 
 ---
+
 # Post-Quantum-Kryptographie (PQC)
 
 - Neue Verfahren, die auch **Quantencomputern** standhalten
@@ -1104,7 +1031,6 @@ Ein Quantencomputer rechnet mit Qubits und kann bestimmte Rechenprobleme lösen,
 
 > **Einordnung:** ML-KEM ist ein standardisiertes Verfahren zum Vereinbaren eines gemeinsamen Geheimnisses; „Kyber“ bezeichnet die zugrunde liegende Verfahrensfamilie.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Was genau ist Post-Quantum-Kryptographie (PQC)?
 *Häufigster Denkfehler aufgeklärt:* PQC bedeutet **nicht**, dass man einen Quantencomputer braucht, um damit zu arbeiten! PQC sind mathematische Algorithmen, die auf ganz normalen Laptops, Smartphones und Servern laufen.
@@ -1121,10 +1047,9 @@ Das US-NIST hat 2024 die ersten weltweiten Standards festgelegt (u. a. **ML-KEM 
 - **Definition:** Kryptographische Algorithmen (z. B. gitterbasierte Verfahren wie ML-KEM), die gegen Angriffe durch Quantencomputer (insb. Shor-Algorithmus) mathematisch resistent sind.
 - **Hardware:** PQC läuft auf **ganz herkömmlichen, klassischen Rechnern** (PCs, Servern, Smartphones).
 - **Abgrenzung:** Nicht zu verwechseln mit *Quantenkryptographie (wie QKD)*, die spezielle physikalische Quantengeräte und Glasfaser-Hardware erfordert.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Zusammenfassung 
 | Baustein | Typ | Schützt vor allem |
 |---|---|---|
@@ -1135,7 +1060,6 @@ Das US-NIST hat 2024 die ersten weltweiten Standards festgelegt (u. a. **ML-KEM 
 | **Digitale Signatur** | Asymmetrisch | Authentizität, Integrität, Zurechenbarkeit |
 | **PKI / Zertifikate** | Infrastruktur | Vertrauen in öffentliche Schlüssel |
 
-<!-- _notes:
 ### 💡 Schnell-Check (Die 6 Krypto-Werkzeuge im Werkzeugkasten)
 Jeder kryptographische Baustein hat genau eine Kernaufgabe – kein Baustein kann alles allein:
 1. **AES:** Der Hochgeschwindigkeitszug für große Datenmengen (schützt *Vertraulichkeit*).
@@ -1152,10 +1076,9 @@ Jeder kryptographische Baustein hat genau eine Kernaufgabe – kein Baustein kan
 ### ❓ Blitzfragen zur Selbstkontrolle
 1. *Frage:* Schützt eine Hashfunktion vor unbefugtem Mitlesen? $\rightarrow$ *Antwort:* Nein! Hashes schützen ausschließlich Integrität, niemals Vertraulichkeit.
 2. *Frage:* Warum reicht Diffie-Hellman allein nicht gegen Man-in-the-Middle? $\rightarrow$ *Antwort:* Weil DH keine Authentifizierung liefert – dazu braucht man Signaturen und Zertifikate (PKI)!
--->
 
 ---
-<!-- _class: biglist -->
+
 # Die zeitlosen Lehren
 
 - **Kerckhoffs' Prinzip**: Sicherheit steckt im Schlüssel, nicht im Geheimnis des Verfahrens
@@ -1164,7 +1087,6 @@ Jeder kryptographische Baustein hat genau eine Kernaufgabe – kein Baustein kan
 - **Richtige Anwendung zählt**: Der beste Algorithmus versagt im falschen Modus
 - **Kryptographie ist ein Wettlauf** – sie entwickelt sich immer weiter
 
-<!-- _notes:
 ### 💡 Didaktischer Kern (Die 5 goldenen Regeln)
 Diese Folie fasst die Kernbotschaften der gesamten Vorlesung zusammen. Algorithmen ändern sich im Laufe der Jahrzehnte – von Caesar über Enigma zu PQC –, aber diese fünf Prinzipien bleiben unveränderlich wahr:
 - Vertraue niemals geheimen Firmen-Algorithmen (Kerckhoffs).
@@ -1182,17 +1104,15 @@ Diese Folie fasst die Kernbotschaften der gesamten Vorlesung zusammen. Algorithm
 **Antwort:**
 - **Beispiel AES im ECB-Modus:** AES selbst ist mathematisch unknackbar. Wird jedoch der unsichere ECB-Modus verwendet, wird jeder identische 128-Bit-Klartextblock zum exakt selben Geheimtextblock verschlüsselt. Bei Grafiken (z. B. dem Tux-Pinguin) bleiben Konturen im Chiffretext vollständig sichtbar.
 - **Erkenntnis:** Ein mathematisch perfekter Algorithmus bietet bei fehlerhaftem Betriebsmodus keinen Schutz der Vertraulichkeit.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Diskussion
 
 - Sollten Behörden **Hintertüren** in Verschlüsselung fordern dürfen?
 - Wie geht ihr im Alltag mit **Ende-zu-Ende-Verschlüsselung** um?
 - Wo begegnet euch Kryptographie in eurem **Unternehmen**?
 
-<!-- _notes:
 ### 💡 Didaktischer Kern & Diskussionsimpulse
 Hier schlagen wir die Brücke zur gesellschaftlichen, unternehmerischen und ethischen Realität:
 - **Staatliche Hintertüren (Crypto Wars):** Politiker fordern oft „Generalschlüssel für die Polizei“. Mathematisch gilt: Es gibt keine Hintertür, die nur von den „Guten“ genutzt werden kann. Jede Schwachstelle wird unweigerlich auch von Kriminellen und feindlichen Staaten entdeckt und missbraucht.
@@ -1211,4 +1131,3 @@ Hier schlagen wir die Brücke zur gesellschaftlichen, unternehmerischen und ethi
   1. Eine Hintertür schwächt die mathematische Architektur grundsätzlich; es gibt **keine selektive Hintertür nur für Befugte**.
   2. Der Generalschlüssel / die Hintertür wird zum lukrativsten Ziel für Cyberkriminelle und Spionage (**Single Point of Complete Failure**).
   3. Kriminelle weichen sofort auf eigene, unregulierte Open-Source-Krypto-Tools aus, während die breite Wirtschaft und Bürger schutzlos gegenüber Abhören werden.
--->

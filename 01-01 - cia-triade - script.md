@@ -1,14 +1,5 @@
----
-marp: true
-theme: custom
-footer: ![w:280](img/dhbw-ka.svg)
-
----
-
-<!-- _class: title -->
 # IT-Security
 
-<!-- _notes:
 ### 💡 Das große Ganze (Warum IT-Sicherheit jeden betrifft)
 IT-Sicherheit ist längst kein reines Technik-Thema mehr für Spezialisten im Serverraum, sondern das Fundament jeder modernen Organisation. Wenn IT-Systeme ausfallen oder Daten manipuliert werden, stehen Produktionsbänder still, Krankenhäuser können keine Notfallpatienten versorgen und Unternehmen droht der Ruin.
 *Wichtiges Grundprinzip:* IT-Sicherheit ist kein fertiges Produkt, das man kauft („wir stellen jetzt eine Firewall hin und sind sicher“), sondern ein permanenter Prozess aus Technik, Organisation und dem Faktor Mensch.
@@ -18,10 +9,9 @@ Diese Einführungsvorlesung spannt den Bogen von einem realen historischen Weckr
 
 ### ❓ Prüfungsfokus
 Die drei Schutzziele der CIA-Triade bilden die absolute Basiskompetenz der Klausur. Du musst sie auf Deutsch und Englisch benennen, voneinander abgrenzen und in vorgegebenen Praxisszenarien (z. B. Webshop, Online-Banking) sofort bestimmen können, welches Schutzziel bedroht oder verletzt wurde.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Inhalte
 
 - CIA-Triade und Grundbegriffe
@@ -33,7 +23,6 @@ Die drei Schutzziele der CIA-Triade bilden die absolute Basiskompetenz der Klaus
 - Schwachstellen- und Patchmanagement
 - KI-Sicherheit
 
-<!-- _notes:
 ### 💡 Strukturüberblick (Der Vorlesungsfahrplan)
 Die Vorlesung betrachtet IT-Sicherheit schichtweise von den Grundlagen bis zum Gesamtunternehmen:
 - **Kryptographie & IAM:** Die handwerklichen Werkzeuge (Verschlüsselung, Signaturen, Identitätsprüfung).
@@ -47,18 +36,15 @@ Die Vorlesung betrachtet IT-Sicherheit schichtweise von den Grundlagen bis zum G
 
 ### ❓ Typische Klausurverknüpfung
 Prüfer verknüpfen Vorlesungsthemen gerne mit den Schutzzielen: Du musst erklären können, welches CIA-Ziel durch welche Maßnahme geschützt wird (z. B. TLS/Verschlüsselung $\rightarrow$ Vertraulichkeit; Code Signing/Prüfsumme $\rightarrow$ Integrität; Server-Redundanz/Cluster $\rightarrow$ Verfügbarkeit).
--->
 
 ---
-<!-- _class: huge -->
+
 # Sicherheitsmaßnahmen im Unternehmen
 
 Welche Maßnahmen (Prozesse, Regeln, Tools, Schulungen,... ) werden in Ihrem Unternehmen ergriffen, um sich vor IT-Sicherheitsvorfällen zu schützen?
 
-
 > **Denkanstoß:** Welche Maßnahme verhindert einen Angriff, welche erkennt ihn und welche begrenzt den Schaden?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Sicherheit stützt sich nie auf eine einzelne Mauer, sondern auf gestaffelte Verteidigungslinien (**Defense in Depth**).
 *Alltagsvergleich:* Eine mittelalterliche Burg verlässt sich nicht nur auf das Burgtor. Es gibt einen Wassergraben, eine Zugbrücke, Außenmauern, Fallgitter und den Burgfried. Versagt eine Schicht, hält die nächste den Angreifer auf.
@@ -77,16 +63,12 @@ Dazu unterscheiden wir Maßnahmen nach ihrem Wirkungszeitpunkt:
 - **Technisch präventiv:** **Firewall / Multifaktor-Authentifizierung (MFA)** – blockiert unberechtigte Verbindungen bzw. verhindert unbefugten Zugriff im Vorfeld.
 - **Technisch detektiv:** **SIEM / IDS (Intrusion Detection System)** – überwacht Protokolldaten in Echtzeit und schlägt bei verdächtigen Anomalien Alarm.
 - **Organisatorisch reaktiv:** **Incident-Response-Plan (Notfallhandbuch)** – definiert feste Zuständigkeiten und Prozessschritte für das Krisenteam zur schnellen Schadensbegrenzung nach einem Vorfall.
--->
 
 ---
 
-<!-- _class: chapter -->
 # ILOVEYOU
 ## Der Urknall der IT-Sicherheit
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Der Urknall)
 Der Fall ILOVEYOU aus dem Jahr 2000 ist der Prototyp eines verheerenden Sicherheitsvorfalls. Er zeigt eindrucksvoll: Ein Angriff braucht oft gar keine genialen Hackerfähigkeiten, wenn menschliche Neugier, fatale Systemeinstellungen und unbeschränkte Schnittstellen perfekt ineinandergreifen.
 *Die Kernaussage:* Ein einzelner Faktor hätte die Welt nicht lahmgelegt – erst die unglückliche Kette aus Mensch, Betriebssystem und Mailprogramm führte zur Katastrophe.
@@ -96,9 +78,9 @@ Du verstehst anhand dieses Falls, wie Angreifer Schwachstellenketten (*Kill Chai
 
 ### ❓ Typische Schwerpunkte
 In Prüfungen werden Fallstudien als Szenarioaufgaben genutzt: Du musst die einzelnen Stationen der Angriffskette skizzieren und für jede Station begründen können, mit welcher modernen Kontrollmaßnahme man die Kette heute unterbrechen würde.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Steckbrief: VBS.LoveLetter.A
 
 - **Datum:** 4. Mai 2000 (Ausgangspunkt: Philippinen)
@@ -107,7 +89,6 @@ In Prüfungen werden Fallstudien als Szenarioaufgaben genutzt: Du musst die einz
   (Endung `.vbs` standardmäßig ausgeblendet $\rightarrow$ wirkte wie `.TXT`)
 - **System:** Windows Script Host (WSH) führte VBScript direkt ohne Sandbox aus
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Zwei fatale Fehlkonstruktionen machten diesen Wurm weltweit so zerstörerisch:
 1. **Die optische Täuschung:** Windows blendete Dateiendungen standardmäßig aus. Aus der gefährlichen Datei `LOVE-LETTER-FOR-YOU.TXT.vbs` wurde im Dateimanager optisch ein harmloser `LOVE-LETTER-FOR-YOU.TXT`. Die Nutzer dachten, sie öffnen ein einfaches Textdokument!
@@ -123,18 +104,13 @@ Zwei fatale Fehlkonstruktionen machten diesen Wurm weltweit so zerstörerisch:
 **Antwort:**
 - **Virus vs. Wurm:** Ein Virus heftet sich an eine bestehende Wirtsdatei an und wird nur aktiv, wenn der Wirt gestartet wird. Ein Wurm ist ein eigenständiges Programm, das sich aktiv über Netzwerke und Kommunikationsdienste weiterverbreitet.
 - **Betriebssystem-Feature:** Das **automatische Ausblenden bekannter Dateiendungen** in Windows. Dadurch wurde die Skript-Endung `.vbs` verborgen und die Datei wirkte optisch wie eine harmlose Textdatei (`.TXT`).
--->
 
 ---
 
 # Die Köder-Mail
 
-<style scoped>
-p { text-align: center; }
-</style>
-![w:500](./img/iloveyou.jpg)
+![Die Köder-Mail](./img/iloveyou.jpg)
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Hier sehen wir ein Paradebeispiel für **Social Engineering** – die gezielte Manipulation menschlicher Verhaltensweisen:
 - **Der emotionale Köder:** Neugier und Eitelkeit („Wer gesteht mir hier seine Liebe?“). Wer klickt da nicht?
@@ -153,7 +129,6 @@ Hier sehen wir ein Paradebeispiel für **Social Engineering** – die gezielte M
   1. **Emotionale Neugier / Verlockung:** Reißerischer Betreff („ILOVEYOU“) verleitet zum unüberlegten Klick.
   2. **Vertrauensvorschuss:** Die Mail stammte scheinbar von bekannten Kontakten aus dem persönlichen Adressbuch.
 - **Technische Maßnahme:** **Content-Filtering / Anhänge-Blockade am E-Mail-Gateway**: Gefährliche ausführbare Dateitypen (z. B. `.vbs`, `.bat`, `.exe`) werden serverseitig herausgefiltert oder in einer Quarantäne-Sandbox isoliert.
--->
 
 ---
 
@@ -169,7 +144,6 @@ Hier sehen wir ein Paradebeispiel für **Social Engineering** – die gezielte M
   - Überschreibt Multimediadateien & Skripte (`.jpg`, `.js`, ...) mit eigenem Code
   - Versteckt `.mp3`-Dateien und ersetzt sie durch Wurm-Kopien
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Der Wurm arbeitete in drei fatalen Schritten:
 1. **Persistenz (Einnisten):** Er kopierte sich als angebliche Systemdatei `MSKernel32.vbs` ins System und trug sich in den Windows-Autostart ein, damit er jeden Computerneustart überlebte.
@@ -185,7 +159,6 @@ Der Wurm arbeitete in drei fatalen Schritten:
 **Antwort:**
 - **Integrität verletzt:** Durch das Überschreiben der `.jpg`-Bilder mit Schadcode wurden Originaldaten unwiederbringlich verfälscht und vernichtet (Verlust der Korrektheit und Unversehrtheit).
 - **Verfügbarkeit verletzt:** Durch die E-Mail-Flut brachen Mailserver zusammen, sodass legitime Nutzer den Dienst nicht mehr nutzen konnten (Ausfall der Erreichbarkeit/Downtime).
--->
 
 ---
 
@@ -201,7 +174,6 @@ Der Wurm arbeitete in drei fatalen Schritten:
   - Anklage fallen gelassen (*Nulla poena sine lege*)
   - Beschleunigte Verabschiedung des *E-Commerce Act (RA 8792)*
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Der Programmierer richtete Milliardenschäden an – wurde aber niemals verurteilt!
 Warum? Im Mai 2000 gab es auf den Philippinen schlicht kein Gesetz gegen Computer-Kriminalität.
@@ -218,10 +190,9 @@ Es griff der fundamentale Rechtsgrundsatz: **„Nulla poena sine lege“** (Kein
 **Antwort:**
 - **Rechtsgrundsatz:** **Nulla poena sine lege** (Keine Strafe ohne vorheriges Gesetz / Verbot von Rückwirkung und strafbegründender Analogie).
 - **Begründung:** Klassischer Diebstahl erfordert die Wegnahme einer *körperlichen Sache* (digitale Daten sind unkörperlich). Sachbeschädigung erfordert physische Beschädigung von Gegenständen (Hardware blieb intakt). Da keine speziellen Gesetze gegen Computerviren existierten, war die Tat straffrei.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Fazit & Lehren
 
 - **Secure by Default:** Gefährliche Skripte dürfen nicht standardmäßig per Doppelklick starten
@@ -229,7 +200,6 @@ Es griff der fundamentale Rechtsgrundsatz: **„Nulla poena sine lege“** (Kein
 - **Schnittstellensicherheit:** Unbeschränkter API-Zugriff (wie Outlook MAPI) ist fatal
 - **Awareness:** Technik versagt, wenn Nutzer emotional manipuliert werden
 
-<!-- _notes:
 ### 💡 Schnell-Check (Die 4 Kernlehren)
 1. **Secure by Default:** Ein System muss ab Werk sicher sein – Skripte dürfen nicht einfach per Doppelklick starten!
 2. **UI-Design ist Security:** Software darf Nutzer nicht belügen oder täuschen (z. B. Dateiendungen niemals verstecken).
@@ -245,15 +215,12 @@ Es griff der fundamentale Rechtsgrundsatz: **„Nulla poena sine lege“** (Kein
 *Lösung:* Eine Software wird in der sichersten Konfiguration ausgeliefert (z. B. Ports standardmäßig geschlossen, Skriptausführung deaktiviert, Standardpasswörter müssen beim ersten Login zwingend geändert werden).  
 **Frage 2:** Warum ist das Ausblenden von Dateiendungen im Betriebssystem ein gravierendes Sicherheitsrisiko?  
 *Lösung:* Weil Angreifer über doppelte Dateiendungen (z. B. `rechnung.pdf.exe`) bösartige Programme als harmlose Dokumente tarnen können.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Die CIA-Triade
 ## Schutzziele & Sicherheitsbegriffe
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel? (Die CIA-Triade)
 Jetzt steigen wir in das Herzstück der IT-Sicherheit ein: die **CIA-Triade** (**C**onfidentiality, **I**ntegrity, **A**vailability).
 Sie ist das wichtigste Werkzeug für jeden Sicherheitsverantwortlichen: Egal, welches System du betrachtest – vom Herzschrittmacher bis zum Online-Banking –, mit der CIA-Triade kannst du sofort analysieren: *Was muss hier eigentlich vor wem geschützt werden?*
@@ -265,8 +232,9 @@ Du beherrschst die Definitionen der drei Schutzziele und ihrer Erweiterungen (Au
 - Die drei Begriffe auf Deutsch und Englisch nennen und definieren.
 - Szenario-Zuordnung: Gegeben ist ein Vorfall (z. B. Ransomware, SQL-Injection, DoS-Attacke) $\rightarrow$ Welches Schutzziel wurde verletzt?
 - Die Balance: Zielkonflikte zwischen Vertraulichkeit und Verfügbarkeit erklären (z. B. Notfallzugriff im Krankenhaus).
--->
+
 ---
+
 # Angreifer & Motivationen
 
 <div class="columns">
@@ -290,9 +258,6 @@ Du beherrschst die Definitionen der drei Schutzziele und ihrer Erweiterungen (Au
 </div>
 </div>
 
-
-
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wer greift uns eigentlich an und warum? Sicherheitsexperten müssen das Täterprofil kennen, um die Verteidigung richtig zu dimensionieren:
 - **Cyberkriminelle:** Wollen Geld! Sie setzen auf Ransomware oder Erpressung (*Ransomware as a Service*).
@@ -312,16 +277,15 @@ Wer greift uns eigentlich an und warum? Sicherheitsexperten müssen das Täterpr
 - **Unterschied im Vorgehen:**
   - **Ransomware-Kriminelle:** Machen absichtlich sofort Lärm (Dateien verschlüsseln, Lösegeldforderung anzeigen), um schnell finanziellen Profit zu erzielen.
   - **APTs:** Arbeiten extrem verdeckt (*stealth*), nisten sich dauerhaft ein (*Persistenz*) und wollen über Monate oder Jahre unbemerkt Daten abfließen lassen (Spionage).
--->
 
 ---
+
 # Die CIA-Triade – Überblick
 
 - **Confidentiality (Vertraulichkeit):** Schutz vor unbefugter Offenlegung (*Nur wer darf, liest mit*).
 - **Integrity (Integrität):** Schutz vor unbefugter Modifikation (*Daten bleiben korrekt & unverfälscht*).
 - **Availability (Verfügbarkeit):** Gewährleistung des Zugriffs (*Systeme stehen bei Bedarf bereit*).
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die CIA-Triade fasst die drei elementaren Schutzziele zusammen:
 - **Confidentiality (Vertraulichkeit):** Nur wer darf, liest mit. Schutz vor neugierigen Blicken (*Geheimhaltung*).
@@ -345,9 +309,9 @@ Die CIA-Triade fasst die drei elementaren Schutzziele zusammen:
   2. **Integrity** (Integrität)
   3. **Availability** (Verfügbarkeit)
 - **Szenario-Zuordnung:** Es wird die **Verfügbarkeit** verletzt, da berechtigte Kunden den Buchungsdienst temporär nicht mehr erreichen können.
--->
 
 ---
+
 # C: Vertraulichkeit (Confidentiality)
 
 - **Ziel:** Schutz sensibler Informationen vor unbefugtem Zugriff & Abfluss
@@ -360,7 +324,6 @@ Die CIA-Triade fasst die drei elementaren Schutzziele zusammen:
   - **Authentifizierung & MFA:** Strenge Identitätsprüfung vor Freigabe
   - **Klassifizierung:** Öffentlich $\rightarrow$ Intern $\rightarrow$ Vertraulich $\rightarrow$ Streng vertraulich
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Vertraulichkeit bedeutet: Daten dürfen nicht in falsche Hände geraten. Um Daten zu schützen, muss man ihre drei Lebenszustände kennen:
 1. **Data in Transit (unterwegs):** Daten reisen durchs Internet (wie ein Postbrief im Lkw). Schutz: TLS / HTTPS / VPN (verschlossener Briefumschlag).
@@ -379,9 +342,9 @@ Vertraulichkeit bedeutet: Daten dürfen nicht in falsche Hände geraten. Um Date
   *Maßnahme:* **TLS / HTTPS / VPN** (Transportverschlüsselung).
 - **Data at Rest:** Ruhende Daten, die auf einem Speichermedium abgelegt sind (z. B. SSD, Festplatte, Backup-Band).  
   *Maßnahme:* **AES-256 / BitLocker** (Festplatten- bzw. Speicherverschlüsselung).
--->
 
 ---
+
 # I: Integrität (Integrity)
 
 - **Ziel:** Korrektheit, Vollständigkeit und Unverfälschtheit von Daten & Systemen
@@ -393,7 +356,6 @@ Vertraulichkeit bedeutet: Daten dürfen nicht in falsche Hände geraten. Um Date
   - Schreib-Zugriffskontrolle & strikte Eingabevalidierung (Input Validation)
   - Transaktionssicherheit (ACID) & revisionssicheres Logging
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Integrität garantiert: Daten sind unverfälscht, vollständig und korrekt.
 *Alltagsanalogien zur Differenzierung:*
@@ -410,9 +372,9 @@ Integrität garantiert: Daten sind unverfälscht, vollständig und korrekt.
 **Antwort:**
 - **Problem des einfachen Hashs:** Wenn ein Angreifer den Download-Verkehr manipuliert, kann er die Software mit Schadcode versehen und gleichzeitig den auf der Website angezeigten Hashwert durch den Hash seiner manipulierten Datei ersetzen.
 - **Lösung:** **Digitale Signatur (Code Signing)**: Die Datei wird mit dem geheimen privaten Schlüssel des Herstellers signiert. Der Empfänger verifiziert die Signatur über das Zertifikat des Herstellers. Der Angreifer besitzt den privaten Herstellerschlüssel nicht und kann keine gültige Signatur erzeugen.
--->
 
 ---
+
 # A: Verfügbarkeit (Availability)
 
 - **Ziel:** Zeitgerechte und verlässliche Erreichbarkeit von Daten und Systemen
@@ -424,7 +386,6 @@ Integrität garantiert: Daten sind unverfälscht, vollständig und korrekt.
   - **3-2-1-Backup-Regel:** 3 Kopien, 2 verschiedene Medientypen, 1 Offsite (+ Unveränderbarkeit)
   - **DDoS-Abwehr:** Anycast-Netzwerke, Traffic Scrubbing, WAF & Rate Limiting
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Verfügbarkeit heißt: Systeme und Daten sind genau dann erreichbar, wenn man sie braucht.
 *Zwei essentielle Kennzahlen für die Notfallplanung:*
@@ -443,14 +404,12 @@ Verfügbarkeit heißt: Systeme und Daten sind genau dann erreichbar, wenn man si
 - **RAID** bietet lediglich **Hardware-Redundanz** beim Ausfall einzelner Datenträger für den unterbrechungsfreien Betrieb.
 - Es bietet **keinen Schutz vor logischen Datenverlusten**: Bei versehentlichem Löschen, Softwarefehlern oder Ransomware-Infektionen wird die Löschung/Verschlüsselung **sofort synchron auf die gespiegelte Platte übertragen**.
 - Schutz bietet ausschließlich ein echtes, getrenntes und versionsbasiertes **Backup** (z. B. nach 3-2-1-Regel mit unveränderbarer Kopie).
--->
 
 ---
+
 # Der Balanceakt (CIA-Trade-Offs)
 
 Die Schutzziele stehen häufig in natürlicher Konkurrenz:
-
-
 
 <div class="columns">
 <div>
@@ -469,7 +428,6 @@ Die Schutzziele stehen häufig in natürlicher Konkurrenz:
 
 > **Beispiel:** Ein Notfallzugang verbessert die Verfügbarkeit, kann aber die Vertraulichkeit schwächen. Deshalb braucht er enge Rechte und Protokollierung.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 In der Realität kann man selten alle drei Schutzziele gleichzeitig auf Anschlag drehen – sie stehen oft in natürlicher Konkurrenz zueinander (**Trade-offs**):
 - **Vertraulichkeit vs. Verfügbarkeit (C vs. A):** Je mehr Passwörter, MFA-Abfragen und Verschlüsselungsschichten ich einbaue (maximale Vertraulichkeit), desto langsamer und umständlicher wird der Zugriff im Notfall (Verfügbarkeit leidet).
@@ -486,9 +444,9 @@ Wenn ein Patient in der Notaufnahme reanimiert wird, darf der Notarzt nicht erst
 **Antwort:**
 - **Zielkonflikt:** Strikte Zugriffskontrollen schützen Patientendaten vor unbefugter Einsicht (Vertraulichkeit), verhindern im akuten Lebensnotfall aber schnellen Datenzugriff für das medizinische Personal (Verfügbarkeit).
 - **Kompensierende Maßnahme:** **Vollständiges, revisionssicheres Logging / Auditing**: Der Notfallzugriff wird mit Zeitstempel, Benutzer-ID und Begründung protokolliert und löst eine Benachrichtigung an den Datenschutzbeauftragten zur nachträglichen Prüfung aus.
--->
 
 ---
+
 # Erweiterte Schutzziele
 
 Moderne Sicherheitsmodelle ergänzen die CIA-Triade um zwei Kernaspekte:
@@ -502,7 +460,6 @@ Moderne Sicherheitsmodelle ergänzen die CIA-Triade um zwei Kernaspekte:
 
 > **Einordnung:** CIA beschreibt drei grundlegende Schutzziele; Authentizität und Zurechenbarkeit ergänzen das Modell, ersetzen es aber nicht.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Die klassische CIA-Triade wird in der modernen Praxis um zwei wesentliche Schutzziele erweitert:
 1. **Authentizität (Echtheit):** Ist der Absender wirklich der, für den er sich ausgibt?  
@@ -524,7 +481,3 @@ Die klassische CIA-Triade wird in der modernen Praxis um zwei wesentliche Schutz
 - **Authentifizierung:** Prüfung der Identität des Anwenders beim Login (z. B. Benutzername + Passwort + Bestätigung in der Banking-App).
 - **Autorisierung:** Festlegung und Prüfung der erlaubten Aktionen nach erfolgreicher Authentifizierung (z. B. Darf Kontostände einsehen und Überweisungen bis zum Tageslimit tätigen, aber keine fremden Konten verwalten).
 - **Nicht-Abstreitbarkeit (Non-Repudiation):** Technische und rechtliche Unanfechtbarkeit einer ausgeführten Handlung (z. B. durch digitale Signaturen und manipulationssichere Transaktionsprotokolle), sodass der Urheber die Durchführung nicht glaubhaft leugnen kann.
--->
-
-
-
