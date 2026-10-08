@@ -8,6 +8,12 @@ footer: ![w:280](img/dhbw-ka.svg)
 <!-- _class: title -->
 # IT-Security
 
+<!-- _notes:
+IT-Sicherheit schützt Informationen, Systeme und Geschäftsprozesse vor unbeabsichtigten Ereignissen ebenso wie vor gezielten Angriffen. Ausgangspunkt der Vorlesungsreihe sind die Schutzziele Vertraulichkeit, Integrität und Verfügbarkeit, weil sich mit ihnen Risiken und Gegenmaßnahmen systematisch einordnen lassen. Sicherheit ist dabei kein einzelnes Produkt, sondern entsteht aus dem Zusammenspiel von Technik, Organisation und Menschen.
+
+**Klausurvorbereitung:** Die drei Schutzziele der CIA-Triade auf Deutsch und Englisch nennen und an einem einfachen IT-System jeweils eine mögliche Verletzung erläutern können.
+-->
+
 ---
 <!-- _class: biglist -->
 # Inhalte
@@ -22,7 +28,9 @@ footer: ![w:280](img/dhbw-ka.svg)
 - KI-Sicherheit
 
 <!-- _notes:
-Die CIA-Triade ist die gemeinsame Sprache der Vorlesungsreihe. Kryptographie schützt unter anderem Vertraulichkeit und Integrität; Identity & Access Management regelt Identitäten und Berechtigungen; sichere Softwareentwicklung und Patchmanagement behandeln Risiken über den Lebenszyklus. Zur Vorbereitung hilft es, jedes spätere Beispiel mindestens einem Schutzziel zuzuordnen.
+Die Themen der Vorlesungsreihe betrachten IT-Sicherheit aus unterschiedlichen Perspektiven. Kryptographie liefert technische Schutzmechanismen, IAM steuert Identitäten und Berechtigungen, SSDLC verankert Sicherheit in der Softwareentwicklung und ein ISMS organisiert Sicherheit auf Unternehmensebene. Netzwerk-, IoT-, Schwachstellen-, Patch- und KI-Sicherheit wenden diese Grundideen auf spezielle Technologien und Prozesse an. Datenschutz überschneidet sich mit IT-Sicherheit, verfolgt aber zusätzlich rechtliche Ziele zum Schutz personenbezogener Daten.
+
+**Klausurvorbereitung:** Zu jedem Themenblock eine Verbindung zur CIA-Triade herstellen können, beispielsweise Verschlüsselung zur Vertraulichkeit, Code Signing zur Integrität und Redundanz zur Verfügbarkeit.
 -->
 
 ---
@@ -35,7 +43,9 @@ Welche Maßnahmen (Prozesse, Regeln, Tools, Schulungen,... ) werden in Ihrem Unt
 > **Denkanstoß:** Welche Maßnahme verhindert einen Angriff, welche erkennt ihn und welche begrenzt den Schaden?
 
 <!-- _notes:
-Sicherheitsmaßnahmen lassen sich nach ihrer Wirkung ordnen: Eine Firewall filtert Verkehr, Schulungen verringern Bedienfehler, Backups unterstützen die Wiederherstellung und Patchmanagement schließt bekannte Schwachstellen. Die Maßnahmen ergänzen sich; keine einzelne davon macht ein Unternehmen vollständig sicher.
+Wirksame IT-Sicherheit beruht auf mehreren Verteidigungsebenen, dem sogenannten Defense-in-Depth-Prinzip. Maßnahmen lassen sich organisatorischen, technischen und personellen Bereichen sowie den Funktionen Prävention, Detektion und Reaktion zuordnen. Eine Firewall kann unerwünschte Kommunikation verhindern, Monitoring erkennt Auffälligkeiten, ein Incident-Response-Prozess begrenzt Schäden und Backups ermöglichen die Wiederherstellung. Weil jede Kontrolle ausfallen oder umgangen werden kann, sollten sich Maßnahmen ergänzen und nicht von einem einzigen Schutzmechanismus abhängen.
+
+**Klausurvorbereitung:** Für ein Unternehmensbeispiel mindestens je eine präventive, detektive und reaktive Maßnahme nennen, deren Wirkungsweise erklären und sie einem oder mehreren CIA-Schutzzielen zuordnen können.
 -->
 
 ---
@@ -46,7 +56,9 @@ Sicherheitsmaßnahmen lassen sich nach ihrer Wirkung ordnen: Eine Firewall filte
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Der Urknall der IT-Sicherheit. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können. Die Verbreitung benötigte sowohl das Öffnen des Anhangs als auch die Nutzung des Outlook-Adressbuchs.
+Der ILOVEYOU-Wurm ist ein anschauliches Beispiel dafür, dass große Sicherheitsvorfälle selten nur eine Ursache haben. Social Engineering brachte Menschen zum Öffnen des Anhangs, die Benutzeroberfläche verbarg die gefährliche Dateiendung, der Windows Script Host führte den Code mit weitreichenden Rechten aus und Outlook stellte das Adressbuch zur automatischen Weiterverbreitung bereit. Die Fallstudie verbindet damit menschliche, technische und organisatorische Schwächen.
+
+**Klausurvorbereitung:** Die Angriffskette von der Köder-Mail bis zur weltweiten Verbreitung in der richtigen Reihenfolge erklären und für jeden Schritt eine passende Gegenmaßnahme nennen können.
 -->
 ---
 <!-- _class: biglist -->
@@ -59,7 +71,9 @@ Dieser Abschnitt behandelt Der Urknall der IT-Sicherheit. Die folgenden Beispiel
 - **System:** Windows Script Host (WSH) führte VBScript direkt ohne Sandbox aus
 
 <!-- _notes:
-Eine "Sandbox" ist eine isolierte Ausführungsumgebung, die einem Programm nur eingeschränkten Zugriff auf das restliche System erlaubt – der Windows Script Host von damals hatte so etwas nicht, ein gestartetes Skript durfte tun, wozu der angemeldete Nutzer berechtigt war (Dateien löschen, E-Mails versenden, Registry ändern). Das macht den zweiten Aufzählungspunkt so gefährlich: Windows blendete die Dateiendung `.vbs` standardmäßig aus, sodass die Datei wie ein harmloser Text (`.TXT`) aussah, beim Doppelklick aber als vollwertiges, uneingeschränktes Skript lief. Diese Kombination aus "UI täuscht" und "keine Ausführungs-Schranken" ist der technische Kern des gesamten Falls und wird im Fazit am Ende wieder aufgegriffen.
+VBS.LoveLetter.A war ein in Visual Basic Script geschriebener E-Mail-Wurm. Ein Wurm kann sich selbstständig weiterverbreiten, während ein klassischer Virus normalerweise eine Wirtsdatei benötigt; beim ILOVEYOU-Wurm musste allerdings zunächst ein Mensch den Anhang öffnen. Windows blendete bekannte Dateiendungen standardmäßig aus, sodass `LOVE-LETTER-FOR-YOU.TXT.vbs` wie eine harmlose Textdatei wirkte. Nach dem Start führte der Windows Script Host das Skript ohne wirksame Isolation mit den Rechten des angemeldeten Benutzers aus. Eine Sandbox hätte den Zugriff auf Dateien, Registry und andere Programme begrenzen können.
+
+**Klausurvorbereitung:** Wurm und Virus voneinander abgrenzen sowie erklären können, warum die Kombination aus versteckter Dateiendung, Social Engineering und fehlender Sandbox gefährlicher war als jede einzelne Schwäche für sich.
 -->
 
 ---
@@ -72,7 +86,11 @@ p { text-align: center; }
 ![w:500](./img/iloveyou.jpg)
 
 <!-- _notes:
-Die E-Mail mit dem Betreff „ILOVEYOU“ nutzte Neugier und Vertrauen, um den Anhang öffnen zu lassen. Die vermeintliche Textdatei endete tatsächlich auf `.vbs` und war damit ein ausführbares Skript. Die Täuschung der Benutzeroberfläche und die weitreichenden Rechte des Skripts wirkten zusammen.
+Die Nachricht ist ein frühes Beispiel für Social Engineering: Betreff und Text sprechen Emotionen und Neugier an, statt eine technische Schwachstelle allein auszunutzen. Weil die Nachricht häufig von einer bekannten Person aus dem eigenen Adressbuch kam, wirkte sie zusätzlich vertrauenswürdig. Die dargestellte Datei heißt vollständig `LOVE-LETTER-FOR-YOU.TXT.vbs`; durch das Ausblenden der letzten Erweiterung konnte sie als Textdatei erscheinen, obwohl sie ausführbaren Skriptcode enthielt. Technische Schutzmaßnahmen müssen deshalb auch irreführende Darstellung und vorhersehbares Nutzerverhalten berücksichtigen.
+
+**Bildbeschreibung:** Der Screenshot zeigt ein geöffnetes E-Mail-Fenster im Stil von Microsoft Outlook um das Jahr 2000. Betreff und Fenstertitel lauten „ILOVEYOU“. Im Nachrichtentext steht die Aufforderung „kindly check the attached LOVELETTER coming from me“, darunter befindet sich ein Anhang mit Skript-Symbol und dem über mehrere Zeilen umbrochenen Namen `LOVE-LETTER-FOR-YOU.TXT.vbs`. Die schlichte Nachricht und der persönlich wirkende Betreff verdeutlichen den Köder des Angriffs.
+
+**Klausurvorbereitung:** Am Screenshot mindestens drei Social-Engineering- oder UI-Merkmale identifizieren und erklären können, welche technische Kontrolle jeweils das Risiko reduziert hätte.
 -->
 
 ---
@@ -90,7 +108,9 @@ Die E-Mail mit dem Betreff „ILOVEYOU“ nutzte Neugier und Vertrauen, um den A
   - Versteckt `.mp3`-Dateien und ersetzt sie durch Wurm-Kopien
 
 <!-- _notes:
-MAPI (Messaging Application Programming Interface) ist die Schnittstelle, über die Outlook-Adressbücher und E-Mail-Funktionen von anderen Programmen angesprochen werden können – der Wurm nutzte diese Schnittstelle völlig ungeprüft, um sich selbst an alle gespeicherten Kontakte zu verschicken. Genau das erzeugte den "Schneeball-Effekt": Jeder infizierte Rechner verschickte die Mail an im Schnitt Dutzende neue Opfer, wodurch sich die Verbreitung exponentiell beschleunigte und Mail-Server weltweit unter der Last zusammenbrachen. Die drei Schritte (Persistenz, Verbreitung, Zerstörung) sind ein Muster, das bei vielen späteren Malware-Familien wiederkehrt.
+Nach der Ausführung etablierte der Wurm Persistenz, damit er nach einem Neustart erneut aktiv wurde. Dazu kopierte er sich in das Windows-Systemverzeichnis und legte einen Autostart-Eintrag in der Registry an. Über MAPI, die Messaging Application Programming Interface, griff er auf Outlook und das Adressbuch zu und versendete sich an gespeicherte Kontakte. Dieses Vertrauen in bekannte Absender erzeugte zusammen mit der automatisierten Massenverbreitung einen Schneeballeffekt. Zusätzlich überschrieben oder versteckten die Schadfunktionen Dateien; damit verletzte der Wurm nicht nur die Verfügbarkeit, sondern auch die Integrität der Daten.
+
+**Klausurvorbereitung:** Die Phasen Persistenz, Verbreitung und Schadwirkung unterscheiden, die jeweilige technische Funktion beschreiben und den Auswirkungen passende CIA-Schutzziele zuordnen können.
 -->
 
 ---
@@ -108,7 +128,9 @@ MAPI (Messaging Application Programming Interface) ist die Schnittstelle, über 
   - Beschleunigte Verabschiedung des *E-Commerce Act (RA 8792)*
 
 <!-- _notes:
-"Nulla poena sine lege" (lateinisch: "keine Strafe ohne Gesetz") ist ein Grundprinzip des Strafrechts – man kann niemanden für eine Handlung bestrafen, die zum Tatzeitpunkt noch nicht gesetzlich verboten war. Genau das war hier der Fall: Auf den Philippinen gab es 2000 schlicht kein Gesetz, das das Schreiben und Verbreiten von Schadsoftware unter Strafe stellte, daher konnte de Guzman nicht verurteilt werden. RA 8792 (Republic Act 8792) ist die Gesetzesnummer des daraufhin verabschiedeten E-Commerce Act, der diese Lücke schloss. Guter Diskussionspunkt: Recht hinkt Technik oft hinterher – das ist bis heute ein wiederkehrendes Muster bei neuen Angriffsformen.
+Onel de Guzman entwickelte den Wurm ursprünglich im Umfeld einer Abschlussarbeit und wollte nach eigener Aussage Zugangsdaten für kostenfreien Internetzugang erlangen. Die Ermittlungen stießen auf eine Gesetzeslücke: Das damalige philippinische Recht erfasste die konkrete Verbreitung von Schadsoftware nicht ausreichend. Nach dem Grundsatz „nulla poena sine lege“ darf eine Tat nur bestraft werden, wenn sie zum Tatzeitpunkt gesetzlich bestimmt war. Der kurz darauf verabschiedete E-Commerce Act, Republic Act No. 8792, schuf unter anderem rechtliche Grundlagen für die Ahndung entsprechender Computerstraftaten. Der Fall zeigt, dass technische, organisatorische und rechtliche Reaktionen auf neue Angriffsformen zusammenspielen müssen.
+
+**Klausurvorbereitung:** Den Grundsatz „nulla poena sine lege“ auf den Fall anwenden und erklären können, weshalb eine moralisch und wirtschaftlich schädliche Handlung ohne passende Strafnorm nicht rückwirkend bestraft werden darf.
 -->
 
 ---
@@ -121,7 +143,9 @@ MAPI (Messaging Application Programming Interface) ist die Schnittstelle, über 
 - **Awareness:** Technik versagt, wenn Nutzer emotional manipuliert werden
 
 <!-- _notes:
-Secure by Default bedeutet, dass riskante Funktionen ohne ausdrückliche Freigabe nicht aktiv sind. Awareness hilft, täuschende Nachrichten zu erkennen, ersetzt aber keine technische Begrenzung. Der ILOVEYOU-Fall zeigt, dass Benutzeroberfläche, Ausführungsrechte und Schnittstellen gemeinsam über den Schaden entscheiden.
+Secure by Default verlangt sichere Voreinstellungen: Ausführbare Anhänge sollten blockiert, Dateiendungen sichtbar und gefährliche Funktionen nur nach bewusster Freigabe verfügbar sein. Aussagekräftige Benutzeroberflächen sind selbst eine Sicherheitskontrolle, weil Nutzer nur auf Basis der angezeigten Informationen entscheiden können. Schnittstellen wie MAPI benötigen minimale Berechtigungen und Schutz vor automatisiertem Missbrauch. Awareness kann verdächtige Nachrichten erkennbar machen, darf aber nicht die einzige Barriere sein; nach Defense in Depth müssen technische Kontrollen Fehler auffangen. Moderne E-Mail-Filter, Application Allowlisting, Makro- und Skriptbeschränkungen sowie Endpoint Detection hätten einzelne Glieder der Angriffskette unterbrechen können.
+
+**Klausurvorbereitung:** Die vier Lehren jeweils mit einer konkreten heutigen Maßnahme erläutern und begründen können, an welcher Stelle diese Maßnahme die ILOVEYOU-Angriffskette unterbricht.
 -->
 
 ---
@@ -131,7 +155,9 @@ Secure by Default bedeutet, dass riskante Funktionen ohne ausdrückliche Freigab
 
 
 <!-- _notes:
-Dieser Abschnitt behandelt Schutzziele & Sicherheitsbegriffe. Die folgenden Beispiele zeigen, wie sich das Thema auf konkrete Sicherheitsentscheidungen anwenden lässt. Zur Vorbereitung ist wichtig, die verwendeten Begriffe an einem eigenen Beispiel erklären zu können. CIA bezeichnet Confidentiality, Integrity und Availability: Vertraulichkeit, Integrität und Verfügbarkeit.
+Die CIA-Triade ist ein Modell zur strukturierten Beschreibung dessen, was geschützt werden soll. Confidentiality steht für Vertraulichkeit, Integrity für Integrität und Availability für Verfügbarkeit. Die Ziele helfen bei Risikoanalysen, bei der Auswahl von Kontrollen und bei der Bewertung von Vorfällen. Ein Ereignis kann mehrere Ziele zugleich verletzen: Ransomware verändert oder verschlüsselt Daten und macht sie gleichzeitig unzugänglich. Das Modell priorisiert keine der drei Dimensionen pauschal; ihre Bedeutung hängt vom jeweiligen Geschäftsprozess ab.
+
+**Klausurvorbereitung:** CIA ausschreiben, übersetzen und für ein vorgegebenes Angriffsszenario begründet entscheiden können, welche Schutzziele betroffen sind.
 -->
 ---
 # Angreifer & Motivationen
@@ -160,10 +186,9 @@ Dieser Abschnitt behandelt Schutzziele & Sicherheitsbegriffe. Die folgenden Beis
 
 
 <!-- _notes:
+Für die Risikobewertung reicht es nicht, nur technische Angriffsmethoden zu kennen; Fähigkeiten, Ressourcen, Zugänge und Motive der Akteure bestimmen Wahrscheinlichkeit und Auswirkung. Cyberkriminelle monetarisieren Angriffe etwa durch Betrug oder Ransomware as a Service (RaaS). Advanced Persistent Threats (APTs) sind typischerweise gut ausgestattete, langfristig und zielgerichtet operierende Gruppen, oft mit staatlichem Bezug. Insider besitzen bereits legitimen Zugang und können absichtlich handeln oder unbeabsichtigt Schäden verursachen. „IP-Diebstahl“ meint Intellectual Property, also geistiges Eigentum wie Quellcode, Patente oder Konstruktionsdaten. Script Kiddies verwenden meist vorhandene Werkzeuge ohne tiefes technisches Verständnis, können aber dennoch erhebliche Schäden verursachen.
 
-> **Begriffe:** RaaS = vermietete Erpressungssoftware; APT = langfristig agierende Angreifergruppe; IP = geistiges Eigentum. Die englischen Langformen stehen in den Notes.
-
-RaaS bedeutet „Ransomware as a Service“: Kriminelle bieten Erpressungssoftware und Infrastruktur als Dienstleistung an. APT steht für „Advanced Persistent Threat“ und bezeichnet langfristig agierende Angreifergruppen. „IP-Diebstahl“ meint hier Intellectual Property, also geistiges Eigentum wie Patente oder Konstruktionspläne, nicht Internet Protocol.
+**Klausurvorbereitung:** Angreifertyp, Motivation und Angriffsziel nicht gleichsetzen: Zu drei Angreifertypen jeweils ein plausibles Motiv, ein Ziel und eine typische Vorgehensweise herleiten können.
 -->
 
 ---
@@ -174,7 +199,9 @@ RaaS bedeutet „Ransomware as a Service“: Kriminelle bieten Erpressungssoftwa
 - **Availability (Verfügbarkeit):** Gewährleistung des Zugriffs (*Systeme stehen bei Bedarf bereit*).
 
 <!-- _notes:
-Die CIA-Triade (Confidentiality, Integrity, Availability) ist das zentrale Grundmodell der gesamten Vorlesungsreihe – praktisch jedes spätere Thema (Kryptographie, IAM, Netzwerksicherheit) lässt sich einem oder mehreren dieser drei Schutzziele zuordnen. Die drei Merksätze in Klammern sollten sitzen bleiben: "Nur wer darf, liest mit" (C), "Daten bleiben korrekt" (I), "Systeme stehen bereit" (A). Wichtig zu erwähnen: CIA hat nichts mit der US-Behörde zu tun, das ist eine reine Abkürzungskollision.
+Vertraulichkeit begrenzt die Offenlegung von Informationen auf berechtigte Personen, Systeme oder Prozesse. Integrität verlangt, dass Daten und Systeme korrekt, vollständig und gegen unautorisierte Änderungen geschützt sind; dazu gehört auch, Manipulationen erkennen zu können. Verfügbarkeit bedeutet, dass berechtigte Nutzer innerhalb der benötigten Zeit auf Systeme und Daten zugreifen können. Entscheidend ist der Kontext: Bei einer Patientenakte sind alle drei Ziele hoch, während bei einer öffentlichen Website meist Integrität und Verfügbarkeit stärker im Vordergrund stehen als die Vertraulichkeit der veröffentlichten Inhalte. CIA bezeichnet hier das Sicherheitsmodell und nicht den US-Nachrichtendienst.
+
+**Klausurvorbereitung:** Die drei Definitionen präzise wiedergeben und in Fallbeispielen nicht nur die Maßnahme, sondern das tatsächlich geschützte Ziel begründen können.
 -->
 
 ---
@@ -191,10 +218,9 @@ Die CIA-Triade (Confidentiality, Integrity, Availability) ist das zentrale Grund
   - **Klassifizierung:** Öffentlich $\rightarrow$ Intern $\rightarrow$ Vertraulich $\rightarrow$ Streng vertraulich
 
 <!-- _notes:
+Vertraulichkeit beantwortet die Frage, wer Informationen sehen oder erfahren darf. Daten benötigen in jedem Zustand eigenen Schutz: TLS schützt sie bei der Übertragung, Festplatten- oder Datenbankverschlüsselung bei der Speicherung und Confidential Computing kann sie während der Verarbeitung in isolierten Ausführungsbereichen schützen. Verschlüsselung ist jedoch nur so wirksam wie das Schlüsselmanagement; hat ein Angreifer Schlüssel oder ein bereits entsperrtes Benutzerkonto, kann er Daten trotz starker Algorithmen lesen. Least Privilege begrenzt deshalb Zugriffe auf das notwendige Minimum, MFA erschwert die Übernahme von Konten und Klassifizierung legt den angemessenen Schutzbedarf fest. Vertraulichkeit kann außerdem durch unbeabsichtigte Offenlegung, etwa falsch adressierte E-Mails oder offene Cloud-Speicher, verletzt werden.
 
-Vertraulichkeit bedeutet, dass nur Berechtigte Daten lesen. Die genannten Produkte und Protokolle sind Beispiele für spätere Vertiefungen.
-
-Die drei Zustände (Data in Transit/at Rest/in Use) sind ein wichtiges Ordnungsprinzip: Daten müssen an jeder Stelle ihres "Lebenszyklus" separat geschützt werden – ein verschlüsselter Transportweg (TLS) nützt nichts, wenn die Datenbank am Ende im Klartext liegt. "Secure Enclaves / Confidential Computing" bedeutet, dass Daten sogar während der Verarbeitung im Arbeitsspeicher in einem abgeschotteten, isolierten Prozessorbereich verarbeitet werden, den selbst der Betreiber des Servers nicht einsehen kann – das ist ein noch recht junges Feld und muss hier nicht vertieft werden.
+**Klausurvorbereitung:** Data in Transit, Data at Rest und Data in Use unterscheiden, jeweils eine Schutzmaßnahme nennen und erklären können, warum Verschlüsselung ohne Zugriffskontrolle und Schlüsselmanagement nicht genügt.
 -->
 
 ---
@@ -210,7 +236,9 @@ Die drei Zustände (Data in Transit/at Rest/in Use) sind ein wichtiges Ordnungsp
   - Transaktionssicherheit (ACID) & revisionssicheres Logging
 
 <!-- _notes:
-ACID (Atomicity, Consistency, Isolation, Durability) ist ein Prinzip aus dem Datenbankbereich, das sicherstellt, dass eine Transaktion entweder vollständig oder gar nicht durchgeführt wird – ein Beispiel: Bei einer Überweisung darf niemals nur die Abbuchung, aber nicht die Gutschrift erfolgen.
+Integrität umfasst die Korrektheit, Vollständigkeit und Unverfälschtheit von Informationen und Systemzuständen. Ein kryptographischer Hash bildet Daten auf einen festen Prüfwert ab und macht Änderungen erkennbar, beweist allein aber weder den Urheber noch Schutz gegen einen Angreifer, der Daten und Hash austauschen kann. Digitale Signaturen verbinden den Hash mit einem privaten Schlüssel und unterstützen dadurch Integrität und Authentizität. Code Signing prüft die Herkunft von Software; eine Software Bill of Materials (SBOM) dokumentiert enthaltene Komponenten, garantiert aber für sich allein weder deren Sicherheit noch ihre Unverändertheit. Zugriffskontrollen verhindern unberechtigte Änderungen, Eingabevalidierung schützt die Verarbeitung und revisionssichere Logs machen Änderungen nachvollziehbar. ACID bedeutet Atomicity, Consistency, Isolation und Durability und verhindert unter anderem unvollständige Datenbanktransaktionen.
+
+**Klausurvorbereitung:** Hash, digitale Signatur, Code Signing und SBOM nach Zweck und Aussagekraft abgrenzen sowie am Überweisungsbeispiel erklären können, wie ACID die Integrität unterstützt.
 -->
 
 ---
@@ -226,7 +254,9 @@ ACID (Atomicity, Consistency, Isolation, Durability) ist ein Prinzip aus dem Dat
   - **DDoS-Abwehr:** Anycast-Netzwerke, Traffic Scrubbing, WAF & Rate Limiting
 
 <!-- _notes:
-SLA steht für "Service Level Agreement" – eine vertraglich zugesicherte Verfügbarkeit, z. B. 99,9 %. Wichtig ist das Gefühl für die Größenordnung: 99,9 % klingt nach sehr viel, erlaubt aber immer noch rund 8,7 Stunden Ausfall pro Jahr, während "Five Nines" (99,999 %) nur wenige Minuten Ausfall im Jahr bedeutet – und entsprechend viel teurer in der Umsetzung ist. RAID (Redundant Array of Independent Disks) verteilt Daten auf mehrere Festplatten, damit der Ausfall einer einzelnen Platte nicht zum Datenverlust führt. Die 3-2-1-Regel ist eine einfache Faustregel fürs Backup, die sich gut einprägt und in der Praxis extrem verbreitet ist.
+Verfügbarkeit ist immer an einen Bedarf und einen Zeitraum gebunden: Ein System kann technisch erreichbar sein und dennoch als nicht verfügbar gelten, wenn Antworten für den Geschäftsprozess zu spät kommen. Ein Service Level Agreement (SLA) definiert zugesicherte Leistungswerte; 99,9 Prozent Uptime erlauben rund 8 Stunden und 46 Minuten Ausfall pro Jahr, 99,999 Prozent nur rund 5 Minuten und 15 Sekunden. Das Recovery Point Objective (RPO) beschreibt den maximal akzeptierten Datenverlust in Zeit, das Recovery Time Objective (RTO) die maximal akzeptierte Wiederanlaufzeit. Redundanz hält Dienste bei Komponentenausfällen am Laufen, ersetzt aber kein Backup, weil Fehler oder Ransomware auf redundante Systeme repliziert werden können. Die 3-2-1-Regel fordert drei Datenkopien auf zwei unterschiedlichen Medientypen, davon eine Kopie außerhalb des Standorts; unveränderbare Kopien erhöhen den Schutz vor Manipulation.
+
+**Klausurvorbereitung:** SLA/Uptime, RPO und RTO voneinander abgrenzen, einfache Ausfallzeiten berechnen und begründen können, warum RAID oder Replikation kein Backup ersetzt.
 -->
 
 ---
@@ -254,7 +284,9 @@ Die Schutzziele stehen häufig in natürlicher Konkurrenz:
 > **Beispiel:** Ein Notfallzugang verbessert die Verfügbarkeit, kann aber die Vertraulichkeit schwächen. Deshalb braucht er enge Rechte und Protokollierung.
 
 <!-- _notes:
-I kann in Konkurrenz stehen (z. B. wenn strikte Verschlüsselung die Prüfung der Datenintegrität durch Dritte erschwert). Kernaussage: Die CIA-Triade ist kein Zustand, den man einmal erreicht und dann hat, sondern ein ständiger Abwägungsprozess – 100% Sicherheit in allen drei Zielen gleichzeitig ist praktisch nicht erreichbar, jede Entscheidung ist ein Kompromiss. Gutes Beispiel für die Diskussion: ein Notfallzugriff auf verschlüsselte Systeme im Krankenhaus, wenn ein Patient akut behandelt werden muss, aber das Passwort nicht griffbereit ist.
+Schutzziele werden nicht isoliert maximiert, sondern entsprechend Risiko und Geschäftsbedarf ausbalanciert. Starke Isolation und zusätzliche Freigaben verbessern häufig die Vertraulichkeit, können aber den Zugriff verzögern und damit die Verfügbarkeit senken. Umfangreiche Integritätsprüfungen, Sperren oder Konsensverfahren benötigen Zeit und Rechenleistung. Umgekehrt kann ein leicht zugänglicher Notfallzugang die Verfügbarkeit erhöhen, zugleich aber Missbrauch und Datenoffenlegung erleichtern. Im Krankenhaus kann ein Break-Glass-Zugang deshalb sofortigen Zugriff gewähren, sollte aber eng begrenzt, besonders authentifiziert, vollständig protokolliert und nachträglich geprüft werden. Der Trade-off wird damit risikobasiert gestaltet, nicht einfach zugunsten eines Ziels aufgelöst.
+
+**Klausurvorbereitung:** Für einen Zielkonflikt die beteiligten CIA-Ziele, die konkrete Abwägung und kompensierende Kontrollen erläutern; das Krankenhausbeispiel eignet sich als Musterfall.
 -->
 
 ---
@@ -272,7 +304,9 @@ Moderne Sicherheitsmodelle ergänzen die CIA-Triade um zwei Kernaspekte:
 > **Einordnung:** CIA beschreibt drei grundlegende Schutzziele; Authentizität und Zurechenbarkeit ergänzen das Modell, ersetzen es aber nicht.
 
 <!-- _notes:
-Die CIA-Triade beschreibt Vertraulichkeit, Integrität und Verfügbarkeit. Authentizität ergänzt die Frage nach der Echtheit einer Identität oder Nachricht; Nicht-Abstreitbarkeit betrifft die nachweisbare Zuordnung einer Handlung. Digitale Signaturen können Integrität, Authentizität und Zurechenbarkeit unterstützen.
+Authentizität beantwortet, ob eine Identität, Nachricht oder Quelle tatsächlich echt ist. Ein Passwort oder MFA kann die Identität eines Benutzers prüfen, ein Zertifikat bindet einen öffentlichen Schlüssel an eine Identität und eine digitale Signatur kann den Ursprung einer Nachricht bestätigen. Nicht-Abstreitbarkeit beziehungsweise Zurechenbarkeit verlangt darüber hinaus belastbare Belege dafür, wer eine Handlung ausgeführt hat. Digitale Signaturen und manipulationsgeschützte Audit-Logs können dies unterstützen, die Beweiskraft hängt jedoch auch von sicher verwahrten Schlüsseln, eindeutigen Identitäten, Zeitstempeln und rechtlichen Rahmenbedingungen ab. Authentifizierung ist der Prüfprozess, Authentizität die dabei angestrebte Eigenschaft; Autorisierung entscheidet anschließend, was eine bestätigte Identität tun darf.
+
+**Klausurvorbereitung:** Authentizität, Authentifizierung, Autorisierung und Nicht-Abstreitbarkeit sauber unterscheiden und erklären können, welche Aussagen digitale Signaturen und Audit-Logs jeweils ermöglichen und wo ihre Grenzen liegen.
 -->
 
 
