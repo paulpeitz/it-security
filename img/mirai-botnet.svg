@@ -1,0 +1,44 @@
+<svg width="760" height="320" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <defs>
+    <marker id="arrow-mirai" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/>
+    </marker>
+  </defs>
+
+  <!-- Row 1 -->
+  <rect x="40" y="40" width="180" height="70" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="1.5"/>
+  <text x="130" y="80" text-anchor="middle" font-weight="bold" fill="#6E0010">Angreifer</text>
+
+  <rect x="290" y="40" width="220" height="70" rx="8" fill="#FCF0DC" stroke="#E8930A" stroke-width="1.5"/>
+  <text x="400" y="70" text-anchor="middle" fill="#6B3A06">Scannt IoT-Geräte nach</text>
+  <text x="400" y="87" text-anchor="middle" fill="#6B3A06">Standard-Logins (Telnet)</text>
+
+  <rect x="580" y="40" width="140" height="70" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="1.5"/>
+  <text x="650" y="70" text-anchor="middle" fill="#6E0010">Geräte</text>
+  <text x="650" y="87" text-anchor="middle" fill="#6E0010">infiziert</text>
+
+  <line x1="220" y1="75" x2="288" y2="75" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-mirai)"/>
+  <line x1="510" y1="75" x2="578" y2="75" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-mirai)"/>
+
+  <!-- Verbindung Row1 -> Row2 -->
+  <line x1="650" y1="110" x2="650" y2="220" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-mirai)"/>
+
+  <!-- Row 2 -->
+  <rect x="580" y="220" width="140" height="70" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="1.5"/>
+  <text x="650" y="250" text-anchor="middle" fill="#6E0010">Botnetz</text>
+  <text x="650" y="267" text-anchor="middle" fill="#6E0010">(C&amp;C-Server)</text>
+
+  <rect x="330" y="220" width="180" height="70" rx="8" fill="#FCF0DC" stroke="#E8930A" stroke-width="1.5"/>
+  <text x="420" y="260" text-anchor="middle" fill="#6B3A06">DDoS-Angriff</text>
+
+  <rect x="40" y="220" width="220" height="70" rx="8" fill="#EEF1F2" stroke="#5C6971" stroke-width="1.5"/>
+  <text x="150" y="250" text-anchor="middle" fill="#3E4A51">DNS-Anbieter Dyn &amp;</text>
+  <text x="150" y="267" text-anchor="middle" fill="#3E4A51">Twitter, Netflix, Reddit offline</text>
+
+  <line x1="578" y1="255" x2="512" y2="255" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-mirai)"/>
+  <line x1="328" y1="255" x2="262" y2="255" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-mirai)"/>
+
+</svg>

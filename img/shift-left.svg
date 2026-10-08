@@ -1,0 +1,55 @@
+<svg width="700" height="260" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <defs>
+    <marker id="arrow-shift" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/>
+    </marker>
+  </defs>
+
+  <!-- Zeitachse -->
+  <line x1="40" y1="90" x2="660" y2="90" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow-shift)"/>
+  <text x="660" y="75" fill="#3E4A51" text-anchor="end">Zeit</text>
+
+  <!-- Phasen -->
+  <g>
+    <rect x="60" y="60" width="110" height="60" rx="6" fill="#EEF1F2" stroke="#5C6971"/>
+    <text x="115" y="95" fill="#3E4A51" text-anchor="middle">Planung</text>
+
+    <rect x="200" y="60" width="110" height="60" rx="6" fill="#EEF1F2" stroke="#5C6971"/>
+    <text x="255" y="95" fill="#3E4A51" text-anchor="middle">Design</text>
+
+    <rect x="340" y="60" width="110" height="60" rx="6" fill="#EEF1F2" stroke="#5C6971"/>
+    <text x="395" y="95" fill="#3E4A51" text-anchor="middle">Implementierung</text>
+
+    <rect x="480" y="60" width="110" height="60" rx="6" fill="#EEF1F2" stroke="#5C6971"/>
+    <text x="535" y="88" fill="#3E4A51" text-anchor="middle">Testing &amp;</text>
+    <text x="535" y="103" fill="#3E4A51" text-anchor="middle">Deployment</text>
+  </g>
+
+  <!-- Klassisch: Security ganz rechts -->
+  <rect x="600" y="60" width="60" height="60" rx="6" fill="#FBE3E6" stroke="#E2001A"/>
+  <text x="630" y="95" fill="#3E4A51" text-anchor="middle" font-size="11">Security</text>
+  <text x="330" y="35" fill="#E2001A" text-anchor="middle">Klassisch: Security nur am Ende</text>
+
+  <!-- Pfeil nach links -->
+  <line x1="590" y1="150" x2="130" y2="150" stroke="#4C9A2A" stroke-width="2" marker-end="url(#arrow-shift)"/>
+  <text x="360" y="140" fill="#4C9A2A" text-anchor="middle" font-weight="bold">Shift Left</text>
+
+  <!-- Security-Aktivitäten unter jeder Phase -->
+  <rect x="60" y="170" width="110" height="40" rx="6" fill="#EAF4E2" stroke="#4C9A2A"/>
+  <text x="115" y="194" fill="#3E4A51" text-anchor="middle" font-size="11">Requirements</text>
+
+  <rect x="200" y="170" width="110" height="40" rx="6" fill="#EAF4E2" stroke="#4C9A2A"/>
+  <text x="255" y="194" fill="#3E4A51" text-anchor="middle" font-size="11">Threat Modeling</text>
+
+  <rect x="340" y="170" width="110" height="40" rx="6" fill="#EAF4E2" stroke="#4C9A2A"/>
+  <text x="395" y="194" fill="#3E4A51" text-anchor="middle" font-size="11">SAST / Secrets</text>
+
+  <rect x="480" y="170" width="110" height="40" rx="6" fill="#EAF4E2" stroke="#4C9A2A"/>
+  <text x="535" y="194" fill="#3E4A51" text-anchor="middle" font-size="11">DAST / SCA</text>
+
+  <text x="330" y="240" fill="#4C9A2A" text-anchor="middle">SSDLC: Security in jeder Phase</text>
+
+</svg>

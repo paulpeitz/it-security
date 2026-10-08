@@ -1,0 +1,48 @@
+<svg width="760" height="360" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/>
+    </marker>
+  </defs>
+
+  <!-- User -->
+  <rect x="20" y="150" width="150" height="70" rx="8" fill="#E3F0F4" stroke="#1C7B96" stroke-width="1.5"/>
+  <text x="95" y="190" text-anchor="middle" font-weight="bold" fill="#0A3A4A">Nutzer</text>
+
+  <!-- App -->
+  <rect x="300" y="150" width="160" height="70" rx="8" fill="#EEF1F2" stroke="#5C6971" stroke-width="1.5"/>
+  <text x="380" y="190" text-anchor="middle" font-weight="bold" fill="#3E4A51">App (Client)</text>
+
+  <!-- Authorization Server -->
+  <rect x="590" y="150" width="160" height="70" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="1.5"/>
+  <text x="670" y="183" text-anchor="middle" font-weight="bold" fill="#1E4620">Autorisierungs-</text>
+  <text x="670" y="200" text-anchor="middle" font-weight="bold" fill="#1E4620">server</text>
+
+  <!-- 1: user -> app -->
+  <line x1="170" y1="165" x2="298" y2="165" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="234" y="150" text-anchor="middle" fill="#3E4A51">1. Login/Zugriff anfragen</text>
+
+  <!-- 2: app -> auth server (redirect) -->
+  <line x1="460" y1="165" x2="588" y2="165" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="524" y="150" text-anchor="middle" fill="#3E4A51">2. Weiterleitung</text>
+
+  <!-- 2b: user authenticates with auth server directly (curved) -->
+  <path d="M 95 150 C 95 40, 670 40, 670 148" fill="none" stroke="#E8930A" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="380" y="55" text-anchor="middle" fill="#6B3A06">2a. Nutzer meldet sich an &amp; bestätigt Rechte</text>
+
+  <!-- 3: auth server -> app (code) -->
+  <line x1="588" y1="205" x2="460" y2="205" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="524" y="222" text-anchor="middle" fill="#3E4A51">3. Autorisierungscode</text>
+
+  <!-- 4: app <-> auth server token exchange -->
+  <path d="M 380 220 C 380 280, 670 280, 670 222" fill="none" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="524" y="298" text-anchor="middle" fill="#3E4A51">4. Code gegen Access Token tauschen</text>
+
+  <!-- 5: app -> user -->
+  <line x1="298" y1="205" x2="170" y2="205" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="234" y="222" text-anchor="middle" fill="#3E4A51">5. Zugriff gewährt</text>
+
+</svg>

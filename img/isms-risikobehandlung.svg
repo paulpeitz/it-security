@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="230" viewBox="0 0 880 230"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <rect x="15" y="20" width="200" height="175" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="2"/>
+  <text x="115" y="50" text-anchor="middle" font-weight="bold" font-size="15" fill="#1E4620">Vermeiden</text>
+  <text x="115" y="78" text-anchor="middle" font-size="12" fill="#1E4620">Risikoauslösende</text>
+  <text x="115" y="95" text-anchor="middle" font-size="12" fill="#1E4620">Aktivität aufgeben</text>
+  <text x="115" y="130" text-anchor="middle" font-size="12" fill="#5C6971">Beispiel: Altsystem</text>
+  <text x="115" y="147" text-anchor="middle" font-size="12" fill="#5C6971">abschalten statt</text>
+  <text x="115" y="164" text-anchor="middle" font-size="12" fill="#5C6971">weiterbetreiben</text>
+
+  <rect x="235" y="20" width="200" height="175" rx="8" fill="#E3F0F4" stroke="#1C7B96" stroke-width="2"/>
+  <text x="335" y="50" text-anchor="middle" font-weight="bold" font-size="15" fill="#0A3A4A">Reduzieren</text>
+  <text x="335" y="78" text-anchor="middle" font-size="12" fill="#0A3A4A">Maßnahmen umsetzen</text>
+  <text x="335" y="95" text-anchor="middle" font-size="12" fill="#0A3A4A">(häufigste Strategie)</text>
+  <text x="335" y="130" text-anchor="middle" font-size="12" fill="#5C6971">Beispiel: MFA,</text>
+  <text x="335" y="147" text-anchor="middle" font-size="12" fill="#5C6971">Netzsegmentierung,</text>
+  <text x="335" y="164" text-anchor="middle" font-size="12" fill="#5C6971">Schulung</text>
+
+  <rect x="455" y="20" width="200" height="175" rx="8" fill="#FCF0DC" stroke="#E8930A" stroke-width="2"/>
+  <text x="555" y="50" text-anchor="middle" font-weight="bold" font-size="15" fill="#8A4B08">Übertragen</text>
+  <text x="555" y="78" text-anchor="middle" font-size="12" fill="#8A4B08">Risiko teilweise an</text>
+  <text x="555" y="95" text-anchor="middle" font-size="12" fill="#8A4B08">Dritte weitergeben</text>
+  <text x="555" y="130" text-anchor="middle" font-size="12" fill="#5C6971">Beispiel: Cyber-</text>
+  <text x="555" y="147" text-anchor="middle" font-size="12" fill="#5C6971">versicherung,</text>
+  <text x="555" y="164" text-anchor="middle" font-size="12" fill="#5C6971">Outsourcing</text>
+
+  <rect x="675" y="20" width="200" height="175" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="2"/>
+  <text x="775" y="50" text-anchor="middle" font-weight="bold" font-size="15" fill="#8C0010">Akzeptieren</text>
+  <text x="775" y="78" text-anchor="middle" font-size="12" fill="#8C0010">Bewusst tragen –</text>
+  <text x="775" y="95" text-anchor="middle" font-size="12" fill="#8C0010">dokumentiert!</text>
+  <text x="775" y="130" text-anchor="middle" font-size="12" fill="#5C6971">Beispiel: Restrisiko</text>
+  <text x="775" y="147" text-anchor="middle" font-size="12" fill="#5C6971">nach Maßnahmen,</text>
+  <text x="775" y="164" text-anchor="middle" font-size="12" fill="#5C6971">freigegeben von GL</text>
+</svg>

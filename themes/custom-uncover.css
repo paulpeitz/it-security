@@ -1,0 +1,13 @@
+/* custom-uncover.css */
+/* @theme custom-uncover */
+
+@import 'uncover';
+
+h1, h2, h3, h4, h5, h6 {
+  color: #e2001a; /* DHBW Rot */
+}
+
+section {
+  /* Override default background */
+  background: #fff;
+}

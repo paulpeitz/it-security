@@ -1,0 +1,131 @@
+/* custom.css */
+/* @theme custom */
+
+@import 'default';
+
+/* DHBW-Farbschema für Grafiken: je Rolle eine Fläche (bg), eine Kontur (line)
+   und eine Textfarbe (fg). Inline-SVGs können die Variablen direkt nutzen,
+   externe .svg-Dateien führen dieselben Werte als Literale. */
+:root {
+  /* Primär: DHBW Rot – Risiko, Angriff, Warnung */
+  --dhbw-red: #E2001A;
+  --dhbw-red-fg: #8C0010;
+  --dhbw-red-fg-dark: #6E0010;
+  --dhbw-red-bg: #FBE3E6;
+
+  /* Neutral: DHBW Grau – Systeme, Linien, Fließtext */
+  --dhbw-grey: #5C6971;
+  --dhbw-grey-fg: #3E4A51;
+  --dhbw-grey-fg-dark: #22292D;
+  --dhbw-grey-line: #C3CBCF;
+  --dhbw-grey-bg: #EEF1F2;
+
+  /* Petrol – Akteure, Nutzer, Clients */
+  --dhbw-petrol: #1C7B96;
+  --dhbw-petrol-fg: #0A3A4A;
+  --dhbw-petrol-line: #8FC4D4;
+  --dhbw-petrol-bg: #E3F0F4;
+
+  /* Grün – sicher, erfolgreich, Soll-Zustand */
+  --dhbw-green: #4C9A2A;
+  --dhbw-green-fg: #1E4620;
+  --dhbw-green-line: #A8D08D;
+  --dhbw-green-bg: #EAF4E2;
+
+  /* Ocker – Hinweis, Übergang, Prüfschritt */
+  --dhbw-amber: #E8930A;
+  --dhbw-amber-fg: #8A4B08;
+  --dhbw-amber-fg-dark: #6B3A06;
+  --dhbw-amber-line: #F7D9A0;
+  --dhbw-amber-bg: #FCF0DC;
+
+  /* Pflaume – Sonderfälle, zusätzliche Kategorie */
+  --dhbw-plum: #7D3C82;
+  --dhbw-plum-fg: #5A2A5E;
+  --dhbw-plum-fg-dark: #3D1C40;
+  --dhbw-plum-bg: #F0E6F1;
+}
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #e2001a; /* DHBW Rot */
+  }
+
+  h1 {
+    position: absolute;
+    top: 40px;
+    left: 75px;
+    right: 75px;
+  }
+
+ section.title h1 {
+  font-size: 4em;
+}
+
+ section.title h2 {
+  font-size: 3em;
+}
+
+ section.chapter h1 {
+  font-size: 2.5em;
+}
+
+ section.chapter h2 {
+  font-size: 2em;
+}
+
+ section.biglist li{
+  line-height: 1.7;
+  font-size: 24pt;
+}
+
+ section.biglist p{
+  line-height: 1.7;
+  font-size: 24pt;
+}
+
+ section.big p{
+  line-height: 1.7;
+  font-size: 24pt;
+}
+
+ section.huge p{
+  line-height: 1.9;
+  font-size: 30pt;
+}
+
+ section.small li{
+  line-height: 1.2;
+  font-size: 20pt;
+}
+
+  section.normal p {
+  line-height: 1.5;
+  font-size: 22pt;
+}
+
+
+  .columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.columns3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+} 
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+.fa-twitter { color: aqua; }
+.fa-mastodon { color: purple; }
+.fa-linkedin { color: blue; }
+.fa-window-maximize { color: skyblue; }
+
+svg[id^="mermaid-"] { 
+  max-width: 960px; 
+  max-height: 600px; 
+}
+
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css'

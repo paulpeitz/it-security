@@ -1,0 +1,25 @@
+/* custom-gaia.css */
+/* @theme custom-gaia */
+
+@import 'gaia';
+
+h1, h2, h3, h4, h5, h6 {
+  color: #e2001a; /* DHBW Rot */
+}
+
+section {
+  /* Override default background */
+  background: #fff;
+}
+
+footer {
+  /* Unset default placing inherited from the built-in theme */
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+
+  /* Place to right-bottom */
+  right: 20px;
+  bottom: 20px;
+}

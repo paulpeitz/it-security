@@ -1,0 +1,6 @@
+{
+  "markdown.marp.themes": [
+    "./themes/custom.css",
+    "./themes/db-konzern.css"
+  ]
+}

@@ -1,0 +1,51 @@
+<svg width="700" height="320" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E8930A"/>
+    </marker>
+  </defs>
+
+  <!-- Verantwortlicher -->
+  <rect x="40" y="40" width="180" height="70" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="2"/>
+  <text x="130" y="70" text-anchor="middle" font-weight="bold">Verantwortlicher</text>
+  <text x="130" y="90" text-anchor="middle" font-size="11">legt Zweck &amp; Mittel fest</text>
+
+  <!-- Auftragsverarbeiter -->
+  <rect x="40" y="200" width="180" height="70" rx="8" fill="#EEF1F2" stroke="#5C6971" stroke-width="2"/>
+  <text x="130" y="230" text-anchor="middle" font-weight="bold">Auftragsverarbeiter</text>
+  <text x="130" y="250" text-anchor="middle" font-size="11">verarbeitet nach Weisung</text>
+
+  <!-- Betroffene Person -->
+  <rect x="460" y="120" width="180" height="70" rx="8" fill="#E3F0F4" stroke="#1C7B96" stroke-width="2"/>
+  <text x="550" y="150" text-anchor="middle" font-weight="bold">Betroffene Person</text>
+  <text x="550" y="170" text-anchor="middle" font-size="11">deren Daten verarbeitet werden</text>
+
+  <!-- Aufsichtsbehörde -->
+  <rect x="460" y="10" width="180" height="70" rx="8" fill="#FCF0DC" stroke="#E8930A" stroke-width="2"/>
+  <text x="550" y="40" text-anchor="middle" font-weight="bold">Aufsichtsbehörde</text>
+  <text x="550" y="60" text-anchor="middle" font-size="11">kontrolliert &amp; sanktioniert</text>
+
+  <!-- Verantwortlicher -> Auftragsverarbeiter -->
+  <line x1="130" y1="110" x2="130" y2="198" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="140" y="160" font-size="11">beauftragt (AVV)</text>
+
+  <!-- Verantwortlicher -> Betroffene Person -->
+  <line x1="220" y1="90" x2="458" y2="145" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="260" y="105" font-size="11">verarbeitet Daten von</text>
+
+  <!-- Auftragsverarbeiter -> Betroffene Person -->
+  <line x1="220" y1="225" x2="458" y2="175" stroke="#3E4A51" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="260" y="230" font-size="11">verarbeitet Daten von</text>
+
+  <!-- Aufsichtsbehörde -> Verantwortlicher (dashed) -->
+  <line x1="460" y1="45" x2="222" y2="60" stroke="#E8930A" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrow-orange)"/>
+  <text x="270" y="35" font-size="11" fill="#A75D0A">kontrolliert</text>
+
+</svg>

@@ -1,0 +1,62 @@
+<svg width="760" height="360" xmlns="http://www.w3.org/2000/svg"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/>
+    </marker>
+  </defs>
+
+  <!-- Titles -->
+  <text x="190" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#22292D">Symmetrisch</text>
+  <text x="570" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#22292D">Asymmetrisch</text>
+  <line x1="380" y1="40" x2="380" y2="340" stroke="#C3CBCF" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- ===== Symmetric ===== -->
+  <!-- Alice -->
+  <rect x="30" y="150" width="90" height="60" rx="8" fill="#E3F0F4" stroke="#1C7B96" stroke-width="2"/>
+  <text x="75" y="185" text-anchor="middle" font-weight="bold" fill="#0A3A4A">Alice</text>
+  <!-- Bob -->
+  <rect x="260" y="150" width="90" height="60" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="2"/>
+  <text x="305" y="185" text-anchor="middle" font-weight="bold" fill="#1E4620">Bob</text>
+
+  <!-- shared key both sides -->
+  <text x="75" y="130" text-anchor="middle" font-size="20" fill="#E2001A">&#128273;</text>
+  <text x="305" y="130" text-anchor="middle" font-size="20" fill="#E2001A">&#128273;</text>
+  <text x="190" y="118" text-anchor="middle" font-weight="bold" fill="#E2001A">gleicher Schlüssel</text>
+
+  <!-- channel -->
+  <line x1="120" y1="180" x2="260" y2="180" stroke="#3E4A51" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="260" y1="200" x2="120" y2="200" stroke="#3E4A51" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- key exchange problem -->
+  <rect x="95" y="240" width="190" height="70" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="2"/>
+  <text x="190" y="268" text-anchor="middle" font-weight="bold" fill="#8C0010">Problem:</text>
+  <text x="190" y="290" text-anchor="middle" fill="#8C0010">Schlüssel sicher</text>
+  <text x="190" y="306" text-anchor="middle" fill="#8C0010">austauschen?</text>
+
+  <!-- ===== Asymmetric ===== -->
+  <!-- Alice -->
+  <rect x="410" y="150" width="90" height="60" rx="8" fill="#E3F0F4" stroke="#1C7B96" stroke-width="2"/>
+  <text x="455" y="185" text-anchor="middle" font-weight="bold" fill="#0A3A4A">Alice</text>
+  <!-- Bob -->
+  <rect x="640" y="150" width="90" height="60" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="2"/>
+  <text x="685" y="185" text-anchor="middle" font-weight="bold" fill="#1E4620">Bob</text>
+
+  <!-- Bob key pair -->
+  <text x="685" y="128" text-anchor="middle" font-size="18">&#128275;</text>
+  <text x="685" y="112" text-anchor="middle" font-size="11" fill="#3E4A51">öffentlich</text>
+  <text x="685" y="248" text-anchor="middle" font-size="18" fill="#E2001A">&#128273;</text>
+  <text x="685" y="268" text-anchor="middle" font-size="11" fill="#3E4A51">privat (geheim)</text>
+
+  <!-- Alice uses public key -->
+  <text x="455" y="128" text-anchor="middle" font-size="18">&#128275;</text>
+  <text x="455" y="112" text-anchor="middle" font-size="11" fill="#3E4A51">Bobs öffentl.</text>
+
+  <!-- channel encrypt -->
+  <line x1="500" y1="180" x2="640" y2="180" stroke="#3E4A51" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="570" y="172" text-anchor="middle" font-size="11" fill="#3E4A51">verschlüsselt</text>
+
+  <!-- ok box -->
+  <rect x="475" y="290" width="190" height="50" rx="8" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="2"/>
+  <text x="570" y="320" text-anchor="middle" font-weight="bold" fill="#1E4620">kein Austauschproblem</text>
+</svg>

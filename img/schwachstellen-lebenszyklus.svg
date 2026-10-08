@@ -1,0 +1,10 @@
+<svg width="700" height="200" xmlns="http://www.w3.org/2000/svg" style="font-family: Arial, sans-serif; font-size: 13px">
+<defs><marker id="a1" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#3E4A51"/></marker></defs>
+<line x1="40" y1="80" x2="670" y2="80" stroke="#3E4A51" stroke-width="3" marker-end="url(#a1)"/>
+<circle cx="70" cy="80" r="9" fill="#E3F0F4" stroke="#1C7B96" stroke-width="3"/><text x="70" y="55" text-anchor="middle">Entdeckung</text>
+<circle cx="210" cy="80" r="9" fill="#E3F0F4" stroke="#1C7B96" stroke-width="3"/><text x="210" y="55" text-anchor="middle">Meldung</text>
+<circle cx="350" cy="80" r="9" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="3"/><text x="350" y="55" text-anchor="middle">Patch-Release</text>
+<circle cx="490" cy="80" r="9" fill="#FBE3E6" stroke="#E2001A" stroke-width="3"/><text x="490" y="55" text-anchor="middle">Exploit</text>
+<circle cx="630" cy="80" r="9" fill="#EAF4E2" stroke="#4C9A2A" stroke-width="3"/><text x="630" y="55" text-anchor="middle">Rollout</text>
+<path d="M350 105 v12 h280 v-12" fill="none" stroke="#E2001A" stroke-width="3"/><rect x="380" y="130" width="220" height="34" rx="8" fill="#FBE3E6" stroke="#E2001A" stroke-width="2"/><text x="490" y="152" text-anchor="middle">Angriffsfenster</text>
+</svg>

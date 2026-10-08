@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330"
+     style="font-family: Arial, sans-serif; font-size: 13px">
+
+  <defs>
+    <marker id="pyrArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5C6971"/>
+    </marker>
+  </defs>
+
+  <polygon points="410,15 480,85 340,85" fill="#FBE3E6" stroke="#E2001A" stroke-width="2"/>
+  <polygon points="335,90 485,90 555,160 265,160" fill="#FCF0DC" stroke="#E8930A" stroke-width="2"/>
+  <polygon points="260,165 560,165 630,235 190,235" fill="#E3F0F4" stroke="#1C7B96" stroke-width="2"/>
+  <polygon points="185,240 635,240 705,310 115,310" fill="#EEF1F2" stroke="#5C6971" stroke-width="2"/>
+
+  <text x="410" y="68" text-anchor="middle" font-weight="bold" fill="#8C0010">Leitlinie</text>
+  <text x="410" y="132" text-anchor="middle" font-weight="bold" fill="#8A4B08">Richtlinien</text>
+  <text x="410" y="207" text-anchor="middle" font-weight="bold" fill="#0A3A4A">Konzepte &amp; Verfahrensanweisungen</text>
+  <text x="410" y="282" text-anchor="middle" font-weight="bold" fill="#3E4A51">Arbeitsanweisungen, Checklisten, Nachweise</text>
+
+  <text x="722" y="60" fill="#5C6971">Wozu? – Management</text>
+  <text x="722" y="130" fill="#5C6971">Was? – Fachverantwortliche</text>
+  <text x="722" y="205" fill="#5C6971">Wie? – Umsetzende</text>
+  <text x="722" y="280" fill="#5C6971">Belege – Betrieb</text>
+
+  <line x1="60" y1="310" x2="60" y2="20" stroke="#5C6971" stroke-width="1.5" marker-end="url(#pyrArrow)"/>
+  <text x="50" y="180" text-anchor="middle" fill="#5C6971" transform="rotate(-90 50 180)">Verbindlichkeit / Abstraktion</text>
+</svg>
