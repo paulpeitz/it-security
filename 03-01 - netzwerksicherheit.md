@@ -486,7 +486,7 @@ Defense in Depth ist das Leitprinzip der gesamten Vorlesung. Eine Firewall verhi
 ---
 # Defense in Depth als Diagramm
 
-![w:600 center](img/defense-in-depth.svg)
+![w:1200 center](img/defense-in-depth.svg)
 
 <!-- _notes:
 Das Diagramm zeigt konzentrische Schutzringe vom Perimeter bis zu den Daten. Dieses Bild ist nützlich, darf aber nicht als vollständig starre Burg verstanden werden, weil Cloud und Homeoffice den klassischen Rand auflösen. Entscheidend bleibt die Idee, dass ein Angreifer nach dem Überwinden einer Kontrolle auf weitere Hürden trifft. Datenverschlüsselung, Zugriffsprüfung und Überwachung wirken auch innerhalb des Netzes. Beim Lernen sollte zu jedem Ring ein Beispiel und sein verbleibendes Risiko genannt werden können.
