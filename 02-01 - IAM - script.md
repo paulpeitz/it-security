@@ -1,19 +1,7 @@
----
-marp: true
-theme: custom
-paginate: false
-html: true
-footer: ![w:280](img/dhbw-ka.svg)
-title: Identity & Access Management
----
-<!-- _class: title -->
 # Identity & Access Management
-
-<br><br><br><br><br><br>
 
 ## Wer bist du – und was darfst du?
 
-<!-- _notes:
 ### 💡 Das große Ganze (Warum IAM das Fundament moderner Unternehmen ist)
 In der modernen Arbeitswelt arbeiten Menschen im Homeoffice, nutzen Cloud-Dienste und greifen mit mobilen Geräten weltweit auf Unternehmensdaten zu. Die klassische starre Firmen-Burgmauer gibt es nicht mehr – die neue Sicherheitsgrenze ist die **Identität**.
 Identity & Access Management (IAM) ist das Nervensystem jeder Organisation: Es steuert bei jedem Zugriff, wer eine Person ist und welche Daten sie einsehen oder bearbeiten darf.
@@ -29,10 +17,9 @@ Dieser Foliensatz führt dich Schritt für Schritt durch das Thema:
 
 ### ❓ Prüfungsfokus
 IAM ist **kein reines IT-Softwareprodukt**, sondern eine organisatorisch-technische Gesamtlösung aus Menschen, Prozessen, Richtlinien und Systemen. In der Klausur musst du in der Lage sein, Berechtigungsprobleme in Unternehmen zu analysieren, Fachbegriffe trennscharf abzugrenzen (z. B. Authentifizierung vs. Autorisierung) und für gegebene Szenarien praxisgerechte IAM-Maßnahmen vorzuschlagen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Agenda
 
 - **IAM verstehen** – Geschäftliche Bedeutung und zentrale Begriffe
@@ -41,7 +28,6 @@ IAM ist **kein reines IT-Softwareprodukt**, sondern eine organisatorisch-technis
 - **Berechtigungen beherrschen** – Rollen, Kontrollen und Governance
 - **IAM beraten** – Bedarf erkennen, Nutzen vermitteln, Einführung begleiten
 
-<!-- _notes:
 ### 💡 Strukturüberblick (Der Vorlesungsfahrplan)
 Die Agenda folgt einer klaren didaktischen Reise vom geschäftlichen Problem bis zum Beratungsprojekt:
 - **Block 1 (Verstehen):** Schafft das Fundament – warum Identity Management weit mehr ist als nur eine Anmeldemaske.
@@ -55,16 +41,13 @@ Die Agenda folgt einer klaren didaktischen Reise vom geschäftlichen Problem bis
 
 ### ❓ Typische Klausurverknüpfung
 Prüfungsfragen verknüpfen häufig organisatorische Probleme mit technischen Ursachen. Du musst erklären können, warum selbst die teuerste IAM-Software versagt, wenn HR-Prozesse nicht abgestimmt sind oder Fachbereiche keine Verantwortung für ihre Rollen übernehmen.
--->
 
 ---
-<!-- _class: chapter -->
 
 # IAM verstehen
 
 ## Mehr als Login und Passwort
 
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir räumen mit dem größten Missverständnis auf: IAM ist nicht einfach das Windows-Passwort oder das Login-Fenster. Es ist die strategische Fähigkeit eines Unternehmens, Zugriffe über hunderte Systeme hinweg sicher, nachvollziehbar und wirtschaftlich zu steuern. In diesem Kapitel lernst du die geschäftlichen Treiber kennen, die hinter jedem IAM-Projekt stehen.
 
@@ -73,9 +56,9 @@ Du verstehst IAM als Zusammenspiel aus Prozessen, Menschen, Regeln und Technik. 
 
 ### ❓ Typische Schwerpunkte
 Die Definition von IAM, die zwei Leitfragen („Wer bist du?“ und „Was darfst du?“), die drei Kernperspektiven (Sicherheit, Effizienz, Compliance) sowie die Rollen der verschiedenen Stakeholder.
--->
 
 ---
+
 # Was ist IAM?
 
 - **Identity & Access Management (IAM)**: Verwaltung digitaler Identitäten und ihrer Zugriffe
@@ -87,7 +70,6 @@ Die Definition von IAM, die zwei Leitfragen („Wer bist du?“ und „Was darfs
 
 > **Merksatz:** Die richtige Identität erhält den richtigen Zugriff – zur richtigen Zeit.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 IAM ist das Kontrollzentrum für digitale Zugänge in Unternehmen. Es beantwortet immer zwei grundlegende Fragen:
 1. **Wer bist du?** (Identitätsprüfung / Authentifizierung): Bist du wirklich Max Mustermann?
@@ -106,10 +88,9 @@ IAM ist das Kontrollzentrum für digitale Zugänge in Unternehmen. Es beantworte
 - **Leitfrage 1:** **„Wer bist du?“** $\rightarrow$ Eindeutige Feststellung der Identität (Authentifizierung).
 - **Leitfrage 2:** **„Was darfst du?“** $\rightarrow$ Zuweisung und Überprüfung erlaubter Aktionen (Autorisierung).
 - **Zeitdimension:** Zugriffsrechte dürfen nur für die **Dauer des tatsächlichen Bedarfs** gewährt werden, um das Risiko verwaister Konten und Berechtigungsüberhänge (*Privilege Creep*) zu minimieren.
--->
 
 ---
-<!-- _class: normal -->
+
 # Analogie: Das Bürogebäude
 
 <div class="columns">
@@ -133,7 +114,6 @@ IAM ist das Kontrollzentrum für digitale Zugänge in Unternehmen. Es beantworte
 </div>
 </div>
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Digitale Sicherheit folgt exakt denselben logischen Prinzipien wie die physische Sicherheit in einem Bürokomplex:
 - Der **Mitarbeiterausweis** entspricht dem **digitalen Benutzerkonto** (deine Repräsentation im System).
@@ -153,9 +133,9 @@ Digitale Sicherheit folgt exakt denselben logischen Prinzipien wie die physische
 - **Empfangskontrolle:** **Authentifizierung** (Verifizierung der Identitätsbehauptung).
 - **Schließplan:** **Autorisierung / Zugriffssteuerung** (Regeln, wer auf welche Ressourcen zugreifen darf).
 - **Besucherprotokoll:** **Audit Logging / Protokollierung** (Revisionssichere Aufzeichnung aller Zugriffe).
--->
 
 ---
+
 # Warum ist IAM ein Geschäftsthema?
 
 - **Sicherheit**: Missbrauch von Konten und Daten begrenzen
@@ -166,7 +146,6 @@ Digitale Sicherheit folgt exakt denselben logischen Prinzipien wie die physische
 
 > IAM beeinflusst Produktivität, Kundenerlebnis und Risikokosten zugleich.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Viele Führungskräfte sehen IAM fälschlicherweise als lästige IT-Kostenstelle. In Wahrheit berührt IAM alle Nervenstränge des Geschäfts:
 - **Sicherheit:** Schützt vor Erpressungstrojanern und Datendiebstahl über gekaperte Mitarbeiter-Accounts.
@@ -185,9 +164,9 @@ Viele Führungskräfte sehen IAM fälschlicherweise als lästige IT-Kostenstelle
 - **1. Prozesseffizienz:** Automatisierung von Freigaben und Self-Service-Funktionen reduzieren manuelle Helpdesk-Tickets (z. B. Passwort-Resets) und senken Verwaltungskosten.
 - **2. Compliance & Revisionssicherheit:** Lückenlose Nachweise über erteilte und entzogene Berechtigungen verhindern Beanstandungen und Strafen bei Audits (z. B. DSGVO, ISO 27001).
 - **3. Time-to-Market / Produktivität:** Neue Mitarbeiter oder externe Partner können ab Tag 1 produktiv arbeiten (**Day-One-Readiness**), statt Wochen auf Zugänge zu warten.
--->
 
 ---
+
 # Typische Auslöser für IAM-Projekte
 
 - Prüfung beanstandet fehlende Zugriffsnachweise
@@ -197,7 +176,6 @@ Viele Führungskräfte sehen IAM fälschlicherweise als lästige IT-Kostenstelle
 - Partnerzugänge werden per E-Mail und Excel verwaltet
 - Kunden brechen Registrierung oder Anmeldung ab
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Unternehmen wachen meistens erst auf, wenn es irgendwo wehtut. Niemand startet ein Millionenprojekt aus reiner Begeisterung für Rollenmodelle.
 *Klassische Schmerzpunkte:*
@@ -216,9 +194,9 @@ Unternehmen wachen meistens erst auf, wenn es irgendwo wehtut. Niemand startet e
 **Antwort:**
 - **Gestörter Prozess:** Der **Leaver-Prozess** (Offboarding / Deprovisionierung) im Identitätslebenszyklus.
 - **Organisatorische Ursache:** Fehlende oder verzögerte Schnittstelle zwischen **Personalabteilung (HR)** und **IT-Betrieb**. Kündigungen werden in der Personalakte vermerkt, aber nicht automatisiert oder zeitnah an die Zugriffsverwaltung gemeldet.
--->
 
 ---
+
 # Wer hat ein Interesse an IAM?
 
 | Stakeholder | Typisches Ziel |
@@ -230,7 +208,6 @@ Unternehmen wachen meistens erst auf, wenn es irgendwo wehtut. Niemand startet e
 | Revision & Compliance | Entscheidungen nachweisen können |
 | Kunden & Partner | Einfacher, verlässlicher Zugang |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 IAM ist ein diplomatischer Drahtseilakt, weil sechs verschiedene Interessengruppen völlig unterschiedliche Ziele verfolgen:
 - Die **Geschäftsleitung** will Risiken minimieren und Kosten senken.
@@ -250,10 +227,9 @@ IAM ist ein diplomatischer Drahtseilakt, weil sechs verschiedene Interessengrupp
 **Antwort:**
 - **Zielkonflikt:** IT-Sicherheit fordert restriktive Rechtevergabe (**Least Privilege**) und strenge Genehmigungsworkflows; der Fachbereich fordert sofortige Arbeitsfähigkeit und minimale Reibung im Tagesgeschäft.
 - **Praxistaugliche Lösung:** Einführung von **standardisierten Rollen (RBAC)** für Basisberechtigungen (automatische Bereitstellung ohne Verzögerung) kombiniert mit transparenten Self-Service-Workflows nur für risikoreiche Sonderrechte.
--->
 
 ---
-<!-- _class: normal -->
+
 # Drei Perspektiven ausbalancieren
 
 <div class="columns">
@@ -277,7 +253,6 @@ IAM ist ein diplomatischer Drahtseilakt, weil sechs verschiedene Interessengrupp
 
 > **Ziel:** Angemessene Kontrolle statt maximaler Kontrolle.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Sicherheit ist kein Selbstzweck – es geht um die goldene Mitte:
 - **Zu wenig Kontrolle:** Jeder darf alles $\rightarrow$ Ein einziger gehackter Praktikanten-Account reicht aus, um das gesamte Unternehmen lahmzulegen.
@@ -293,9 +268,9 @@ Sicherheit ist kein Selbstzweck – es geht um die goldene Mitte:
 **Antwort:**
 - **Entstehung von Schatten-IT:** Übermäßige bürokratische Hürden und langsame Freigaben behindern die operative Arbeit; Mitarbeitende weichen auf nicht freigegebene Werkzeuge aus (z. B. private Cloud-Dienste, unverschlüsselte Messenger).
 - **Vollständiger Kontrollverlust:** Die offizielle IT verliert jegliche Sichtbarkeit und Kontrollmöglichkeit über die Verarbeitung und Speicherung sensibler Geschäftsdaten.
--->
 
 ---
+
 # IAM als Prozesskette
 
 1. Identität entsteht oder wird erfasst
@@ -306,7 +281,6 @@ Sicherheit ist kein Selbstzweck – es geht um die goldene Mitte:
 
 > Schwachstellen entstehen häufig an den **Übergaben** zwischen Bereichen.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 IAM ist kein starrer Zustand, sondern eine fortlaufende Kette aus 5 Schritten:
 1. *Identität entsteht:* Ein Arbeitsvertrag wird unterschrieben (HR erfasst Stammdaten).
@@ -325,16 +299,13 @@ IAM ist kein starrer Zustand, sondern eine fortlaufende Kette aus 5 Schritten:
 **Antwort:**
 - **5 Phasen:** 1. Identitätserfassung $\rightarrow$ 2. Bedarfs- und Rollenbestimmung $\rightarrow$ 3. Beantragung und Bereitstellung $\rightarrow$ 4. Nutzung und Überprüfung $\rightarrow$ 5. Anpassung oder Beendigung.
 - **Risiko der Übergabepunkte:** An Schnittstellen zwischen Organisationseinheiten (HR, Fachbereich, IT) existieren häufig Medienbrüche oder unklare Verantwortlichkeiten. Verzögerungen oder Informationsverluste führen dazu, dass Berechtigungen zu spät oder gar nicht entzogen werden.
--->
 
 ---
-<!-- _class: chapter -->
 
 # Identitäten steuern
 
 ## Vom Eintritt bis zum Austritt
 
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Jetzt tauchen wir in das Herzstück des Identity Managements ein: den **Identitätslebenszyklus**. Menschen treten in Unternehmen ein, wechseln Teams, steigen auf und verlassen die Organisation wieder. Wir klären, wie digitale Rechte dieser realen Dynamik verlässlich folgen, ohne dass gefährliche Altlasten zurückbleiben.
 
@@ -343,9 +314,9 @@ Du beherrschst das Joiner-Mover-Leaver-Modell (JML), verstehst das Phänomen *Pr
 
 ### ❓ Typische Schwerpunkte
 Definition und Risiken der Phasen Joiner, Mover und Leaver; der Mover als komplexeste Phase; der Begriff der führenden Datenquelle (Authoritative Source); Funktionstrennungskonflikte beim Abteilungswechsel.
--->
 
 ---
+
 # Was ist eine digitale Identität?
 
 - Digitale Repräsentation einer Person, Organisation oder eines Systems
@@ -355,7 +326,6 @@ Definition und Risiken der Phasen Joiner, Mover und Leaver; der Mover als komple
 
 > Eine Person kann mehrere Konten besitzen – aber nur eine fachliche Identität.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Unterscheide glasklar zwischen einer **Identität** und einem **Benutzerkonto (Account)**:
 - Eine Person (z. B. Max Mustermann) hat genau **eine fachliche Identität** mit festen Attributen (Personalnummer 4711, Name, Abteilung Vertrieb).
@@ -372,9 +342,9 @@ Unterscheide glasklar zwischen einer **Identität** und einem **Benutzerkonto (A
 - **Digitale Identität:** Die eindeutige, übergeordnete Repräsentation einer realen Person mit ihren Merkmalen (Personalnummer, Name, Stammkostenstelle). Es gibt pro Person genau **eine** Identität.
 - **Benutzerkonto (Account):** Eine technische Kennung in einem spezifischen IT-System. Eine Identität besitzt typischerweise **mehrere Konten** (1:n-Beziehung).
 - **Beispiel:** Mitarbeiterin Anna besitzt eine Personal-ID (Identität), verfügt aber über separate Benutzerkonten in Microsoft 365, SAP ERP und Salesforce.
--->
 
 ---
+
 # Nicht nur Mitarbeitende
 
 | Identitätsgruppe | Beispiel | Besondere Frage |
@@ -385,7 +355,6 @@ Unterscheide glasklar zwischen einer **Identität** und einem **Benutzerkonto (A
 | Kunden | Portal- oder App-Nutzer | Wie einfach darf Registrierung sein? |
 | Technische Identitäten | Dienste, Geräte | Wer ist fachlich verantwortlich? |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein großer Fehler vieler Unternehmen ist es, nur an feste Mitarbeiter zu denken. Ein modernes IAM muss 5 völlig verschiedene Gruppen beherrschen:
 - **Mitarbeitende:** Der Standardfall mit festem Arbeitsvertrag.
@@ -403,10 +372,9 @@ Ein großer Fehler vieler Unternehmen ist es, nur an feste Mitarbeiter zu denken
 **Antwort:**
 - **Externe Dienstleister:** Werden oft nicht im regulären HR-System geführt; ohne automatisiertes **Ablaufdatum (Hard Expiry)** und internen Paten bleiben Konten nach Projektende unbemerkt aktiv.
 - **Technische Service-Konten:** Besitzen häufig weitreichende System- und Administrationsrechte, sind aber oft keiner natürlichen Person zugeordnet $\rightarrow$ Fehlende Verantwortung, selten rotierte Passwörter und hohes Missbrauchspotenzial.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Der Identitätslebenszyklus
 
 - **Joiner**: Eintritt oder erstmalige Registrierung
@@ -416,7 +384,6 @@ Ein großer Fehler vieler Unternehmen ist es, nur an feste Mitarbeiter zu denken
 
 > Änderungen sind der Normalfall – IAM muss sie zuverlässig begleiten.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Der Identitätslebenszyklus fasst die Stationen eines Mitarbeiters zusammen (**JML-R**):
 - **Joiner (Eintritt):** Neue Identität anlegen, Grundausstattung an Rechten bereitstellen.
@@ -434,10 +401,9 @@ Der Identitätslebenszyklus fasst die Stationen eines Mitarbeiters zusammen (**J
 **Antwort:**
 - **Phasen:** **Joiner** (Eintritt), **Mover** (Rollen-/Abteilungswechsel), **Leaver** (Austritt) und **Review** (Rezertifizierung).
 - **Risiko der Mover-Phase:** Bei internen Wechseln werden typischerweise neue Rechte schnell hinzugefügt, das **Entziehen der alten Rechte wird jedoch versäumt**. Dies führt zu unkontrollierter Berechtigungsakkumulation (**Privilege Creep**).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Joiner: Schnell und kontrolliert starten
 
 - Stammdaten rechtzeitig und korrekt erfassen
@@ -446,7 +412,6 @@ Der Identitätslebenszyklus fasst die Stationen eines Mitarbeiters zusammen (**J
 - Startdatum und Vertragsart berücksichtigen
 - Arbeitsfähigkeit am ersten Tag sicherstellen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Nichts ist frustrierender und teurer, als wenn ein neuer Mitarbeiter an seinem ersten Tag am Schreibtisch sitzt und zwei Wochen lang Däumchen dreht, weil er keinen Laptop-Login hat.
 *Die Lösung:* **Standardisierte Rollen**.
@@ -462,10 +427,9 @@ Spezielle Sonderrechte (z. B. Zeichnungsberechtigung bis 50.000 €) müssen dag
 **Antwort:**
 - **Balance:** Zuweisung von **Standard-Basisberechtigungen (Birthright)** vollautomatisch anhand von Stellenprofil und Abteilung ab Tag 1; separate Zuweisung von **Sonderrechten** nur über dokumentierte, mehrstufige Genehmigungsworkflows.
 - **Erfolgskennzahl:** **Time-to-Productivity / Day-One-Readiness** (Prozentsatz der Neueinstellungen, die an ihrem ersten Arbeitstag vollständig arbeitsfähig ausgestattet sind).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Mover: Rechte folgen der Aufgabe
 
 - Neue Aufgabe erfordert neue Zugriffe
@@ -476,7 +440,6 @@ Spezielle Sonderrechte (z. B. Zeichnungsberechtigung bis 50.000 €) müssen dag
 
 > **Privilege Creep**: Rechte wachsen über die Zeit, obwohl der Bedarf entfällt.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 *Alltagsanalogie:* Ein Schneeball, der einen Hang hinabrollt, wird immer größer.
 Genau das passiert ohne sauberen Mover-Prozess: Ein Mitarbeiter fängt im Kundenservice an, wechselt ins Produktmanagement und wird später Teamleiter. Bei jedem Wechsel bekommt er neue Rechte dazu – aber niemand nimmt ihm die alten weg! Nach 5 Jahren hat er mehr Zugriffsrechte als der IT-Leiter.
@@ -493,10 +456,9 @@ Dieses Phänomen heißt **Privilege Creep** (schleichende Berechtigungsanhäufun
 - **Definition:** Die schleichende Kumulation von Zugriffsrechten über die Zeit, da bei internen Aufgaben- oder Rollenwechseln neue Rechte hinzukommen, alte Rechte aber nicht entzogen werden.
 - **Sicherheitsrisiko 1:** **Vergrößerter Schadensradius (Blast Radius)** bei einer Kontoübernahme durch Angreifer.
 - **Sicherheitsrisiko 2:** **Verletzung von Funktionstrennungen (Segregation of Duties)**, da Mitarbeiter unzulässige Rechtekombinationen über Abteilungsgrenzen hinweg behalten.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Leaver: Zugriffe sicher beenden
 
 - Austrittszeitpunkt eindeutig festlegen
@@ -505,7 +467,6 @@ Dieses Phänomen heißt **Privilege Creep** (schleichende Berechtigungsanhäufun
 - Daten und Aufgaben geordnet übergeben
 - Ausnahmen dokumentieren und befristen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wenn jemand das Unternehmen verlässt, muss der Zugriff restlos enden – pünktlich und vollständig.
 *Achtung vor der Cloud-Falle:* Es reicht heute nicht mehr, nur den Active-Directory-Account im Büro zu sperren! Was ist mit dem Smartphone mit E-Mail-App? Was ist mit aktiven Browser-Sitzungen (Cloud-Tokens für Salesforce oder Google Drive)?
@@ -521,9 +482,9 @@ Wenn jemand das Unternehmen verlässt, muss der Zugriff restlos enden – pünkt
 **Antwort:**
 - **Ursache:** Cloud-Dienste nutzen langlebige **Sitzungs-Tokens (z. B. OAuth Refresh Tokens)**. Ein Benutzer, der sich vor der Sperrung auf seinem privaten Smartphone oder Laptop angemeldet hat, bleibt weiterhin eingeloggt und kann Daten abrufen.
 - **Zwingende Zusatzmaßnahme:** **Sofortiger Widerruf aller aktiven Tokens und Sitzungen (Session Revocation)** sowie Entzug der Gerätezertifikate über das Mobile Device Management (MDM).
--->
 
 ---
+
 # Wer ist wofür verantwortlich?
 
 | Verantwortung | Typischer Eigentümer |
@@ -534,7 +495,6 @@ Wenn jemand das Unternehmen verlässt, muss der Zugriff restlos enden – pünkt
 | Technische Bereitstellung | IT-Betrieb |
 | Regelwerk und Kontrolle | Informationssicherheit / Compliance |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Viele denken: „Wenn jemand falsche Rechte hat, ist die IT schuld!“ Das ist völlig falsch.
 Die IT ist nur der **technische Handwerker (Data Custodian)**. Sie weiß überhaupt nicht, wer fachlich welche Kundendaten oder Finanzberichte einsehen darf!
@@ -553,10 +513,9 @@ Die IT ist nur der **technische Handwerker (Data Custodian)**. Sie weiß überha
 **Antwort:**
 - **Begründung:** Die IT verfügt weder über das betriebswirtschaftliche Fachwissen noch über den Einblick in die operative Aufgabenteilung, um die Notwendigkeit und Schutzbedürftigkeit eines Zugriffs fachlich zu bewerten.
 - **Verantwortliche Rolle:** Die Verantwortung liegt ausschließlich beim **Fachbereichseigentümer (Data Owner)** bzw. der disziplinarischen Führungskraft. Die IT fungiert lediglich als technischer Umsetzer (**Data Custodian**).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Die verlässliche Datenquelle
 
 - Eintritt, Wechsel und Austritt benötigen ein **führendes Signal**
@@ -567,7 +526,6 @@ Die IT ist nur der **technische Handwerker (Data Custodian)**. Sie weiß überha
 
 > Schlechte Eingangsdaten werden durch Automatisierung nur schneller verteilt.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Automatisierung ist wie ein Düsenjet: Wenn der Kompass falsch eingestellt ist, stürzt er nur schneller ab (**Garbage in, Garbage out**).
 Ein IAM-System braucht zwingend eine **führende Datenquelle (Authoritative Source / Single Source of Truth)** – in der Regel das HR-System (z. B. Workday, SAP).
@@ -583,10 +541,9 @@ Wenn in der Personalabteilung ein Austrittsdatum falsch abgetippt wird oder ein 
 **Antwort:**
 - **Begriff:** Das Primärsystem (meist das HR-System), das die rechtlich verbindlichen Masterdaten über Personen, Vertragsstatus und Organisationseinheiten hält und als Auslöser für IAM-Prozesse dient.
 - **Auswirkung mangelnder Datenqualität:** Fehlerhafte oder verspätete Einträge führen nach dem Prinzip **Garbage In, Garbage Out** zu falschen automatischen Zuweisungen, verfrühten Sperrungen oder verwaisten Konten (**Ghost Accounts**) nach dem Ausscheiden von Mitarbeitern.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Fallbeispiel: Wechsel in den Vertrieb
 
 - Mitarbeiter wechselt aus dem Einkauf in den Vertrieb
@@ -595,7 +552,6 @@ Wenn in der Personalabteilung ein Austrittsdatum falsch abgetippt wird oder ein 
 - Kritisch: Einkauf und Verkauf nicht unkontrolliert kombinieren
 - Ziel: Änderung pünktlich, vollständig und nachweisbar
 
-<!-- _notes:
 ### 💡 Was zeigt uns dieser Fall?
 Max wechselt vom Einkauf in den Vertrieb – der perfekte Prüfstein für jeden Mover-Prozess!
 Im Einkauf durfte Max Lieferanten anlegen und Bestellungen freigeben. Im Vertrieb soll er Angebote schreiben und Kundenverträge verhandeln.
@@ -614,9 +570,9 @@ Im Einkauf durfte Max Lieferanten anlegen und Bestellungen freigeben. Im Vertrie
 **Antwort:**
 - **Rechteanpassung:** Zuweisung von CRM- und Vertriebsrechten zum Stichtag; **vollständiger Entzug aller Einkaufsbefugnisse** (Bestellfreigaben, Lieferantenpflege, ERP-Einkaufsmodul).
 - **SoD-Konflikt:** Die Kombination von Beschaffungsbefugnissen (Einkauf) und Verkaufs-/Rabattbefugnissen (Vertrieb) ermöglicht **Betrug und Untreue** (z. B. Bevorzugung bestimmter Lieferanten, Eigenbestellungen, Verdeckung von Fehlbuchungen).
--->
 
 ---
+
 # Reifegrad des Identitätsmanagements
 
 | Stufe | Kennzeichen |
@@ -627,7 +583,6 @@ Im Einkauf durfte Max Lieferanten anlegen und Bestellungen freigeben. Im Vertrie
 | Automatisiert | Regelbasierte Bereitstellung und Entzug |
 | Gesteuert | Kennzahlen, Reviews und kontinuierliche Verbesserung |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Man kann nicht im Sprint auf Stufe 5 springen – ein Unternehmen muss die Reifegrade Schritt für Schritt durchlaufen:
 - **Stufe 1 (Reaktiv):** Chaos – Konten werden auf Zuruf per E-Mail oder Zuruf angelegt.
@@ -648,16 +603,13 @@ Man kann nicht im Sprint auf Stufe 5 springen – ein Unternehmen muss die Reife
 - **Erforderliche Schritte vor Automatisierung:**
   1. **Standardisierung (Stufe 2):** Definition verbindlicher Rollenprofile, Genehmigungsworkflows und Zuständigkeiten.
   2. **Integration (Stufe 3):** Anbindung einer verlässlichen führenden Datenquelle (HR) an die zentralen Verzeichnisdienste. Erst danach ist Automatisierung (Stufe 4) sinnvoll.
--->
 
 ---
-<!-- _class: chapter -->
 
 # Sicher anmelden
 
 ## Sicherheit und Nutzererlebnis verbinden
 
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Jetzt wechseln wir von der Verwaltung im Hintergrund zur sichtbaren Praxis: der **Anmeldung (Authentifizierung)**. Wir untersuchen, wie man sicherstellt, dass derjenige am Bildschirm auch wirklich der legitime Nutzer ist. Dabei beleuchten wir Passwörter, Multi-Faktor-Authentifizierung (MFA), Passkeys und Single Sign-On (SSO) – immer im Spannungsfeld zwischen maximaler Sicherheit und bestem Nutzerkomfort.
 
@@ -666,10 +618,9 @@ Du beherrschst die Authentifizierungsverfahren und ihre Schutzwirkung, kannst MF
 
 ### ❓ Typische Schwerpunkte
 Unterschied Authentifizierung vs. Autorisierung; die drei Nachweisfaktoren (Wissen, Besitz, Sein); Passwortentropie und Angriffsarten; SSO-Funktionsweise; Abgrenzung SAML, OIDC und OAuth 2.0.
--->
 
 ---
-<!-- _class: big -->
+
 # Authentifizierung und Autorisierung
 
 **Authentifizierung**: Ist die Person wirklich, wer sie vorgibt zu sein?
@@ -678,7 +629,6 @@ Die Schritte gehören zusammen, erfüllen aber verschiedene Zwecke
 
 > Reisepass bestätigt die Person – Bordkarte bestimmt Flug und Sitzplatz.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Dies ist die **wichtigste begriffliche Unterscheidung** im gesamten Fachgebiet:
 - **Authentifizierung (Identitätsprüfung):** „Bist du wirklich, wer du behauptest zu sein?“
@@ -697,9 +647,9 @@ Dies ist die **wichtigste begriffliche Unterscheidung** im gesamten Fachgebiet:
 - **Authentifizierung:** Der Nachweis und die Überprüfung einer behaupteten Identität (z. B. Eingabe von Benutzername, Passwort und MFA-Code bestätigt: „Ich bin Max Mustermann“).
 - **Autorisierung:** Die Prüfung und Gewährung konkreter Zugriffsrechte für die bereits authentifizierte Identität (z. B. System prüft: „Max Mustermann darf Rechnungen ansehen, aber keine Zahlungen freigeben“).
 - **Logische Reihenfolge:** Die Authentifizierung muss stets erfolgreich abgeschlossen sein, bevor eine Autorisierungsentscheidung getroffen werden kann.
--->
 
 ---
+
 # Drei Arten von Nachweisen
 
 | Faktor | Leitfrage | Beispiele |
@@ -711,7 +661,6 @@ Dies ist die **wichtigste begriffliche Unterscheidung** im gesamten Fachgebiet:
 - Kombination unterschiedlicher Faktoren erhöht die Sicherheit
 - Zwei Passwörter bleiben nur **ein** Faktor
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Jeder Identitätsnachweis basiert auf einer von drei Kategorien:
 1. **Wissen (Was du weißt):** Passwort, PIN, Antwort auf eine Geheimfrage.
@@ -732,9 +681,9 @@ Jeder Identitätsnachweis basiert auf einer von drei Kategorien:
   2. **Besitz (Possession):** z. B. Hardware-Sicherheitsschlüssel, Smartphone.
   3. **Sein / Inhärenz (Inherence):** z. B. Fingerabdruck, Gesichtsscan.
 - **Begründung:** Master-Passwort und Sicherheits-PIN stammen beide aus derselben Kategorie (**Wissen**). Eine echte 2FA erfordert zwingend die Kombination von Faktoren aus mindestens **zwei verschiedenen Kategorien**.
--->
 
 ---
+
 # Passwortstärke und Entropie
 
 - **Entropie**: Maß für die Unvorhersehbarkeit, angegeben in Bit
@@ -748,7 +697,6 @@ $$E = L \times \log_2(R)$$
 
 > `Unternehmen2026!` ist lang, aber wegen des Musters leicht vorhersagbar.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - **Entropie** ist das Maß für die **Unvorhersehbarkeit** eines Passworts in Bit. Je höher die Entropie, desto mehr Versuche braucht ein Angreifer im Durchschnitt, um das Passwort zu erraten.
 - *Die mathematische Formel ($E = L \times \log_2(R)$):* Sieht beeindruckend aus, hat aber einen gewaltigen Haken: Sie gilt nur, wenn jedes Zeichen **völlig zufällig** ausgewählt wurde!
@@ -764,9 +712,9 @@ $$E = L \times \log_2(R)$$
 - **Annahme der Gleichverteilung:** Die Formel unterstellt, dass jedes Zeichen aus dem Zeichensatz rein zufällig und mit identischer Wahrscheinlichkeit gewählt wird.
 - **Vorhersehbare menschliche Muster:** Menschen wählen reale Wörter, bekannte Jahreszahlen und typische Sonderzeichenplatzierungen am Ende.
 - **Angriffsmethoden:** Moderne Cracking-Tools nutzen Wörterbücher und regelbasierte Transformationen (Musteranalyse), wodurch solche Passwörter in Sekundenbruchteilen erraten werden.
--->
 
 ---
+
 # Länge schlägt bloße Komplexität
 
 | Beispiel | Zeichen | Grobe Einordnung |
@@ -781,7 +729,6 @@ $$E = L \times \log_2(R)$$
 - **Online-Angriff**: Anmeldesperren begrenzen Versuche
 - **Offline-Angriff**: Gestohlene Passwortdaten erlauben sehr viele Versuche
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - Die wichtigste Erkenntnis moderner Passwortrichtlinien: **Länge schlägt Komplexität!**
 - Eine Passphrase aus vier zufälligen Wörtern (z. B. `erdbeere-wolke-gitarre-schuh`) hat über 25 Zeichen, ist für Menschen kinderleicht zu merken, aber für Angreifer praktisch unknackbar.
@@ -798,9 +745,9 @@ $$E = L \times \log_2(R)$$
 **Antwort:**
 - **Online-Angriff:** Angriff über die Anmeldeschnittstelle eines aktiven Systems $\rightarrow$ Gegenmaßnahme: **Begrenzung der Anmeldeversuche (Rate Limiting / Account Lockout)**, CAPTCHAs, MFA.
 - **Offline-Angriff:** Angreifer hat Passwort-Hashes aus einer Datenbank entwendet und knackt sie lokal mit eigener Hardware $\rightarrow$ Gegenmaßnahme: **Große Passwortlänge (Passphrasen)** und **rechenintensive Hashverfahren mit Salt** (z. B. Argon2, bcrypt).
--->
 
 ---
+
 # Wie Angreifer Passwörter überwinden
 
 | Angriff | Prinzip | Wichtigste Gegenmaßnahme |
@@ -812,7 +759,6 @@ $$E = L \times \log_2(R)$$
 
 > Passwortstärke hilft gegen Erraten – nicht gegen jede Form des Diebstahls.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Passwörter werden selten durch geniale Mathematik geknackt, sondern durch vier pragmatische Angriffe:
 1. *Brute Force:* Blindes Durchprobieren aller Kombinationen (`aaa`, `aab` ...).
@@ -831,9 +777,9 @@ Passwörter werden selten durch geniale Mathematik geknackt, sondern durch vier 
 - **Prinzip:** Angreifer nutzen automatisierte Bots, um Kombinationen aus Benutzername/E-Mail und Passwort aus früheren Datenlecks massenhaft bei anderen Plattformen durchzuprobieren.
 - **Schwachstelle:** Da Passwörter dienstübergreifend wiederverwendet werden, besitzt der Angreifer bereits die korrekte Kombination im Klartext. Die Komplexität des Passworts spielt keine Rolle mehr.
 - **Gegenmaßnahmen:** **Einzigartige Passwörter je Dienst (Einsatz von Passwort-Managern)** sowie die zwingende Nutzung von **Multi-Faktor-Authentifizierung (MFA)**.
--->
 
 ---
+
 # Multi-Faktor-Authentifizierung
 
 - **Multi-Faktor-Authentifizierung (MFA)**: mindestens zwei unterschiedliche Nachweise
@@ -844,7 +790,6 @@ Passwörter werden selten durch geniale Mathematik geknackt, sondern durch vier 
   - Kritische Anwendungen
   - Ungewöhnliche Anmeldesituationen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 MFA ist der Lebensretter der IT-Sicherheit: Selbst wenn Kriminelle dein Passwort durch Phishing, Datenlecks oder Spähsoftware gestohlen haben, nützt es ihnen nichts – weil ihnen dein zweiter Faktor (Smartphone oder Sicherheitsschlüssel) fehlt!
 MFA verhindert über 99 % aller automatisierten Kontoübernahmen.
@@ -861,9 +806,9 @@ MFA verhindert über 99 % aller automatisierten Kontoübernahmen.
 - **Prioritäre Szenarien:**
   1. **Administratorenkonten (PAM):** Wegen des maximalen Schadenspotenzials bei Kompromittierung.
   2. **Externe Fernzugriffe (Remote Access / Homeoffice / VPN):** Da Anmeldeversuche aus dem unsicheren öffentlichen Internet erfolgen.
--->
 
 ---
+
 # MFA aus Geschäftssicht bewerten
 
 | Kriterium | Leitfrage |
@@ -875,7 +820,6 @@ MFA verhindert über 99 % aller automatisierten Kontoübernahmen.
 | Wiederherstellung | Was geschieht bei Verlust? |
 | Kosten | Welche Einführungs- und Supportkosten entstehen? |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 In der Praxis kann man nicht einfach „das technisch stärkste Verfahren“ einführen, ohne an den Geschäftsbetrieb zu denken:
 - *Hardware-Token (YubiKey):* Extrem sicher gegen Phishing, aber hohe Anschaffungskosten und Verlustgefahr.
@@ -892,10 +836,9 @@ In der Praxis kann man nicht einfach „das technisch stärkste Verfahren“ ein
 **Antwort:**
 - **Kriterium 1: Nutzererlebnis & Konnektivität (UX / Reichweite):** Das Verfahren muss auch bei schwacher Netzabdeckung reibungslos funktionieren (z. B. zeitbasierte Einmalkennwörter / TOTP statt Push-Nachrichten, die stabiles Internet erfordern).
 - **Kriterium 2: Notfall- und Wiederherstellungsprozess (Recovery):** Bei Verlust oder Defekt des Smartphones im Außendienst muss ein schneller, sicherer Prozess zur Identitätsverifikation und Ausgabe eines Ersatzfaktors existieren, um Ausfallzeiten zu minimieren.
--->
 
 ---
-<!-- _class: biglist -->
+
 # MFA erfolgreich einführen
 
 - Betroffene Gruppen und Risiken priorisieren
@@ -905,7 +848,6 @@ In der Praxis kann man nicht einfach „das technisch stärkste Verfahren“ ein
 - Support auf typische Probleme vorbereiten
 - Nutzung und Abbruchquoten beobachten
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 MFA-Projekte scheitern selten an der Technik – sie scheitern an schlechter Kommunikation und frustrierten Nutzern.
 Wenn 2.000 Mitarbeiter am Montagmorgen vor verschlossenen Bildschirmen stehen und nicht wissen, wie sie die App einrichten, bricht die Helpdesk-Hotline zusammen.
@@ -927,10 +869,9 @@ Wenn 2.000 Mitarbeiter am Montagmorgen vor verschlossenen Bildschirmen stehen un
 - **3. Vorab-Kommunikation:** Frühzeitige Bereitstellung verständlicher Anleitungen und Schulungsvideos.
 - **4. Phasenweiser Rollout:** Gestaffelte Aktivierung nach Abteilungen mit personeller Verstärkung des IT-Supports.
 - **5. Monitoring & Optimierung:** Fortlaufende Analyse von Anmeldeabbrüchen und Helpdesk-Tickets zur Nachsteuerung.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Passkeys: Das Konzept
 
 - Anmeldung ohne klassisches Passwort
@@ -939,7 +880,6 @@ Wenn 2.000 Mitarbeiter am Montagmorgen vor verschlossenen Bildschirmen stehen un
 - Kein wiederverwendbares Passwort, das preisgegeben werden kann
 - Ziel: höhere Sicherheit bei weniger Reibung
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Passkeys sind die **Zukunft des Anmeldens** – sie schaffen das klassische Passwort komplett ab!
 *Wie funktioniert es?* Auf deinem Smartphone oder Laptop wird ein privater kryptografischer Schlüssel sicher gespeichert. Beim Login sendet der Webserver eine Rechenaufgabe (*Challenge*). Du bestätigst die Freigabe per Fingerabdruck oder Face ID – dein Gerät signiert die Aufgabe und sendet das Ergebnis zurück.
@@ -955,10 +895,9 @@ Passkeys sind die **Zukunft des Anmeldens** – sie schaffen das klassische Pass
 - **Domänenbindung (Origin Binding):** Der kryptografische Schlüssel ist untrennbar an die verifizierte Domain der Website gebunden. Auf einer gefälschten Phishing-Domain wird der Schlüssel vom Browser nicht verwendet.
 - **Kein geteiltes Geheimnis:** Es existiert kein Passwort oder Code, den der Nutzer abtippen und an einen Angreifer preisgeben könnte.
 - **Lokale Freigabe:** Biometrische Daten verbleiben ausschließlich im Sicherheitschip des Endgeräts und dienen nur der lokalen Entsperrung des privaten Schlüssels.
--->
 
 ---
-<!-- _class: normal -->
+
 # Passkeys: Nutzen und offene Fragen
 
 <div class="columns">
@@ -982,7 +921,6 @@ Passkeys sind die **Zukunft des Anmeldens** – sie schaffen das klassische Pass
 </div>
 </div>
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Passkeys klingen traumhaft, bringen aber im Unternehmensalltag reale Hürden mit sich:
 - *Das Riesen-Potenzial:* Kein Passwort-Support mehr, blitzschneller Login, null Phishing-Risiko.
@@ -1002,9 +940,9 @@ Passkeys klingen traumhaft, bringen aber im Unternehmensalltag reale Hürden mit
 - **Herausforderungen:**
   1. **Geteilte Arbeitsplätze (Shared Devices):** Schichtarbeiter ohne persönliches Endgerät können keine persönlichen Passkeys auf einem geteilten PC hinterlegen.
   2. **Ökosystem-Grenzen:** Passkeys sind oft an Hersteller-Ökosysteme (Apple, Google, Microsoft) gebunden, was plattformübergreifende Synchronisation erschwert.
--->
 
 ---
+
 # Single Sign-On
 
 - **Single Sign-On (SSO)**: einmal anmelden, mehrere Anwendungen nutzen
@@ -1016,7 +954,6 @@ Passkeys klingen traumhaft, bringen aber im Unternehmensalltag reale Hürden mit
   - Einheitlicheres Nutzererlebnis
 - Zentraler Zugang benötigt besonders starken Schutz
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 *Alltagsanalogie:* Das Festivalbändchen.
 Beim Betreten des Festivalgeländes zeigst du einmalig deinen Personalausweis und dein Ticket vor. Du bekommst ein Stoffbändchen ans Handgelenk. Danach kommst du zu den Bühnen, zum Campingplatz und in den VIP-Bereich, indem du einfach nur dein Bändchen vorzeigst – du musst nirgendwo mehr deinen Ausweis zücken!
@@ -1033,9 +970,9 @@ Beim Betreten des Festivalgeländes zeigst du einmalig deinen Personalausweis un
 - **Funktionsweise:** Der Nutzer authentisiert sich einmalig an einem zentralen **Identity Provider (IdP)**. Dieser stellt kryptografische Nachweise (Tokens/Assertions) aus, mit denen der Nutzer nahtlos auf mehrere angebundene Anwendungen zugreifen kann.
 - **Betrieblicher Vorteil:** **Zentrale Richtliniendurchsetzung und schneller Entzug**: MFA muss nur an einer Stelle erzwungen werden; beim Ausscheiden sperrt ein einziger Klick am IdP den Zugriff auf alle Anwendungen.
 - **Sicherheitsrisiko:** **Single Point of Failure / Konzentrationsrisiko**: Wird das zentrale IdP-Konto kompromittiert, hat der Angreifer sofort Zugriff auf alle angebundenen Systeme.
--->
 
 ---
+
 # SSO: Vereinfachter Vertrauensfluss
 
 1. Nutzer öffnet eine angebundene Anwendung
@@ -1046,7 +983,6 @@ Beim Betreten des Festivalgeländes zeigst du einmalig deinen Personalausweis un
 
 > Die Anwendung erhält normalerweise **nicht** das Passwort.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wie funktioniert SSO im Hintergrund, ohne dass jede Anwendung dein Passwort erfährt?
 1. Du rufst die Zielanwendung auf (z. B. Salesforce).
@@ -1070,9 +1006,9 @@ Wie funktioniert SSO im Hintergrund, ohne dass jede Anwendung dein Passwort erf�
   4. IdP signiert ein zeitlich befristetes Authentifizierungs-Token und sendet es an den Client.
   5. Client übergibt das Token an den SP; der SP verifiziert die Signatur und gewährt Zugriff.
 - **Sicherheitsvorteil:** Die Zielanwendung erhält **niemals das Passwort** des Nutzers, wodurch das Risiko von Passwortdiebstahl bei unsicheren Drittanwendungen eliminiert wird.
--->
 
 ---
+
 # SSO-Standards verständlich eingeordnet
 
 | Standard | Typischer Einsatz | Vereinfacht gesagt |
@@ -1083,7 +1019,6 @@ Wie funktioniert SSO im Hintergrund, ohne dass jede Anwendung dein Passwort erf�
 
 - Standard bestimmt den Austausch – nicht automatisch die Qualität des Gesamtkonzepts
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 In der Praxis begegnen dir drei Standards, die du sauber auseinanderhalten musst:
 - **SAML 2.0:** Der bewährte Großkonzern-Klassiker. Arbeitet mit XML-Dokumenten. Sehr weit verbreitet bei klassischen Unternehmens- und Webanwendungen.
@@ -1100,9 +1035,9 @@ In der Praxis begegnen dir drei Standards, die du sauber auseinanderhalten musst
 - **OAuth 2.0:** Reines **Autorisierungsprotokoll** zur kontrollierten Delegation von Zugriffsrechten (Scopes) über Access Tokens, ohne Passwörter offenzulegen (z. B. Drittanbieter-App darf Google-Kalender lesen).
 - **OpenID Connect (OIDC):** Eine **Authentifizierungsschicht auf Basis von OAuth 2.0**. Ergänzt das Verfahren um ein signiertes **ID-Token (JWT)**, das die Identität des angemeldeten Benutzers bestätigt.
 - **Abgrenzung:** OAuth 2.0 beantwortet *„Was darf die App?“*; OIDC beantwortet *„Wer ist der Nutzer?“*.
--->
 
 ---
+
 # Anmeldung als Teil der Customer Journey
 
 - Registrierung nur mit notwendigen Angaben
@@ -1113,7 +1048,6 @@ In der Praxis begegnen dir drei Standards, die du sauber auseinanderhalten musst
 
 > Nicht jeder Klick benötigt dieselbe Vertrauensstufe.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Bei Kunden-Identitäten (CIAM) entscheidet der Anmeldeprozess über bare Umsätze: Wer einem Kunden vor dem ersten Einkauf 15 Formularfelder und drei Bestätigungs-Mails vorsetzt, verliert Kunden!
 *Zwei smarte Konzepte verbinden Sicherheit und Vertrieb:*
@@ -1129,16 +1063,13 @@ Bei Kunden-Identitäten (CIAM) entscheidet der Anmeldeprozess über bare Umsätz
 **Antwort:**
 - **Konzept:** Dynamische Erhöhung des Authentifizierungsniveaus in Abhängigkeit vom Risiko einer Aktion. Standardinteraktionen (z. B. Stöbern) erfordern minimale Hürden; risikobehaftete Aktionen (z. B. Auszahlung, Adressänderung) fordern zusätzliche Faktoren (MFA) an.
 - **Wirtschaftlicher Nutzen:** **Optimierung der Konversionsrate (Conversion Rate)** bei gleichzeitiger Betrugsvermeidung. Kunden werden nicht durch unnötige Hürden bei einfachen Interaktionen abgeschreckt.
--->
 
 ---
-<!-- _class: chapter -->
 
 # Berechtigungen beherrschen
 
 ## Rollen, Kontrollen und Governance
 
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Nachdem die Identität sicher festgestellt wurde, folgt der zweite fundamentale Schritt: die **Autorisierung**. Wie legen wir fest, wer welche Daten sehen, bearbeiten oder löschen darf? Wie verhindern wir Chaos bei tausenden Mitarbeitern und wie schützen wir hochkritische Systeme vor internem Betrug und Sabotage?
 
@@ -1147,10 +1078,9 @@ Du beherrschst die Kernmodelle der Berechtigungssteuerung (Least Privilege, RBAC
 
 ### ❓ Typische Schwerpunkte
 RBAC vs. ABAC; Segregation of Duties an Fallbeispielen; Principle of Least Privilege; Access Reviews; Privileged Access Management (PAM) und Just-in-Time-Zugriffe.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Prinzip der geringsten Rechte
 
 - Nur Zugriffe vergeben, die für die Aufgabe nötig sind
@@ -1160,7 +1090,6 @@ RBAC vs. ABAC; Segregation of Duties an Fallbeispielen; Principle of Least Privi
 
 > **Leitfrage:** Was ist notwendig – nicht, was könnte irgendwann nützlich sein?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 *Alltagsanalogie:* Wenn du dein Auto in die Werkstatt bringst, gibst du dem Mechaniker den Autoschlüssel – nicht deinen Wohnungsschlüssel, deinen Tresorcode und deine Girokarte!
 Genau das ist das **Principle of Least Privilege (PoLP)**: Jeder Nutzer und jedes System erhält nur die absolut minimalen Rechte, die für die aktuelle Arbeitsaufgabe nötig sind – und keinen Millimeter mehr.
@@ -1175,9 +1104,9 @@ Genau das ist das **Principle of Least Privilege (PoLP)**: Jeder Nutzer und jede
 **Antwort:**
 - **Definition:** Jeder Benutzer, Prozess und Dienst erhält ausschließlich diejenigen minimalen Berechtigungen und zeitlichen Zugriffsfenster, die zur legitimen Aufgabenerfüllung zwingend notwendig sind.
 - **Eindämmung von Angriffen:** Es minimiert den potenziellen **Schadensradius (Blast Radius)**. Kompromittiert ein Angreifer ein reguläres Konto, kann er sich wegen fehlender Rechte nicht ungehindert im Netzwerk ausbreiten (**Lateral Movement unterbinden**).
--->
 
 ---
+
 # Rollen statt Einzelrechte
 
 - **Role-Based Access Control (RBAC)**: Rechte werden zu fachlichen Rollen gebündelt
@@ -1188,7 +1117,6 @@ Genau das ist das **Principle of Least Privilege (PoLP)**: Jeder Nutzer und jede
   - Einheitlichere Rechte
 - Risiko: Zu viele oder zu breite Rollen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Stell dir vor, eine Firma hat 5.000 Mitarbeiter und 300 IT-Systeme mit je 50 Berechtigungen. Würde man jedem Mitarbeiter jedes Recht einzeln per Häkchen zuweisen, versinkt man im totalen Chaos!
 **RBAC (Role-Based Access Control):** Man bündelt Rechte in logische Pakete – sogenannte **Rollen** (z. B. „Kreditsachbearbeiter“, „Personalreferent“). Mitarbeiter bekommen nur noch die Rolle zugewiesen.
@@ -1206,10 +1134,9 @@ Stell dir vor, eine Firma hat 5.000 Mitarbeiter und 300 IT-Systeme mit je 50 Ber
 - **Prinzip:** Berechtigungen werden zu fachlichen Rollen gebündelt. Benutzer erhalten Rechte ausschließlich indirekt über die Zuweisung einer oder mehrerer Rollen.
 - **Fehlentwicklung 1 (Over-Privileging / Zu breite Rollen):** Rollen enthalten übermäßig viele Rechte, damit niemand blockiert wird $\rightarrow$ Verstoß gegen das Least-Privilege-Prinzip.
 - **Fehlentwicklung 2 (Rollenexplosion / Role Explosion):** Für jeden individuellen Sonderbedarf wird eine neue Rolle definiert $\rightarrow$ Unüberschaubare Rollenvielfalt, die administrativ nicht mehr beherrschbar sind.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Kontextabhängige Entscheidungen
 
 - Rolle allein beantwortet nicht jede Zugriffssituation
@@ -1220,7 +1147,6 @@ Stell dir vor, eine Firma hat 5.000 Mitarbeiter und 300 IT-Systeme mit je 50 Ber
   - Schutzbedarf der angefragten Daten
 - Mehr Flexibilität bedeutet mehr Erklärungs- und Pflegeaufwand
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Manchmal stößt eine starre Rolle an ihre Grenzen: Eine Ärztin hat die Rolle „Chefärztin“ und darf Patientendaten lesen. Aber darf sie das auch nachts um 3 Uhr von einem privaten Tablet aus einem Hotel in Moskau? Sicher nicht!
 **ABAC (Attribute-Based Access Control):** Prüft dynamische Bedingungen in Echtzeit:
@@ -1239,10 +1165,9 @@ Manchmal stößt eine starre Rolle an ihre Grenzen: Eine Ärztin hat die Rolle �
 **Antwort:**
 - **Vergleich:** RBAC weist Rechte statisch anhand vordefinierter Rollen zu. ABAC evaluiert Zugriffsanfragen dynamisch anhand von Attributen des Subjekts, der Ressource, der Aktion und der **Umgebung (Kontext)**.
 - **Szenario:** „Zugriff auf Finanzberichte nur von verschlüsselten Unternehmensgeräten innerhalb der EU während der Kernarbeitszeit“. Ein solches Regelwerk lässt sich mit statischem RBAC nicht abbilden, ohne eine unkontrollierbare Flut an situativen Spezialrollen zu erzeugen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Funktionstrennung
 
 - **Segregation of Duties (SoD)**: Kritische Schritte auf mehrere Personen verteilen
@@ -1252,7 +1177,6 @@ Manchmal stößt eine starre Rolle an ihre Grenzen: Eine Ärztin hat die Rolle �
   - Lieferant anlegen und Bankdaten ändern
   - Rabatt erfassen und selbst genehmigen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 *Alltagsanalogie:* Bei einem Banküberfall im Film braucht man zwei Schlüssel an gegenüberliegenden Wänden, um den Tresor zu öffnen. Niemand kann ihn allein aufschließen!
 Genau das ist **Segregation of Duties (SoD)**: Kritische Geschäftsprozesse werden zwingend in Einzelschritte zerlegt, die **nicht von derselben Person** ausgeführt werden dürfen.
@@ -1268,10 +1192,9 @@ Genau das ist **Segregation of Duties (SoD)**: Kritische Geschäftsprozesse werd
 - **Definition:** Die organisatorische und systemseitige Aufteilung kritischer Prozessschritte auf mindestens zwei verschiedene Personen (**Vier-Augen-Prinzip**), sodass keine Einzelperson den gesamten Vorgang alleine kontrolliert.
 - **Zweck:** Prävention von **Betrug, Veruntreuung, Manipulation und folgenschweren Fehlern**.
 - **Klassisches Beispiel:** Trennung zwischen der **Pflege von Lieferantenstammdaten** (Bankverbindungen) und der **Freigabe von Zahlungsaufträgen**.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Genehmigungen sinnvoll gestalten
 
 - Genehmiger muss den fachlichen Bedarf beurteilen können
@@ -1280,7 +1203,6 @@ Genau das ist **Segregation of Duties (SoD)**: Kritische Geschäftsprozesse werd
 - Begründung, Entscheidung und Laufzeit dokumentieren
 - Eskalation bei ausbleibender Entscheidung vorsehen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Viele Firmen glauben: „Wenn vier Chefs unterschreiben müssen, ist es viermal so sicher!“ Das Gegenteil ist der Fall:
 Weil jeder Chef denkt, der andere hätte es schon geprüft, klicken alle vier den Antrag ungelesen innerhalb von zwei Sekunden durch (**Rubber Stamping / Durchwinken**)!
@@ -1299,10 +1221,9 @@ Weil jeder Chef denkt, der andere hätte es schon geprüft, klicken alle vier de
 - **Klick-Müdigkeit (Rubber Stamping):** Führungskräfte auf höheren Ebenen kennen die operativen Details nicht und winken Anträge aus Zeitmangel reflexartig durch.
 - **Verantwortungsdiffusion:** Jeder Genehmiger verlässt sich darauf, dass die vorherige Stufe den Antrag geprüft hat, sodass faktisch niemand eine inhaltliche Prüfung vornimmt.
 - **Lösung:** Zuweisung der Genehmigung an den fachlich zuständigen **Data Owner** und automatische Vergabe unkritischer Standardrechte.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Regelmäßige Überprüfung
 
 - Verantwortliche bestätigen oder entziehen bestehende Zugriffe
@@ -1311,7 +1232,6 @@ Weil jeder Chef denkt, der andere hätte es schon geprüft, klicken alle vier de
 - Entscheidungen und Fristen nachvollziehbar dokumentieren
 - Ergebnisse zur Verbesserung von Rollen nutzen
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein **Access Review (Rezertifizierung)** ist der jährliche Sicherheits-TÜV für Zugriffsrechte: Führungskräfte müssen aktiv bestätigen, ob ihre Mitarbeiter bestimmte Zugänge noch benötigen.
 *Das Riesen-Problem in der Praxis:*
@@ -1328,10 +1248,9 @@ Wenn bei Reviews regelmäßig viele Rechte entzogen werden, ist das ein klares A
 **Antwort:**
 - **Zweck:** Nachträgliche Beseitigung unbemerkt angesammelter Berechtigungen (**Privilege Creep**) und Nachweis für Wirtschaftsprüfer, dass Zugriffsrechte kontinuierlich autorisiert sind.
 - **Problem technischer Kürzel:** Fachverantwortliche verstehen die technischen Rollennamen nicht und bestätigen aus Überforderung und Zeitdruck pauschal alle Rechte (**Rubber Stamping**), wodurch die Kontrollwirkung verpufft.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Privilegierte Zugriffe
 
 - Administratoren und Notfallkonten besitzen besonders hohe Wirkung
@@ -1342,7 +1261,6 @@ Wenn bei Reviews regelmäßig viele Rechte entzogen werden, ist das ein klares A
   - Nachvollziehbare Nutzung
   - Sichere Notfallverfahren
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Normale Mitarbeiter können bei einem Hack ein paar Ordner löschen. Ein Administrator mit Domain-Admin- oder Root-Rechten kann **das gesamte Unternehmen zerstören**, Backups löschen und Überwachungs-Logs vernichten.
 Daher gilt für sie **PAM (Privileged Access Management)**:
@@ -1360,10 +1278,9 @@ Daher gilt für sie **PAM (Privileged Access Management)**:
 **Antwort:**
 - **JIT-Konzept:** Erhöhte administrative Zugriffsrechte werden erst bei konkretem Wartungsbedarf temporär und zeitlich befristet freigeschaltet und danach automatisch wieder entzogen.
 - **Trennung von Alltagskonten:** Büroarbeiten (E-Mail, Web-Surfen) sind die Hauptangriffsvektoren für Phishing und Drive-by-Downloads. Wird ein Rechner infiziert, während der Benutzer mit Administratorrechten angemeldet ist, erlangt die Schadsoftware sofort volle Systemkontrolle.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Governance schafft Verbindlichkeit
 
 - Klare Richtlinien und Geltungsbereiche
@@ -1372,7 +1289,6 @@ Daher gilt für sie **PAM (Privileged Access Management)**:
 - Messbare Kontrollen und regelmäßige Berichte
 - Konsequente Verbesserung aus Vorfällen und Reviews
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Man kann die modernste IAM-Plattform für Millionen kaufen – wenn im Unternehmen niemand weiß, **wer was entscheiden darf**, versinkt alles im Chaos.
 **Governance** ist das rechtliche und organisatorische Gerüst:
@@ -1390,9 +1306,9 @@ Ohne Governance verwahrlost jede Berechtigungsstruktur innerhalb weniger Monate.
 **Antwort:**
 - **1. Benannte Rollen- und Dateneigentümer (Role/Data Owners):** Fachbereichsverantwortliche werden explizit bestimmt und tragen die dauerhafte Verantwortung für Inhalte und Zuweisungen ihrer Rollen.
 - **2. Formales Ausnahme-Management mit Verfallsdatum:** Sonderberechtigungen dürfen nur begründet und zeitlich streng befristet erteilt werden, wodurch unkontrollierter Wildwuchs verhindert wird.
--->
 
 ---
+
 # Kennzahlen für die Steuerung
 
 | Ziel | Beispielkennzahl |
@@ -1404,7 +1320,6 @@ Ohne Governance verwahrlost jede Berechtigungsstruktur innerhalb weniger Monate.
 | Gute Erfahrung | Anmeldeabbrüche und Supportfälle |
 | Automatisierung | Anteil automatisch bereitgestellter Zugriffe |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 „Was man nicht messen kann, kann man nicht verbessern.“
 Um dem Management zu beweisen, dass IAM wirkt, braucht man handfeste Zahlen aus verschiedenen Blickwinkeln:
@@ -1424,16 +1339,13 @@ Eine Kennzahl allein täuscht: Wenn man Konten in 2 Sekunden anlegt, aber die Ro
 - **Sicherheit:** **Time-to-Revoke:** Zeitspanne vom vertraglichen Austrittszeitpunkt bis zur vollständigen Deaktivierung aller Systemkonten und Tokens.
 - **Prozesseffizienz:** **Time-to-Productivity (Day-One-Readiness):** Anteil der neuen Mitarbeitenden, die an ihrem ersten Arbeitstag vollständig arbeitsfähig freigeschaltet sind.
 - **Bereinigungsqualität:** **Entzugsquote bei Rezertifizierungen:** Prozentsatz der bei periodischen Reviews aberkannten Berechtigungen (Indikator für die Qualität von Mover-Prozessen).
--->
 
 ---
-<!-- _class: chapter -->
 
 # IAM beraten
 
 ## Vom Bedarf zum tragfähigen Zielbild
 
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Jetzt verlassen wir die reine Theorie und wechseln in die Schuhe des **Management- und IT-Beraters**. Wie redet man mit Kunden über IAM? Wie findet man heraus, wo die echten Probleme liegen, wie rechnet man einen überzeugenden Business Case und wie baut man eine Roadmap, die Kunden nicht überfordert?
 
@@ -1442,10 +1354,9 @@ Du beherrschst die Phasen von Problemverständnis, Discovery, Business Case und 
 
 ### ❓ Typische Schwerpunkte
 Vorgehensweise: Problem $\rightarrow$ Prozess $\rightarrow$ Zielbild $\rightarrow$ Softwareauswahl; Strukturierung eines IAM-Business-Cases; Phasen einer realistischen Roadmap; typische Beratungs- und Verkaufsfragen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Mit dem Problem beginnen
 
 - Welches Geschäftsziel soll unterstützt werden?
@@ -1454,7 +1365,6 @@ Vorgehensweise: Problem $\rightarrow$ Prozess $\rightarrow$ Zielbild $\rightarro
 - Welche Vorgaben und Fristen gelten?
 - Woran würde der Kunde eine Verbesserung erkennen?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Der größte Kardinalfehler von Anfängern im Consulting: Der Kunde ruft an und sagt „Wir brauchen eine IAM-Software!“, und der Berater fängt sofort an, bunte Folien über Software-Lizenzen zu zeigen.
 **Gute Beratung beginnt immer beim Problem:**
@@ -1473,10 +1383,9 @@ Erst wenn das Problem glasklar definiert ist und man weiß, woran der Kunde den 
 **Antwort:**
 - **Vermeidung von Fehlkäufen:** Software ist nur ein Werkzeug. Ohne klares Problemverständnis digitalisiert ein neues Tool lediglich bestehendes organisatorisches Chaos.
 - **Erfolgsmessung:** Nur wenn zu Beginn messbare Geschäftsziele (z. B. Verkürzung der Onboarding-Zeit, fehlerfreie Audits) definiert werden, lässt sich der spätere Projekterfolg objektiv nachweisen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Discovery: Beobachtbare Warnsignale
 
 - Konten werden per E-Mail oder Ticket einzeln angelegt
@@ -1486,7 +1395,6 @@ Erst wenn das Problem glasklar definiert ist und man weiß, woran der Kunde den 
 - Passwort- und Zugriffsprobleme dominieren den Support
 - Neue Anwendungen werden ohne gemeinsames Identitätskonzept eingeführt
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Im ersten Kundengespräch hat man oft wenig Zeit. Achte auf typische **rote Flaggen (Warnsignale)**:
 - „Unsere Berechtigungen stehen alle in einer riesigen Excel-Tabelle auf dem Server.“
@@ -1504,9 +1412,9 @@ Diese Warnsignale sind die Eintrittskarte in das Projekt: Sie zeigen dir exakt, 
 **Antwort:**
 - **Risiken:** Medienbrüche, fehlende Revisionssicherheit, hohe Fehleranfälligkeit, veraltete Daten und massive Verzögerungen beim On-/Offboarding.
 - **Lösungsansatz:** Einführung eines **zentralen IAM-Systems mit standardisiertem Rollenmodell (RBAC)** und automatisierter Provisionierung über Schnittstellen zu Zielsystemen.
--->
 
 ---
+
 # Anforderungen aus mehreren Blickwinkeln
 
 | Blickwinkel | Beispielanforderung |
@@ -1518,7 +1426,6 @@ Diese Warnsignale sind die Eintrittskarte in das Projekt: Sie zeigen dir exakt, 
 | Betrieb | Standardfälle automatisiert verarbeiten |
 | Architektur | Bestehende Anwendungen schrittweise anbinden |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein IAM-Projekt scheitert, wenn man nur auf eine Stimme hört. Man muss alle sechs Perspektiven harmonisieren:
 - **Geschäft:** Will Tempo und niedrige Kosten.
@@ -1538,10 +1445,9 @@ Als Berater vermittelst du zwischen diesen Welten und baust einen tragfähigen K
 **Antwort:**
 - **Nutzerperspektive:** Zu restriktive oder komplizierte Sicherheitsvorgaben provozieren Frustration und führen direkt zur Entstehung von **Schatten-IT** zur Arbeitsumgehung.
 - **Betriebsperspektive:** Unflexible oder hochkomplexe Systeme überlasten den IT-Support durch Fehlertickets und treiben die laufenden Betriebskosten (**Total Cost of Ownership**) in die Höhe.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Vom Ist-Zustand zum Zielbild
 
 1. Prozesse, Identitätsgruppen und Anwendungen erfassen
@@ -1550,7 +1456,6 @@ Als Berater vermittelst du zwischen diesen Welten und baust einen tragfähigen K
 4. Benötigte Fähigkeiten und Integrationen ableiten
 5. Maßnahmen nach Nutzen und Machbarkeit priorisieren
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein Beratungsprojekt folgt 5 klaren Schritten:
 1. *Ist-Aufnahme:* Wo stehen wir heute? Welche Systeme, Konten und Prozesse gibt es?
@@ -1569,9 +1474,9 @@ Erst ganz am Ende wird die passende Software beschafft!
 **Antwort:**
 - **Reihenfolge:** 1. Ist-Aufnahme $\rightarrow$ 2. Risiko- & Engpassbewertung $\rightarrow$ 3. Definition der Zielprozesse & Verantwortlichkeiten $\rightarrow$ 4. Ableitung technischer Fähigkeiten $\rightarrow$ 5. Priorisierung (Roadmap).
 - **Begründung:** Die Software muss die Geschäftsprozesse und organisatorischen Rollen abbilden – nicht umgekehrt. Wählt man das Tool zuerst, zwingt man das Unternehmen in unpassende Schablonen, was Akzeptanzverlust und Projektfehlschläge nach sich zieht.
--->
 
 ---
+
 # Nutzen verständlich formulieren
 
 | Funktion | Geschäftlicher Nutzen |
@@ -1583,7 +1488,6 @@ Erst ganz am Ende wird die passende Software beschafft!
 | Rollenmodell | Einheitlichere, verständliche Vergabe |
 | Reviews | Nachweisbare Kontrolle und weniger Altlasten |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Kunden kaufen keine Akronyme, Kunden kaufen **Lösungen für geschäftliche Schmerzen**!
 Sagst du zum Finanzchef: „Wir bieten SCIM-Provisionierung und OIDC Identity Federation“, versteht er nur Bahnhof.
@@ -1599,10 +1503,9 @@ Sagst du: „Durch den automatisierten Eintrittsprozess sind neue Mitarbeiter am
 **Antwort:**
 - **SSO:** **Produktivitätsgewinn & Kostensenkung**: Reduziert Support-Tickets für Passwort-Resets um bis zu 50 % und erspart Mitarbeitern tägliche Anmeldeverzögerungen bei dutzenden Systemen.
 - **Automatisierter Leaver:** **Haftungs- & Risikoreduktion**: Garantiert den sofortigen Stichtagsentzug aller Cloud- und Systemzugänge und schützt das Unternehmen vor Datendiebstahl durch Ex-Mitarbeiter sowie vor DSGVO-Bußgeldern.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Business Case für IAM
 
 - **Direkte Kosten**: Lizenzen, Einführung, Integration, Betrieb
@@ -1611,7 +1514,6 @@ Sagst du: „Durch den automatisierten Eintrittsprozess sind neue Mitarbeiter am
 - **Compliance-Nutzen**: weniger Prüfungsaufwand und Feststellungen
 - **Geschäftsnutzen**: schnellere Skalierung und bessere Nutzererfahrung
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein **Business Case** beantwortet die Frage: „Warum lohnt sich diese Investition finanziell?“
 - **Kosten:** Software-Lizenzen, externe Berater, Integration, Schulungen und laufender Betrieb.
@@ -1629,10 +1531,9 @@ Ein **Business Case** beantwortet die Frage: „Warum lohnt sich diese Investiti
 - **Direkte Kosten:** Lizenzen, Implementierung/Beratung, Schulung, Schnittstellenentwicklung, laufender Support.
 - **Messbare Nutzen:** Reduzierte Helpdesk-Kosten (weniger Passwort-Tickets), eingesparte Arbeitszeit bei Onboarding und Freigaben.
 - **Risikobezogene Nutzen:** Vermiedene Folgekosten von Sicherheitsvorfällen (Kontoübernahmen, Datenabfluss) sowie Vermeidung regulatorischer Strafzahlungen bei Audits.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Eine realistische Roadmap
 
 - **Phase 1 – Fundament**: Verantwortungen, Daten, Kernprozesse
@@ -1643,7 +1544,6 @@ Ein **Business Case** beantwortet die Frage: „Warum lohnt sich diese Investiti
 
 > Früh Nutzen zeigen, ohne das langfristige Zielbild zu verlieren.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wer alles auf einmal umstellen will, fährt das Projekt vor die Wand („Big-Bang-Katastrophe“).
 Ein IAM-Vorhaben braucht eine schrittweise Roadmap:
@@ -1662,10 +1562,9 @@ Ein IAM-Vorhaben braucht eine schrittweise Roadmap:
 **Antwort:**
 - **Nutzen & Akzeptanz:** SSO und MFA liefern sofort sichtbare Mehrwerte (hoher Komfort, spürbarer Schutzgewinn) und sichern die Unterstützung der Belegschaft und des Managements.
 - **Komplexitätsmanagement:** Eine vollständige Rollenbereinigung und Lebenszyklus-Automatisierung erfordert langwierige organisatorische Abstimmungen. Ohne frühe Teilerfolge drohen Budgetkürzungen und Projektmüdigkeit.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Häufige Stolpersteine
 
 - Produkt gekauft, bevor Prozesse geklärt sind
@@ -1675,7 +1574,6 @@ Ein IAM-Vorhaben braucht eine schrittweise Roadmap:
 - Nutzerkommunikation und Support zu spät geplant
 - Rollen und Regeln nach Projektende nicht gepflegt
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Warum scheitern viele IAM-Projekte in der Praxis?
 1. **Software vor Prozessen gekauft:** Bestehendes Chaos wurde nur teuer digitalisiert.
@@ -1693,10 +1591,9 @@ Warum scheitern viele IAM-Projekte in der Praxis?
 **Antwort:**
 - **Stolperstein 1: IAM wird als reines IT-Projekt behandelt:** Fachbereiche und HR werden nicht eingebunden $\rightarrow$ **Gegenmaßnahme:** Etablierung eines bereichsübergreifenden Projekt-Lenkungsausschusses mit Vertretern aus HR, Fachbereichen, Datenschutz und Betriebsrat.
 - **Stolperstein 2: Unterschätzung mangelnder Datenqualität:** Fehlerhafte HR-Daten führen zu falschen Rollen $\rightarrow$ **Gegenmaßnahme:** Verbindliche Stammdatenbereinigung in der führenden HR-Quelle vor dem technischen Go-Live.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Gute Verkaufsfragen
 
 - Wie lange dauert es, bis neue Mitarbeitende arbeitsfähig sind?
@@ -1706,7 +1603,6 @@ Warum scheitern viele IAM-Projekte in der Praxis?
 - Wie viel Aufwand entsteht für Prüfungen und Nachweise?
 - Welche Wachstumspläne scheitern an manuellen Zugangsprozessen?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Top-Berater und Vertriebler halten keine langen Monologe – sie stellen **präzise, offene Fragen**, die den Kunden selbst zum Nachdenken bringen:
 - „Wie viele Tage dauert es heute, bis ein neuer Mitarbeiter bei Ihnen voll arbeitsfähig ist?“
@@ -1723,10 +1619,9 @@ Aus den Antworten leitest du exakt die Schmerzpunkte ab und baust dein Angebot p
 **Antwort:**
 - **Frage 1 (Lebenszyklus / Produktivität):** „Wie läuft der Prozess ab, wenn ein neuer Mitarbeiter anfängt, und wie viel Zeit vergeht typischerweise bis zur Freischaltung aller benötigten Arbeitswerkzeuge?“
 - **Frage 2 (Compliance / Risiko):** „Auf welche Weise weisen Sie bei internen und externen Audits nach, wer wann welchen Zugriff genehmigt hat und dass Zugänge bei Vertragsende sofort gesperrt wurden?“
--->
 
 ---
-<!-- _class: biglist -->
+
 # Erfolg eines IAM-Projekts
 
 - Fachbereiche übernehmen Verantwortung für Rollen und Zugriffe
@@ -1736,7 +1631,6 @@ Aus den Antworten leitest du exakt die Schmerzpunkte ab und baust dein Angebot p
 - Prüfungen können Entscheidungen nachvollziehen
 - Kennzahlen zeigen Wirkung und Verbesserungsbedarf
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wann ist ein IAM-Projekt wirklich erfolgreich? Nicht dann, wenn die Software installiert ist und die IT-Rechnung bezahlt wurde!
 Ein IAM-Vorhaben ist ein echter Erfolg, wenn:
@@ -1756,9 +1650,9 @@ Ein IAM-Vorhaben ist ein echter Erfolg, wenn:
 - **Organisatorische Akzeptanz:** Fachbereiche übernehmen eigenständig die Verantwortung für Rollen und Freigaben (**Role Ownership**).
 - **Prozesskennzahlen:** Signifikante Verkürzung der Bereitstellungszeiten (**Time-to-Productivity**) und vollständige Beseitigung verwaister Konten bei Austritten.
 - **Revisions- und Prüffähigkeit:** Bestehen von internen und externen Audits ohne Feststellungen zu Berechtigungsüberhängen oder fehlenden Freigabenachweisen.
--->
 
 ---
+
 # Zusammenfassung
 
 | Thema | Kernaussage |
@@ -1770,7 +1664,6 @@ Ein IAM-Vorhaben ist ein echter Erfolg, wenn:
 | Beratung | Problem, Zielbild und Nutzen kommen vor der Produktauswahl |
 | Einführung | Schrittweise vorgehen und Wirkung mit Kennzahlen steuern |
 
-<!-- _notes:
 ### 💡 Schnell-Check (Die drei goldenen Säulen)
 1. **IAM ist Chefsache:** Es verbindet Sicherheit, Effizienz und Compliance. Wer Berechtigungen ignoriert, riskiert Datenlecks und Arbeitsstillstand.
 2. **Der Lebenszyklus entscheidet:** Joiner, Mover und Leaver müssen automatisiert der Realität folgen. Der Mover ist die größte Fehlerquelle (**Privilege Creep**).
@@ -1787,10 +1680,9 @@ Ein IAM-Vorhaben ist ein echter Erfolg, wenn:
   $\rightarrow$ *Antwort:* Weil beide Nachweise aus derselben Kategorie (**Wissen**) stammen. Echte MFA erfordert mindestens zwei unterschiedliche Kategorien (z. B. Wissen + Besitz).
 - *Frage 2:* Welcher betriebliche Fehler führt zu „Privilege Creep“?
   $\rightarrow$ *Antwort:* Bei internen Abteilungs- oder Rollenwechseln (Mover) werden neue Rechte zugewiesen, aber **alte Rechte nicht konsequent entzogen**.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Diskussionsfragen
 
 - Wo erlebt ihr selbst unnötige Hürden bei Registrierung oder Anmeldung?
@@ -1799,7 +1691,6 @@ Ein IAM-Vorhaben ist ein echter Erfolg, wenn:
 - Welche Kennzahl überzeugt Geschäftsleitung, Fachbereich und Revision gleichermaßen?
 - Mit welchem Anwendungsfall würdet ihr bei der Mini-Fallstudie beginnen?
 
-<!-- _notes:
 ### 💡 Transfer & Reflexion (Perspektiven für die mündliche Prüfung)
 Die Diskussionsfragen vertiefen das strategische Denken und bereiten auf mündliche Prüfungsfragen und Consulting-Interviews vor:
 - Wie löst man Zielkonflikte zwischen Vorstandskomfort und strikter Sicherheit?
@@ -1816,4 +1707,3 @@ In Transfer- und Fallstudienaufgaben musst du Entscheidungen strukturiert begrü
 - **Lösung über verbesserte Usability:**
   1. Einsatz von **Passkeys / FIDO2-Biometrie** (z. B. Entsperren per Fingerabdruck/Face ID auf dem Firmen-Smartphone), was extrem komfortabel und sicher ist.
   2. Implementierung von **risikobasierter Authentifizierung (Conditional Access)**: Eine zusätzliche MFA-Abfrage erfolgt nur bei unbekanntem Gerät, verdächtigem Standort oder risikoreichen Transaktionen.
--->
