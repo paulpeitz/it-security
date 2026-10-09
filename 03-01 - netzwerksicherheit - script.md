@@ -1,21 +1,7 @@
----
-marp: true
-theme: custom
-paginate: false
-html: true
-footer: ![w:280](img/dhbw-ka.svg)
-title: Sicherheit in Netzwerken
----
-
-<!-- _class: title -->
 # Sicherheit in Netzwerken
-
-<br><br><br><br><br><br>
 
 ## Risiken verstehen, Schutz erklären, Kunden beraten
 
-
-<!-- _notes:
 ### 💡 Das große Ganze
 Moderne Unternehmen existieren heute nicht mehr ohne Netzwerke: Jede Bestellung, jeder Zahlungsvorgang und jede E-Mail läuft über digitale Leitungen. Bricht das Netzwerk zusammen oder wird Kommunikation manipuliert, steht das gesamte Geschäft still. In dieser Vorlesung lernst du Netzwerksicherheit nicht als abstrakte Protokoll-Bastelei, sondern aus der Beratungsperspektive: Welche Geschäftsrisiken drohen und wie schützt man die Unternehmenswerte?
 
@@ -24,9 +10,9 @@ Unser roter Faden folgt dem Weg der Daten: vom lokalen Anschluss am Schreibtisch
 
 ### ❓ Prüfungsfokus
 In der Klausur musst du Angriffe den Schutzzielen der CIA-Triade zuordnen, die passende Gegenmaßnahme benennen und erklären können, warum moderne Sicherheit über reine Burgmauern (Perimeter) hinausgehen muss.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Agenda
 
 - **Geschäftsrisiken** – warum Netzwerksicherheit alle Unternehmen betrifft
@@ -37,7 +23,6 @@ In der Klausur musst du Angriffe den Schutzzielen der CIA-Triade zuordnen, die p
 - **Anwendungen und Sitzungen** – wie werden Nutzer umgeleitet oder übernommen?
 - **Schutzkonzept und Beratung** – mehrere Schutzlinien sinnvoll kombinieren
 
-<!-- _notes:
 ### 💡 Strukturüberblick
 Die Gliederung folgt dem Weg eines Datenpakets: Wir starten bei den geschäftlichen Risiken, nutzen ein vereinfachtes 3-Stufen-Modell als Landkarte (Zugang ➔ Transport ➔ Anwendung) und betrachten auf jeder Ebene Bedrohungen und Schutzprinzipien, bevor wir alles in einem schlagkräftigen Schutzkonzept (Defense in Depth) zusammenführen.
 
@@ -49,16 +34,13 @@ Die Gliederung folgt dem Weg eines Datenpakets: Wir starten bei den geschäftlic
 
 ### ❓ Typische Klausur-Schwerpunkte
 Transferfragen lauten häufig: „Ein Kunde klagt über Vorfall X. Auf welcher Ebene liegt das Problem, welches Schutzziel ist verletzt und welche zwei Maßnahmen empfehlen Sie?“
--->
 
 ---
-<!-- _class: chapter -->
+
 # Warum ist Netzwerksicherheit so wichtig?
 
 ## Die Angriffsfläche der vernetzten Welt
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir schaffen das geschäftliche Fundament: Warum reicht das alte Konzept vom „sicheren Firmennetzwerk“ nicht mehr aus? Durch Cloud, Homeoffice und IoT gibt es keinen geschützten Innenraum mehr. Wir klären die Schlüsselbegriffe Angriffsfläche (Attack Surface), Perimeter und warum interne Abschottung lebenswichtig ist.
 
@@ -67,8 +49,9 @@ Du kannst den Begriff Angriffsfläche definieren, das Zusammenspiel von Initial 
 
 ### ❓ Typische Schwerpunkte
 Definition der Angriffsfläche mit Beispielen, Target-Fallstudie (Heizungsbauer-Einstieg) und der Paradigmenwechsel vom Burg-Modell zu Zero Trust.
--->
+
 ---
+
 # Jedes Gerät hängt am Netzwerk
 
 - Vernetzt sind nicht nur Laptops, sondern auch **Drucker, Maschinen, Kameras und Sensoren**
@@ -78,7 +61,6 @@ Definition der Angriffsfläche mit Beispielen, Target-Fallstudie (Heizungsbauer-
 
 > **Geschäftsfrage:** Wissen wir, welche Geräte mit unserem Netzwerk verbunden sind?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Im Firmennetzwerk hängen heute oft mehr „stumme“ Geräte als Computer: smarte Kaffeemaschinen, Überwachungskameras, Etikettendrucker und Lüftungssteuerungen. Viele dieser Geräte haben uralte Software, Standardpasswörter und werden nie aktualisiert. Für Hacker sind sie die perfekte offene Hintertür, um unbemerkt ins Unternehmensnetzwerk einzudringen.
 *Alltagsanalogie:* Du sicherst deine Villa mit einer Panzerglastür und Alarmanlage ab, lässt aber die kleine Katzenklappe im Keller sperrangelweit offen. Einbrecher zwängen sich durch die Katzenklappe und stehen mitten im Haus.
@@ -94,9 +76,9 @@ Im Firmennetzwerk hängen heute oft mehr „stumme“ Geräte als Computer: smar
 - **Fehlende Updates / Standardpasswörter:** Geräte erhalten selten Sicherheits-Patches und laufen oft mit unsicheren Werkseinstellungen.
 - **Vergrößerung der Angriffsfläche:** Jedes zusätzliche Gerät bietet Angreifern einen potenziellen Einstiegspunkt (**Initial Access**).
 - **Gegenmaßnahme:** Konsequente **Netzwerksegmentierung (VLANs)**, sodass IoT-Geräte in einem isolierten Netzbereich ohne Zugriff auf kritische Systeme laufen.
--->
 
 ---
+
 # Zugriff von überall möglich
 
 - Homeoffice, mobile Geräte und Cloud-Dienste lösen die klassische **Unternehmensgrenze** auf
@@ -106,7 +88,6 @@ Im Firmennetzwerk hängen heute oft mehr „stumme“ Geräte als Computer: smar
 
 > **Merksatz:** Ein Netzwerk ist nur so sicher wie sein schwächstes angeschlossenes Gerät.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein Cyberangriff läuft fast immer in zwei getrennten Schritten ab:
 1. **Initial Access (Erstzugang):** Der Einbrecher gelangt irgendwie durch ein Fenster oder eine Tür ins Haus (z. B. Phishing-Mail oder gestohlenes Passwort).
@@ -122,10 +103,9 @@ Ein Cyberangriff läuft fast immer in zwei getrennten Schritten ab:
 **Antwort:**
 - **Initial Access:** Der erstmalige Einbruch/Zugang in das Netzwerk (z. B. via Phishing, kompromittiertes VPN-Passwort). Schutz: **Mehrfaktor-Authentifizierung (MFA)** oder **Security Awareness**.
 - **Lateral Movement:** Die unbefugte Weiterverbreitung des Angreifers von System zu System innerhalb des internen Netzes. Schutz: **Netzwerksegmentierung** und das **Prinzip der minimalen Rechte (Least Privilege)**.
--->
 
 ---
-<!-- _class: normal -->
+
 # Perimeter-Sicherheit reicht nicht mehr
 
 <div class="columns">
@@ -147,7 +127,6 @@ Ein Cyberangriff läuft fast immer in zwei getrennten Schritten ab:
 </div>
 </div>
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das alte Sicherheitsmodell funktionierte wie eine mittelalterliche Burg: Ein tiefer Graben und dicke Mauern (**Perimeter**). Wer einmal über die Zugbrücke im Burghof stand, dem wurde blind vertraut. Heute arbeiten Mitarbeiter im Homeoffice, Server stehen in der Microsoft-/AWS-Cloud und Mobilgeräte wechseln ständig das Netz – die Burgmauern existieren nicht mehr!
 *Die neue Philosophie – Zero Trust:* „Vertraue niemandem, prüfe immer alles nach“ (**Never trust, always verify**). Selbst wenn jemand im internen Büro-WLAN sitzt, wird bei jedem einzelnen Klick geprüft: Wer bist du? Ist dein Laptop sicher? Darfst du wirklich auf diese Datei zugreifen?
@@ -161,16 +140,13 @@ Das alte Sicherheitsmodell funktionierte wie eine mittelalterliche Burg: Ein tie
 **Antwort:**
 - **Perimeter-Ansatz:** Basiert auf Standort-Vertrauen („innen sicher, außen unsicher“); wer die Firewall passiert hat, genießt breites Vertrauen.
 - **Zero Trust:** Kein Vertrauensvorschuss aufgrund des Netzwerkstandorts; **jeder einzelne Zugriff** auf Ressourcen wird dynamisch anhand von **Identität (MFA), Gerätezustand und Kontext** authentifiziert und autorisiert.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Wo Kommunikation angegriffen werden kann
 
 ## Das OSI-Modell als einfache Landkarte
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wie findet man sich im Dschungel von hunderten Netzwerkprotokollen und Begriffen zurecht? Wir nutzen das OSI-Schichtenmodell nicht als akademische Schikane, sondern als praktische Navigationskarte: Es teilt die Kommunikation logisch auf, damit wir Angriffe und Gegenmaßnahmen sofort der richtigen Stelle zuordnen können.
 
@@ -179,9 +155,9 @@ Du verstehst den Sinn von Schichtenmodellen (Kapselung, Abstraktion) und kannst 
 
 ### ❓ Typische Schwerpunkte
 Sinn eines Schichtenmodells, Kapselungsprinzip und die didaktische Reduktion auf die drei Bereiche Zugang, Transport und Anwendung.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Warum ein Schichtenmodell?
 
 - Netzwerkkommunikation besteht aus mehreren aufeinander aufbauenden Aufgaben
@@ -190,7 +166,6 @@ Sinn eines Schichtenmodells, Kapselungsprinzip und die didaktische Reduktion auf
 - Für Beratung und Vertrieb genügt eine vereinfachte Landkarte:
   - **Zugang – Transport – Anwendung**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Netzwerkkommunikation ist wie ein Briefversand: Du schreibst den Text (Anwendung), steckst ihn in einen Umschlag mit Empfängeradresse (Transport) und der Postbote transportiert ihn per Fahrrad oder LKW über die Straße (Zugang). Jede Ebene hat ihre eigene Aufgabe.
 *Warum ist das für Sicherheit wichtig?* Jede Ebene hat völlig andere Schwachstellen! Wenn du deinen Brief in feinstem Latein verschlüsselst (TLS auf Anwendungsebene), kann der Postbote den Umschlag trotzdem klauen oder an eine falsche Adresse werfen (Transportebene). Eine Maßnahme schützt immer nur ihre eigene Schicht!
@@ -204,9 +179,9 @@ Netzwerkkommunikation ist wie ein Briefversand: Du schreibst den Text (Anwendung
 **Antwort:**
 - **Schichtentrennung:** TLS schützt den **Inhalt der Nutzdaten** (Vertraulichkeit und Integrität auf Schicht 5–7).
 - **Unterschiedliche Angriffsebene:** Ein DoS-Angriff zielt auf die **Verfügbarkeit der Transport- oder Vermittlungsschicht** (Überflutung von Bandbreite oder Verbindungstabellen), bevor die TLS-Verbindung überhaupt verarbeitet werden kann.
--->
 
 ---
+
 # Eine Landkarte in drei Bereichen
 
 | Bereich | Worum geht es? | Typisches Risiko |
@@ -217,7 +192,6 @@ Netzwerkkommunikation ist wie ein Briefversand: Du schreibst den Text (Anwendung
 
 > Das technische OSI-Modell verfeinert diese Landkarte in sieben Schichten.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das offizielle technische OSI-Modell hat 7 Schichten – für Management und Beratung bündeln wir diese in drei intuitive Zonen:
 1. **Zugang (Schicht 1 & 2):** Die Hardware und das lokale Netz (Kabel, WLAN, Switches, MAC-Adressen). Risiko: Unbefugte stöpseln sich ein.
@@ -234,10 +208,9 @@ Das offizielle technische OSI-Modell hat 7 Schichten – für Management und Ber
 - (1) ARP-Spoofing: **Zugang** (OSI Schicht 2 / lokales Netz).
 - (2) SYN-Flood: **Transport** (OSI Schicht 4 / TCP-Verbindungszustand).
 - (3) Session Hijacking: **Anwendung** (OSI Schicht 7 / Web-Sitzungstoken).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Vier Fragen als roter Faden
 
 - **Ereignis:** Was kann bei der Kommunikation schiefgehen?
@@ -247,7 +220,6 @@ Das offizielle technische OSI-Modell hat 7 Schichten – für Management und Ber
 
 > Technische Details erklären das Wie. Für Entscheidungen zählt zuerst das Warum.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Dieses 4-Fragen-Raster ist dein universelles Denkwerkzeug für jedes Sicherheitsgespräch und jede Klausuraufgabe:
 1. **Ereignis (Bedrohung):** Was passiert technisch? (*„Jemand leitet Daten heimlich um“*)
@@ -265,16 +237,13 @@ Dieses 4-Fragen-Raster ist dein universelles Denkwerkzeug für jedes Sicherheits
 - **Ereignis:** **IP-Spoofing** (Vortäuschen einer fremden Identität auf Vermittlungsebene).
 - **Auswirkung:** Umgehung von einfachen IP-Zugangsfiltern, mögliche Datenmanipulation oder Nutzung für DoS-Angriffe (**Verletzung von Integrität und Authentizität**).
 - **Schutzmaßnahme:** **Kryptografische Authentifizierung (z. B. 802.1X / IPsec)** und **Ingress Filtering** beim Provider statt Vertrauen auf reine IP-Adressen.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Zugang und lokales Netz
 
 ## Wer oder was darf sich verbinden?
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir beginnen ganz unten auf OSI-Schicht 1 und 2: Wer darf physisch oder per Funk in unser Netzwerk? Warum vertrauen Geräte im lokalen Netz einander blind und wie nutzen Angreifer dieses naive Urvertrauen mit MAC- und ARP-Spoofing aus?
 
@@ -283,9 +252,9 @@ Du lernst die Grundlagen von Schicht 1 und 2 kennen, verstehst den Unterschied z
 
 ### ❓ Typische Schwerpunkte
 Unterschied MAC-Adresse vs. IP-Adresse, Schwachstelle im ARP-Protokoll und der Ablauf von ARP-Spoofing.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Physischer Zugang ist Netzwerkzugang
 
 - Frei zugängliche Netzwerkdosen können interne Verbindungen ermöglichen
@@ -295,7 +264,6 @@ Unterschied MAC-Adresse vs. IP-Adresse, Schwachstelle im ARP-Protokoll und der A
 
 > **Beratungsfrage:** Welche Netzwerkzugänge sind für Gäste und Dritte erreichbar?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wer physischen Zugriff auf ein Kabel oder Funknetz hat, ist schon halb im System. Eine offene Netzwerkdose im Besucher-Besprechungsraum oder an einer Außenfassade kann reichen: Ein Angreifer steckt einen winzigen Minicomputer (z. B. Raspberry Pi) an und hat dauerhaften Zugriff auf das Firmennetz.
 *WLAN-Standards:* Veraltete Verschlüsselungen wie WEP und WPA sind in Sekunden geknackt. WPA2 ist das Minimum, **WPA3** der heutige Stand der Technik.
@@ -310,10 +278,9 @@ Wer physischen Zugriff auf ein Kabel oder Funknetz hat, ist schon halb im System
 **Antwort:**
 - **Technologie:** **Network Access Control (NAC)** nach dem Standard **IEEE 802.1X**.
 - **Funktionsweise:** Der Switch-Port bleibt standardmäßig blockiert; erst nach erfolgreicher Authentifizierung des Geräts (z. B. via Zertifikat) am zentralen RADIUS-Server wird der Datenverkehr freigegeben (oder in ein isoliertes Gastnetz geleitet).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Vertrauen im lokalen Netzwerk
 
 - Geräte im selben Netz müssen einander finden und Daten austauschen
@@ -323,7 +290,6 @@ Wer physischen Zugriff auf ein Kabel oder Funknetz hat, ist schon halb im System
 
 > Nähe im Netzwerk ist kein Beweis für Vertrauenswürdigkeit.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Im lokalen Netzwerk (LAN) müssen Computer wissen, welche Hardware-Adresse (**MAC-Adresse**) zu welcher IP-Adresse gehört. Dafür gibt es das **Address Resolution Protocol (ARP)**. Wenn dein PC drucken will, schreit er ins ganze Zimmer: „Wem gehört die IP 192.168.1.50?“. Der Drucker antwortet: „Mir, meine MAC-Adresse ist AA:BB:CC!“.
 *Das Problem:* ARP wurde vor 40 Jahren erfunden, als sich alle im Netz vertrauten. Es gibt **keine Authentifizierung, keine Signatur, keine Prüfung**! Jeder kann einfach rufen: „Ich bin der Drucker!“ – und alle glauben es ungeprüft.
@@ -337,10 +303,9 @@ Im lokalen Netzwerk (LAN) müssen Computer wissen, welche Hardware-Adresse (**MA
 **Antwort:**
 - **Fehlende Authentifizierung:** ARP-Nachrichten sind weder signiert noch verschlüsselt; die Identität des Absenders wird nicht überprüft.
 - **Unaufgeforderte Antworten (Gratuitous ARP):** Geräte akzeptieren und speichern Antworten im **ARP-Cache**, selbst wenn sie nie danach gefragt haben.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Beispiel: Identität im Netzwerk vortäuschen
 
 - Angreifer gibt sich im lokalen Netz als ein anderes Gerät aus
@@ -349,7 +314,6 @@ Im lokalen Netzwerk (LAN) müssen Computer wissen, welche Hardware-Adresse (**MA
 - Risiken: Zugangsdaten mitlesen, Inhalte verändern, Kommunikation stören
 - Fachbegriffe: **MAC-Spoofing** und **ARP-Spoofing**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - **MAC-Spoofing:** Dein PC ändert einfach seine eigene Netzwerk-Seriennummer (MAC-Adresse) und gibt sich z. B. als der Chef-Laptop oder als Drucker aus, um MAC-Filter zu überlisten.
 - **ARP-Spoofing (ARP-Poisoning):** Der Angreifer schickt gefälschte Antworten an deinen PC: „Ich bin der Internet-Router!“. Gleichzeitig sagt er dem Router: „Ich bin der PC!“. Ab sofort schicken beide ihren gesamten Datenverkehr an den Angreifer, der alles mitliest und weiterleitet.
@@ -364,14 +328,13 @@ Im lokalen Netzwerk (LAN) müssen Computer wissen, welche Hardware-Adresse (**MA
 **Antwort:**
 - **Ablauf:** Der Angreifer sendet gefälschte ARP-Antworten an das Opfer (behauptet, das Gateway zu sein) und an das Gateway (behauptet, das Opfer zu sein). Beide tragen die MAC-Adresse des Angreifers in ihren **ARP-Cache** ein; der Datenverkehr fließt über den Angreifer, der ihn nach dem Mitlesen transparent weiterleitet.
 - **Voraussetzung:** Der Angreifer muss sich im **selben lokalen Netzwerksegment (Layer 2)** wie die Opfer befinden.
--->
 
 ---
+
 # ARP-Spoofing als Diagramm
 
-![w:1280 center](img/arp-spoofing.svg)
+![ARP-Spoofing als Diagramm](img/arp-spoofing.svg)
 
-<!-- _notes:
 ### 💡 Was zeigt uns diese Darstellung?
 Das Diagramm visualisiert die heimliche Umleitung: Ursprünglich floss der Datenverkehr direkt zwischen dem Client (Opfer) und dem Gateway (Router). Durch die gefälschte ARP-Meldung schiebt sich der Angreifer als Dreieck dazwischen. Der Schlüssel zum Erfolg des Angriffs ist die gestrichelte Linie: Der Angreifer leitet die Pakete weiter, sodass das Opfer gar nicht merkt, dass jemand dazwischensitzt – das Internet funktioniert ja scheinbar normal weiter!
 
@@ -385,16 +348,13 @@ Das Diagramm visualisiert die heimliche Umleitung: Ursprünglich floss der Daten
 - **Inhaltsschutz:** TLS verschlüsselt die Nutzdaten Ende-zu-Ende; der Angreifer sieht nur unleserlichen Chiffretext und kann **keine Passwörter oder Inhalte im Klartext abfangen**.
 - **Sichtbare Metadaten:** Der Angreifer sieht weiterhin Verbindungs-Metadaten (z. B. kontaktierte IP-Adressen, Paketgrößen, Zeitpunkte).
 - **Voraussetzung:** Das Opfer darf gefälschte Zertifikate oder Zertifikatswarnungen im Browser **nicht wegklicken**.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Datenwege im Internet
 
 ## Wem vertrauen wir beim Transport?
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir verlassen das Bürogebäude und betreten das globale Internet (OSI-Schicht 3). Sobald ein Datenpaket dein Firmennetz verlässt, reist es über 10 bis 20 fremde Router auf der ganzen Welt. Wie finden Pakete ihr Ziel? Was passiert, wenn Absenderadressen gefälscht werden (IP-Spoofing) oder digitale Wegweiser lügen (BGP-Hijacking)?
 
@@ -403,8 +363,9 @@ Du verstehst die Mechanismen der Vermittlungsschicht (IP, Routing), die Gefahren
 
 ### ❓ Typische Schwerpunkte
 IP-Adressierung, IP-Spoofing (UDP vs. TCP), BGP-Hijacking und das Prinzip von Amplification- und Reflexionsangriffen.
--->
+
 ---
+
 # Wie Daten ihr Ziel finden
 
 - Daten werden in kleine Pakete aufgeteilt und über mehrere Stationen weitergeleitet
@@ -414,7 +375,6 @@ IP-Adressierung, IP-Spoofing (UDP vs. TCP), BGP-Hijacking und das Prinzip von Am
 
 > Schutz muss auch wirken, wenn der Transportweg nicht vertrauenswürdig ist.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Im Internet wird jede Datei in kleine Datenpakete zerlegt. Jedes Paket bekommt einen **IP-Header** mit Absender- und Ziel-IP-Adresse. Router auf der ganzen Welt lesen die Adresse und reichen das Paket weiter wie bei einer Eimerkette.
 *Wichtige Erkenntnis:* Das Internet Protocol (IP) ist **verbindungslos** und garantiert nichts („Best Effort“). Vor allem überprüft kein Router im Netz, ob die im Absenderfeld eingetragene IP-Adresse wirklich die echte Adresse des Absenders ist!
@@ -429,10 +389,9 @@ Im Internet wird jede Datei in kleine Datenpakete zerlegt. Jedes Paket bekommt e
 **Antwort:**
 - **Keine Kontrolle über Zwischenstationen:** Datenpakete passieren zahlreiche fremde Router und Provider, die manipuliert, abgehört oder fehlgeleitet werden können.
 - **Schutzmaßnahme:** **Ende-zu-Ende-Verschlüsselung (z. B. TLS, IPsec)** schützt Vertraulichkeit und Integrität der Nutzdaten unabhängig vom Transportweg.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Gefälschte Absender
 
 - Absenderangaben in Netzwerkpaketen können manipuliert werden
@@ -442,7 +401,6 @@ Im Internet wird jede Datei in kleine Datenpakete zerlegt. Jedes Paket bekommt e
 
 > **Beratungsfrage:** Welche Zugriffe vertrauen nur auf Herkunft oder Standort?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Beim **IP-Spoofing** schreibt der Angreifer eine fremde Absender-IP-Adresse in sein Datenpaket. Das ist so einfach wie eine falsche Absenderzeile auf einen Briefumschlag zu kritzeln.
 *Der Unterschied zwischen UDP und TCP:*
@@ -458,10 +416,9 @@ Beim **IP-Spoofing** schreibt der Angreifer eine fremde Absender-IP-Adresse in s
 **Antwort:**
 - **Verbindungslosigkeit von UDP:** UDP erfordert keinen Verbindungsaufbau (Handshake) und keine Rückbestätigung; Pakete werden einfach abgeschickt.
 - **TCP erfordert Rückkanal:** Bei TCP muss der Drei-Wege-Handschlag abgeschlossen werden; Antworten auf gefälschte IPs würden das Opfer erreichen, sodass der Angreifer die Verbindung nicht aufbauen kann.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Wenn digitale Wegweiser falsch zeigen
 
 - Netzbetreiber tauschen Informationen über erreichbare Ziele aus
@@ -470,7 +427,6 @@ Beim **IP-Spoofing** schreibt der Angreifer eine fremde Absender-IP-Adresse in s
 - Unternehmen reduzieren das Risiko durch Verschlüsselung und belastbare Provider
 - Fachbeispiel: **BGP-Hijacking**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Große Netzbetreiber (Telekom, Vodafone etc.) müssen wissen, welche IP-Adressen wo auf der Welt liegen. Dafür nutzen sie das **Border Gateway Protocol (BGP)** – das weltweite Navigationssystem des Internets. Beim **BGP-Hijacking** behauptet ein böswilliger oder schlampiger Provider plötzlich: „Die IP-Adressen von YouTube / Amazon liegen bei mir!“. Das weltweite Netz glaubt es, und der gesamte Verkehr wird umgeleitet.
 *Berühmtes Beispiel 2008:* Pakistan wollte YouTube im eigenen Land sperren, leitete versehentlich das weltweite Routing um – und legte YouTube weltweit für 2 Stunden lahm! 2018 wurde Amazon-DNS per BGP entführt, um Krypto-Nutzer auf Phishing-Seiten umzuleiten.
@@ -484,10 +440,9 @@ Große Netzbetreiber (Telekom, Vodafone etc.) müssen wissen, welche IP-Adressen
 **Antwort:**
 - **Definition:** Fälschliche oder böswillige Ankündigung fremder IP-Adressbereiche im weltweiten Routing-Protokoll (BGP), wodurch Datenverkehr global umgeleitet wird.
 - **Auswirkungen:** Vollständiger **Ausfall der Erreichbarkeit** (Denial of Service) oder unbemerktes **Abfangen und Manipulieren von Datenverkehr** (Man-in-the-Middle) durch den entführenden Knoten.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Kleine Anfrage, große Wirkung
 
 - Angreifer nutzen viele fremde Systeme als unbeabsichtigte Verstärker
@@ -497,7 +452,6 @@ Große Netzbetreiber (Telekom, Vodafone etc.) müssen wissen, welche IP-Adressen
 
 > Das Angriffsziel ist **Verfügbarkeit**, nicht zwingend der Datendiebstahl.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Wie kann ein einzelner Angreifer mit einem billigen Laptop einen Großkonzern lahmlegen? Durch **Verstärkungsangriffe (Amplification & Reflection)**:
 1. **Reflexion:** Der Angreifer schickt Anfragen mit der gefälschten Absender-IP des Opfers an Tausende öffentliche Server im Internet (z. B. DNS- oder NTP-Server).
@@ -513,10 +467,9 @@ Wie kann ein einzelner Angreifer mit einem billigen Laptop einen Großkonzern la
 **Antwort:**
 - **Reflexion:** Der Angriff wird über unbeteiligte Drittserver reflektiert, indem der Angreifer die **Absender-IP des Opfers fälscht**; dadurch wird die Identität des Angreifers verschleiert und das Opfer von tausenden Quellen gleichzeitig attackiert.
 - **Amplifikation:** Das Antwortpaket des Drittservers ist **um ein Vielfaches größer als die Anfrage** (z. B. Faktor 50 bei DNS), wodurch der Datenstrom massiv vervielfacht wird.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Datenwege kontrollieren
 
 - **Firewalls** prüfen Verbindungen anhand festgelegter Regeln
@@ -525,7 +478,6 @@ Wie kann ein einzelner Angreifer mit einem billigen Laptop einen Großkonzern la
 - Überwachung erkennt ungewöhnliche Ziele, Mengen oder Muster
 - Redundanz hält wichtige Dienste trotz einzelner Ausfälle erreichbar
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Eine **Firewall** ist kein Wundermittel, sondern ein digitaler Türsteher mit einer strikten Gästeliste (**Access Control Lists / ACLs**). Das sicherste Grundprinzip lautet **Default Deny**: Alles ist grundsätzlich verboten, nur ausdrücklich genehmigte Verbindungen dürfen durch!
 *Firewall-Evolution:*
@@ -542,16 +494,13 @@ Eine **Firewall** ist kein Wundermittel, sondern ein digitaler Türsteher mit ei
 **Antwort:**
 - **Default Deny:** Alles ist standardmäßig blockiert; nur explizit benötigte Ports und Dienste werden freigegeben. Neue, unbekannte Bedrohungen oder vergessene Dienste sind **automatisch geschützt**.
 - **Default Allow:** Alles ist erlaubt, nur bekannte Gefahren werden gesperrt. Äußerst riskant, da jede neue Schwachstelle oder Konfigurationsänderung sofort ungeschützt offensteht.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Verfügbarkeit von Diensten
 
 ## Wenn legitime Kommunikation zur Last wird
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir erreichen die OSI-Transportschicht (Schicht 4) mit TCP und UDP. Hier geht es um das Schutzziel Verfügbarkeit: Wie unterscheiden sich zuverlässige Telefonate (TCP) von schnellen Postkarten (UDP)? Warum kann man Server lahmlegen, ohne viel Bandbreite zu verbrauchen (SYN-Flood), und wie planen Unternehmen ihre Geschäftskontinuität (DDoS, SLAs, RTO, RPO)?
 
@@ -560,9 +509,9 @@ Du lernst die Unterschiede zwischen TCP und UDP kennen, verstehst Protokollangri
 
 ### ❓ Typische Schwerpunkte
 TCP vs. UDP (Verbindungsorientierung vs. Zustandslosigkeit), 3-Wege-Handschlag und SYN-Cookies sowie DoS vs. DDoS und SLAs.
--->
+
 ---
-<!-- _class: normal -->
+
 # Zwei Arten der Datenübertragung
 
 <div class="columns">
@@ -586,7 +535,6 @@ TCP vs. UDP (Verbindungsorientierung vs. Zustandslosigkeit), 3-Wege-Handschlag u
 </div>
 </div>
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - **TCP (Transmission Control Protocol):** Funktioniert wie ein Telefonat mit Rückfrage. Erst verbindet man sich (3-Wege-Handschlag: „Hallo?“ – „Ja, hallo!“ – „Super, lass reden!“). Geht ein Wort verloren, bittet der Empfänger um Wiederholung. Perfekt für Webseiten, E-Mails und Banking.
 - **UDP (User Datagram Protocol):** Funktioniert wie das Einwerfen einer Postkarte in den Briefkasten. Der Absender wirft sie ein und vergisst sie. Keine Bestätigung, keine Garantie. Dafür rasend schnell! Perfekt für Livestreams, Online-Gaming und DNS.
@@ -601,10 +549,9 @@ TCP vs. UDP (Verbindungsorientierung vs. Zustandslosigkeit), 3-Wege-Handschlag u
 **Antwort:**
 - **TCP:** **Verbindungsorientiert** (Drei-Wege-Handschlag); garantiert vollständige und geordnete Übertragung (**automatische Fehlerkorrektur**); Einsatz: HTTP/HTTPS, E-Mail, Dateiübertragung.
 - **UDP:** **Verbindungslos** (kein Handshake); keine Zustellgarantie oder Fehlerbehebung (**geringer Overhead, minimale Latenz**); Einsatz: Videostreaming, VoIP, DNS.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Beispiel: Unvollständige Anfragen blockieren
 
 - Ein Dienst reserviert Ressourcen für neue Verbindungen
@@ -613,7 +560,6 @@ TCP vs. UDP (Verbindungsorientierung vs. Zustandslosigkeit), 3-Wege-Handschlag u
 - Legitime Kunden werden langsam oder abgewiesen
 - Fachbeispiel: **SYN-Flood**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Eine **SYN-Flood** ist ein fieser Protokollangriff auf TCP:
 Beim normalen Drei-Wege-Handschlag schickt der Client ein `SYN` (Anfrage), der Server reserviert Speicherplatz und antwortet mit `SYN-ACK` (Bestätigung), und der Client schließt mit `ACK` ab.
@@ -630,10 +576,9 @@ Bei der SYN-Flood schickt der Angreifer tausende `SYN`-Pakete mit gefälschten A
 **Antwort:**
 - **Funktionsweise:** Angreifer sendet massenhaft TCP-`SYN`-Pakete, beantwortet die `SYN-ACK`-Pakete des Servers aber nie mit dem abschließenden `ACK`. Die **Verbindungstabelle des Servers läuft voll**, legitime Verbindungen werden blockiert.
 - **SYN-Cookies:** Der Server reserviert beim Eintreffen des `SYN` **keinen Speicherplatz**, sondern kodiert den Verbindungsstatus kryptografisch in die Sequenznummer; erst wenn das valide `ACK` des Clients eintrifft, wird die Verbindung aufgebaut.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Aufklärung vor dem Angriff
 
 - Angreifer prüfen systematisch, welche Dienste erreichbar sind
@@ -642,7 +587,6 @@ Bei der SYN-Flood schickt der Angreifer tausende `SYN`-Pakete mit gefälschten A
 - Unnötige Dienste vergrößern die Angriffsfläche
 - Fachbegriff: **Portscan**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein **Port** ist wie eine Zimmernummer in einem Bürogebäude: IP-Adresse = Hausadresse; Port 80/443 = Webserver; Port 22 = Fernwartung (SSH); Port 3389 = Windows-Fernzugriff.
 Beim **Portscan** klopft ein Angreifer automatisiert an alle 65.535 Türen deines Servers und lauscht, wer „Herein!“ ruft. Meldet sich ein Dienst, liest der Angreifer oft sogar die genaue Versionsnummer ab (**Banner Grabbing**) und sucht gezielt nach bekannten Sicherheitslücken.
@@ -659,10 +603,9 @@ Beim **Portscan** klopft ein Angreifer automatisiert an alle 65.535 Türen deine
 - **Maßnahmen zur Reduktion:**
   1. **Abschalten nicht benötigter Dienste** (Hardening).
   2. **Zugriffsbeschränkung über Firewalls/VPN** (Dienste nur autorisierten IPs zugänglich machen, keine öffentliche Exposition).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Verfügbarkeit ist ein Geschäftsversprechen
 
 - Online-Dienste müssen auch unter hoher Last erreichbar bleiben
@@ -672,7 +615,6 @@ Beim **Portscan** klopft ein Angreifer automatisiert an alle 65.535 Türen deine
 
 > **Beratungsfrage:** Welche Ausfallzeit kann das Geschäft wirklich verkraften?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - **DoS vs. DDoS:** DoS kommt von einem einzelnen Rechner. **DDoS (Distributed DoS)** nutzt ein weltweites Botnetz aus hunderttausenden gekaperten Computern und Routern. Gegen DDoS hilft keine einfache IP-Sperre, weil der Angriff von überall gleichzeitig strömt!
 - **Betriebliche Kennzahlen für Notfälle:**
@@ -689,16 +631,13 @@ Beim **Portscan** klopft ein Angreifer automatisiert an alle 65.535 Türen deine
 **Antwort:**
 - **RTO (Recovery Time Objective):** Die maximal tolerierbare Zeitspanne, bis die Systeme nach dem Vorfall **wieder voll betriebsbereit sein müssen** (z. B. Wiederanlauf innerhalb von 4 Stunden).
 - **RPO (Recovery Point Objective):** Der maximal tolerierbare **Datenverlust**, gemessen als Zeitspanne zwischen letztem Backup und Vorfall (z. B. maximal 1 Stunde Datenverlust).
--->
 
 ---
-<!-- _class: chapter -->
+
 # Anwendungen und Sitzungen
 
 ## Wenn vertraute Dienste getäuscht werden
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Wir betreten die oberste Ebene (OSI-Schicht 7): Hier arbeiten echte Menschen mit Browsern, E-Mails und Web-Apps. Hier nützen reine Netzwerkfilter wenig, weil Angreifer menschliches Vertrauen und Anwendungslogik ausnutzen. Warum garantiert das Schloss-Symbol im Browser keine Sicherheit? Wie funktioniert Session Hijacking und warum ist DNS-Spoofing so gefährlich?
 
@@ -707,9 +646,9 @@ Du lernst die Mechanismen der Anwendungsschicht (HTTP-Sitzungen, Cookies, DNS) k
 
 ### ❓ Typische Schwerpunkte
 Zustandslosigkeit von HTTP, Schutz von Sitzungstoken (HttpOnly, Secure, SameSite), DNS-Spoofing vs. Cache-Poisoning und HTTP-Flood (Layer 7).
--->
+
 ---
-<!-- _class: biglist -->
+
 # Nach dem Login: die digitale Sitzung
 
 - Nach erfolgreicher Anmeldung merkt sich ein Dienst den Nutzer
@@ -718,7 +657,6 @@ Zustandslosigkeit von HTTP, Schutz von Sitzungstoken (HttpOnly, Secure, SameSite
 - Verschlüsselung schützt das Token auf dem Transportweg
 - Kurze Gültigkeit begrenzt den möglichen Schaden
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das Web-Protokoll HTTP ist **zustandslos**: Nach jedem Klick vergisst der Server sofort, wer du bist. Damit du dich nicht bei jedem Seitenwechsel neu einloggen musst, gibt dir der Server beim Login eine Wartenummer: ein **Sitzungstoken (Session Cookie)**.
 *Die Gefahr:* Wer dein Sitzungstoken klaut, ist in den Augen des Servers DU – ganz ohne dein Passwort zu kennen!
@@ -738,10 +676,9 @@ Das Web-Protokoll HTTP ist **zustandslos**: Nach jedem Klick vergisst der Server
 - **Attribute:**
   - `HttpOnly`: Blockiert den Zugriff von clientseitigem JavaScript auf das Cookie (verhindert Diebstahl via **Cross-Site Scripting / XSS**).
   - `Secure`: Erzwingt die Übertragung des Cookies ausschließlich über verschlüsselte **HTTPS-Verbindungen**.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Beispiel: Eine angemeldete Sitzung übernehmen
 
 - Angreifer erbeutet den temporären Nachweis einer Anmeldung
@@ -750,7 +687,6 @@ Das Web-Protokoll HTTP ist **zustandslos**: Nach jedem Klick vergisst der Server
 - Schutz: verschlüsselte Verbindung, sichere Endgeräte, kurze Sitzungen
 - Fachbegriff: **Session Hijacking**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Beim **Session Hijacking** erbeutet ein Angreifer dein gültiges Sitzungstoken (z. B. durch Schadsoftware auf dem PC oder gefälschte Anmeldeseiten). Danach surft er mit deinen Rechten im System herum.
 *Wichtige Klausur-Erkenntnis:* **MFA (Zwei-Faktor-Authentifizierung) schützt hier NICHT!** Warum? Weil MFA nur beim Login an der Haustür geprüft wird. Wenn der Angreifer dir den Schlüsselbund (das Token) erst *nach* dem Aufschließen aus der Tasche zieht, ist die Tür bereits offen!
@@ -765,7 +701,6 @@ Beim **Session Hijacking** erbeutet ein Angreifer dein gültiges Sitzungstoken (
 **Antwort:**
 - **MFA schützt nur den Anmeldevorgang:** Die Zwei-Faktor-Prüfung erfolgt einmalig beim Erzeugen der Sitzung.
 - **Token ersetzt Authentifizierung:** Das ausgegebene Sitzungstoken beweist dem Server den bereits erfolgreichen Login; wer das Token besitzt, umgeht alle vorgeschalteten Anmeldeschritte (**Session Hijacking**).
--->
 
 ---
 
@@ -778,7 +713,6 @@ Beim **Session Hijacking** erbeutet ein Angreifer dein gültiges Sitzungstoken (
 
 > Eine funktionierende Verbindung garantiert noch kein vertrauenswürdiges Gegenüber.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Nutzer achten im Browser auf bekannte Logos, Farben und das grüne Vorhängeschloss in der Adresszeile.
 *Der fatale Denkfehler:* **Das Schloss-Symbol bedeutet NICHT, dass die Webseite seriös ist!** Es bedeutet ausschließlich: „Die Verbindung zu diesem Server ist verschlüsselt.“ Ein Betrüger kann sich in 30 Sekunden ein kostenloses, offizielles TLS-Zertifikat für `sparkasse-sicherheits-login.de` holen. Seine Fake-Seite hat ein perfektes Schloss!
@@ -793,10 +727,9 @@ Sicherheit erfordert daher immer die Kombination aus technischer Prüfung, einde
 **Antwort:**
 - **Aussage ist falsch:** Das Schloss-Symbol bestätigt lediglich, dass die Verbindung zum aufgerufenen Server per **TLS verschlüsselt** ist (**Schutz vor Abhören auf dem Transportweg**).
 - **Keine Seriositätsprüfung:** Jeder Angreifer kann für betrügerische Domains (z. B. Phishing-Seiten) gültige TLS-Zertifikate beantragen; das Schloss sagt nichts über die **Echtheit oder Gutartigkeit des Betreibers** aus.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Beispiel: Der richtige Name, das falsche Ziel
 
 - Das **Domain Name System (DNS)** übersetzt Namen in technische Zieladressen
@@ -805,7 +738,6 @@ Sicherheit erfordert daher immer die Kombination aus technischer Prüfung, einde
 - Mögliche Folgen: Zugangsdaten- oder Zahlungsdatendiebstahl
 - Fachbegriffe: **DNS-Spoofing** und **Cache-Poisoning**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Das **Domain Name System (DNS)** ist das Telefonbuch des Internets: Du tippst `meinebank.de` ein, und DNS liefert die IP-Adresse `192.0.2.1`.
 - **DNS-Spoofing:** Ein Angreifer im selben Netz fängt deine Anfrage ab und ruft schnell: „Die Bank liegt auf meiner IP!“. Du tippst die richtige Adresse ein, landest aber auf der Betrüger-Kopie.
@@ -822,10 +754,9 @@ Das **Domain Name System (DNS)** ist das Telefonbuch des Internets: Du tippst `m
 - **DNS-Spoofing:** Fälschen einer einzelnen DNS-Antwort für einen bestimmten Client (meist im lokalen Netz).
 - **DNS-Cache-Poisoning:** Einschleusen gefälschter DNS-Einträge in den **Zwischenspeicher (Cache) eines DNS-Resolvers/Servers**, wodurch **alle nachfolgenden Nutzer** dieses Servers unbemerkt auf gefälschte Zieladressen geleitet werden.
 - **Schutztechnologie:** **DNSSEC (Domain Name System Security Extensions)** durch kryptografische Signaturen von DNS-Einträgen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Ein Muster, verschiedene Angriffswege
 
 - Angreifer positioniert sich unbemerkt zwischen zwei Kommunikationspartnern
@@ -835,7 +766,6 @@ Das **Domain Name System (DNS)** ist das Telefonbuch des Internets: Du tippst `m
 
 > Fachbegriff: **Man-in-the-Middle (MITM)**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 **Man-in-the-Middle (MITM)** – heute oft neutral **Adversary-in-the-Middle (AiTM)** genannt – ist kein einzelnes Tool, sondern eine strategische **Position**: Der Angreifer sitzt heimlich zwischen zwei Partnern, liest alles mit oder ändert Nachrichten nach Belieben.
 *Viele Wege führen zum selben Ziel:*
@@ -854,10 +784,9 @@ Das **Domain Name System (DNS)** ist das Telefonbuch des Internets: Du tippst `m
 1. **Layer 2 (Zugang):** **ARP-Spoofing** oder Bereitstellung eines gefälschten WLAN-Access-Points (**Evil Twin**).
 2. **Layer 3 (Transport):** **BGP-Hijacking** (Umleitung des IP-Routings im Internet).
 3. **Layer 7 (Anwendung):** **DNS-Spoofing / Cache-Poisoning** (Fälschung der Namensauflösung).
--->
 
 ---
-<!-- _class: biglist -->
+
 # Wenn normale Anfragen zum Angriff werden
 
 - Angreifer senden massenhaft scheinbar legitime Anfragen an eine Anwendung
@@ -866,7 +795,6 @@ Das **Domain Name System (DNS)** ist das Telefonbuch des Internets: Du tippst `m
 - Schutz erfordert Erkennung, Skalierung und klare Prioritäten für kritische Dienste
 - Fachbeispiel: **HTTP-Flood**
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Bei einer **HTTP-Flood** (Layer-7-DDoS) schicken hunderttausende infizierte Computer (Botnetze) scheinbar völlig normale Anfragen an einen Webserver – z. B. starten sie gleichzeitig aufwendige Datenbank-Suchen oder rufen den Produktkatalog ab.
 *Warum ist das so schwer abzuwehren?*
@@ -882,16 +810,13 @@ Jede einzelne Anfrage ist formal 100 % legal! Eine normale Firewall sieht ganz n
 **Antwort:**
 - **Versagen der Netzwerk-Firewall:** Die Anfragen sind formal gültige HTTP/HTTPS-Pakete auf erlaubten Standardports (Port 80/443); die Firewall kann bösartige Absichten nicht auf Anwendungsebene interpretieren.
 - **Lösung:** Eine **Web Application Firewall (WAF)** oder spezialisierte DDoS-Schutzdienste, die das Verhalten analysieren, Bot-Muster erkennen und **Rate Limiting / Challenge-Response (CAPTCHA)** erzwingen.
--->
 
 ---
-<!-- _class: chapter -->
+
 # Verteidigung im Überblick
 
 ## Mehrere Schutzlinien gleichzeitig
 
-
-<!-- _notes:
 ### 💡 Worum geht es in diesem Kapitel?
 Im Finale führen wir alle Puzzleteile zu einem ganzheitlichen Schutzkonzept zusammen: Kein Produkt der Welt schützt vor allem. Wir lernen das goldene Prinzip **Defense in Depth** kennen, ordnen Maßnahmen nach ihrer Wirkung (Vorbeugen, Begrenzen, Erkennen, Reagieren, Lernen) und klären den Unterschied zwischen Netzwerksegmentierung und Zero Trust.
 
@@ -900,9 +825,9 @@ Du kannst ein mehrschichtiges Sicherheitskonzept nach dem Defense-in-Depth-Prinz
 
 ### ❓ Typische Schwerpunkte
 Defense in Depth Definition + Schichten, IDS vs. IPS (Erkennen vs. Blockieren), Segmentierung (VLANs, Mikrosegmentierung) und das 5-Stufen-Modell der Wirkung.
--->
+
 ---
-<!-- _class: biglist -->
+
 # Defense in Depth
 
 - **Defense in Depth** kombiniert mehrere unabhängige Schutzmaßnahmen
@@ -912,7 +837,6 @@ Defense in Depth Definition + Schichten, IDS vs. IPS (Erkennen vs. Blockieren), 
 
 > Nicht die Anzahl der Produkte zählt, sondern das Zusammenspiel der Kontrollen.
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 **Defense in Depth** bedeutet: Baue niemals nur eine einzige Schutzmauer! Wenn du dich nur auf deine Firewall verlässt und sie versagt, ist sofort alles verloren. Stattdessen staffeln wir unabhängige Schutzebenen hintereinander: Firewall am Rand ➔ Netzwerksegmentierung im Inneren ➔ Virenschutz & Patching auf dem PC ➔ Verschlüsselung & Rechteprüfung an der Datei.
 *Schweizer-Käse-Modell:* Jede Sicherheitsschicht hat Löcher (Schwachstellen). Aber wenn man mehrere Scheiben hintereinanderlegt, deckt eine Scheibe die Löcher der anderen ab – ein Angriff dringt nicht bis zu den Kronjuwelen durch.
@@ -926,14 +850,13 @@ Defense in Depth Definition + Schichten, IDS vs. IPS (Erkennen vs. Blockieren), 
 **Antwort:**
 - **Definition:** Gestaffeltes Sicherheitskonzept aus **mehreren redundanten, aufeinander aufbauenden Schutzschichten** (z. B. Perimeter, Netzwerk, Host, Daten), damit das Versagen einer Schicht nicht zum Gesamtschaden führt.
 - **Unabhängigkeit:** Verhindert einen **Single Point of Failure**; hängen alle Maßnahmen von derselben Technologie oder demselben System ab, kann ein einziger Fehler alle Schutzlinien gleichzeitig aushebeln.
--->
 
 ---
+
 # Defense in Depth als Diagramm
 
-![w:1200 center](img/defense-in-depth.svg)
+![Defense in Depth als Diagramm](img/defense-in-depth.svg)
 
-<!-- _notes:
 ### 💡 Was zeigt uns diese Darstellung?
 Die Grafik visualisiert Defense in Depth als vier ineinander verschachtelte Zwiebelschalen:
 1. **Perimeter (Außen):** Firewall fängt grobe Angriffe aus dem Internet ab.
@@ -950,9 +873,9 @@ Die Grafik visualisiert Defense in Depth als vier ineinander verschachtelte Zwie
 **Antwort:**
 - **Netzwerk-Ebene:** **Segmentierung (VLANs / ACLs)** verhindert, dass der kompromittierte Einstiegspunkt andere sensible Bereiche (z. B. Datenbanken, Produktionsnetz) erreicht.
 - **Host-/Daten-Ebene:** **Least Privilege / Autorisierungsprüfung und Verschlüsselung** stellen sicher, dass mit den gestohlenen Rechten nur minimale Daten eingesehen werden können.
--->
 
 ---
+
 # Schutzmaßnahmen nach ihrer Wirkung
 
 | Ziel | Beispiele | Nutzen |
@@ -963,7 +886,6 @@ Die Grafik visualisiert Defense in Depth als vier ineinander verschachtelte Zwie
 | **Reagieren** | Notfallplan, DDoS-Dienstleister | Ausfallzeit verkürzen |
 | **Lernen** | Tests, Übungen, Verbesserungsprozess | Wiederholung vermeiden |
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es reicht nicht, nur Vitamine zu schlucken (Vorbeugen), man braucht auch Diagnostik (Erkennen) und eine Notaufnahme (Reagieren):
 - **Vorbeugen (Prävention):** Firewall, Verschlüsselung, Härtung (Eintritt verhindern).
@@ -982,10 +904,9 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
 **Antwort:**
 - **IDS:** Überwacht den Datenverkehr passiv und generiert Alarme bei verdächtigen Mustern; Wirkungskategorie: **Erkennen (Detektion)**.
 - **IPS:** Sitzt aktiv im Datenstrom (inline) und kann verdächtige Pakete oder Verbindungen in Echtzeit verwerfen; Wirkungskategorie: **Vorbeugen / Abwehren (Prävention)**.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Netzwerksegmentierung & Zero Trust
 
 - **Segmentierung** trennt Bereiche mit unterschiedlichen Aufgaben und Risiken
@@ -995,7 +916,6 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
 
 > **Beratungsfrage:** Was kann ein kompromittierter Arbeitsplatz im internen Netz erreichen?
 
-<!-- _notes:
 ### 💡 Auf den Punkt gebracht (Einfach erklärt)
 - **Netzwerksegmentierung:** Das Prinzip der **Brandschutztüren**. Wenn im Büro ein Feuer ausbricht (ein Laptop wird mit Ransomware infiziert), fällt die Brandschutztür zu – das Feuer greift nicht auf die Fabrikhalle oder die Finanzdaten über. Technisch gelöst über VLANs und interne Firewalls.
 - **Zero Trust:** Die Weiterentwicklung. Hier gibt es nicht nur Zonen, sondern jede einzelne Ressource verlangt bei jedem Zugriff den Ausweis: „Bist du der Admin? Ist dein Virenscanner aktuell? Ja? Dann darfst du für 5 Minuten rein.“
@@ -1010,9 +930,9 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
 **Antwort:**
 - **Eindämmung von Lateral Movement:** Ransomware breitet sich nach dem Erstbefall automatisiert über offene Netzwerkverbindungen im lokalen Netz aus.
 - **Schadensbegrenzung:** Durch Segmentierung (z. B. Trennung von Office-Clients, Servern und Backups) wird die Ausbreitung an internen Firewall-Grenzen gestoppt; ein Befall bleibt auf das infizierte Subnetz beschränkt (**Brandschutz-Prinzip**).
--->
 
 ---
+
 # Zusammenfassung
 
 | Bereich | Kernrisiko | Leitfrage |
@@ -1024,7 +944,6 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
 
 > **Merksatz:** Netzwerksicherheit schützt Geschäftskontinuität, Daten und Vertrauen.
 
-<!-- _notes:
 ### 💡 Schnell-Check
 - **Zugang:** Schütze Hardware, Dosen und WLAN (WPA3, 802.1X). Sei dir bewusst: ARP und MAC bieten kein Vertrauen!
 - **Transport:** Gehe davon aus, dass der Weg durchs Internet unsicher ist. Vertraue keiner IP-Adresse blind (IP-Spoofing, BGP-Hijacking) und nutze konsequent **TLS**.
@@ -1043,10 +962,9 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
    ➔ Ins Leere = **Verfügbarkeit**; Mitlesen = **Vertraulichkeit** (und ggf. Integrität).
 2. *Warum hilft DNSSEC gegen Cache-Poisoning?*
    ➔ Weil DNSSEC die DNS-Einträge mit **kryptografischen Signaturen** versieht; gefälschte Antworten des Angreifers werden vom Resolver verworfen.
--->
 
 ---
-<!-- _class: biglist -->
+
 # Diskussionsfragen
 
 - Welcher netzwerkbedingte Ausfall hätte bei eurem Partnerunternehmen die größten Folgen?
@@ -1055,7 +973,6 @@ Ein gutes Sicherheitskonzept ist wie eine Notfallkette im Krankenhaus – es rei
 - Wie würdet ihr den Nutzen von Segmentierung ohne Fachbegriffe erklären?
 - Welche Schutzmaßnahme benötigt zwingend einen organisatorischen Prozess?
 
-<!-- _notes:
 ### 💡 Beratungs- & Diskussionsfokus
 Diese Fragen spiegeln reale Kundengespräche im IT-Consulting wider: Ein Geschäftsführer fragt nicht nach Portnummern, sondern will wissen: „Was kostet mich ein Tag Stillstand? Warum reichen unsere alten Firewalls nicht mehr? Wie verhindern wir, dass der Hacker vom Drucker an die Buchhaltung kommt?“
 
@@ -1067,4 +984,3 @@ Du kannst technische Schutzmaßnahmen in überzeugende geschäftliche Argumente 
   ➔ *Kernargument:* **Brandschutztüren-Prinzip.** Wenn in der Teeküche ein Papierkorb brennt, brennt nicht gleich das ganze Fabrikgebäude ab.
 - **Frage 2: „Warum reicht unsere Firewall nicht aus?“**
   ➔ *Kernargument:* Die Firewall steht nur am Haupteingang. Wenn der Angreifer per Phishing oder über das Homeoffice eines Mitarbeiters bereits im Wohnzimmer steht, schützt der Zaun im Vorgarten nicht mehr (**Notwendigkeit von Zero Trust & internen Kontrollen**).
--->
